@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b6cr23cn5p0ii"]
+
+[ext_resource type="Texture2D" uid="uid://c7mqx43e6ok6k" path="res://Itch Towers/Towers/Non-Combat Towers/spr_normal_tower_02_red.png" id="1_k1sas"]
+[ext_resource type="Script" uid="uid://bj71hwac13ylf" path="res://tower.gd" id="1_vedim"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vedim"]
+atlas = ExtResource("1_k1sas")
+region = Rect2(0, 0, 24, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stebd"]
+atlas = ExtResource("1_k1sas")
+region = Rect2(24, 0, 24, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbe1c"]
+atlas = ExtResource("1_k1sas")
+region = Rect2(48, 0, 24, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxmma"]
+atlas = ExtResource("1_k1sas")
+region = Rect2(72, 0, 24, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jed6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vedim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stebd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbe1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxmma")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8rye"]
+size = Vector2(18, 25)
+
+[node name="Tower" type="CharacterBody2D" unique_id=1925157362]
+script = ExtResource("1_vedim")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=573699999]
+position = Vector2(3, -5)
+sprite_frames = SubResource("SpriteFrames_jed6l")
+autoplay = "default"
+frame_progress = 0.48859468
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1092609726]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_w8rye")
