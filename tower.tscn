@@ -49,7 +49,7 @@ script = ExtResource("1_vedim")
 position = Vector2(3, -5)
 sprite_frames = SubResource("SpriteFrames_jed6l")
 autoplay = "default"
-frame_progress = 0.48859468
+frame_progress = 0.8763861
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1092609726]
 visible = false
