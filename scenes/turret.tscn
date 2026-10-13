@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c7ec65aq7g0h"]
+
+[ext_resource type="Texture2D" uid="uid://b47kiy5m3rwui" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_lightning_tower.png" id="1_pp6j5"]
+[ext_resource type="Script" uid="uid://beinx0jy8qvsq" path="res://scripts/turret.gd" id="2_6fjxm"]
+[ext_resource type="Script" uid="uid://c0o7n6fv48v3l" path="res://scripts/state_machine.gd" id="3_dirdf"]
+[ext_resource type="Script" uid="uid://bl8ek7e62ge17" path="res://scenes/firing.gd" id="4_6fjxm"]
+[ext_resource type="Script" uid="uid://b532acgqa2cj2" path="res://scenes/turret_idle.gd" id="5_6fjxm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
+radius = 71.17584
+
+[node name="turret" type="Sprite2D" unique_id=269105193]
+texture = ExtResource("1_pp6j5")
+offset = Vector2(0, -18)
+script = ExtResource("2_6fjxm")
+
+[node name="bullet_orgin" type="Marker2D" parent="." unique_id=1955310327]
+position = Vector2(0, -30)
+
+[node name="StateMachine" type="Node" parent="." unique_id=2095937417 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_dirdf")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://c0o7n6fv48v3l"
+
+[node name="Firing" type="Node" parent="StateMachine" unique_id=259666605 node_paths=PackedStringArray("attack_area", "idle_state", "bullet_orgin", "cooldown_timer")]
+script = ExtResource("4_6fjxm")
+attack_area = NodePath("../../Attack Range")
+idle_state = NodePath("../Idle")
+bullet_orgin = NodePath("../../bullet_orgin")
+cooldown_timer = NodePath("Timer")
+cooldown = 2.0
+metadata/_custom_type_script = "uid://bdn87p4ijh16i"
+
+[node name="Timer" type="Timer" parent="StateMachine/Firing" unique_id=1269816728]
+one_shot = true
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1729520665 node_paths=PackedStringArray("attack_area", "attack_state")]
+script = ExtResource("5_6fjxm")
+attack_area = NodePath("../../Attack Range")
+attack_state = NodePath("../Firing")
+metadata/_custom_type_script = "uid://bdn87p4ijh16i"
+
+[node name="Attack Range" type="Area2D" parent="." unique_id=1930831955]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Range" unique_id=19597647]
+shape = SubResource("CircleShape2D_jed6l")

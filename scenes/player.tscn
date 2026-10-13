@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://cfxueluo5j5ap"]
+
+[ext_resource type="Script" uid="uid://umfeyhg0kgpi" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bhvt2psx68qg4" path="res://assets/Itch Towers/Enemies/spr_ghost.png" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://doicmuxopoc2o" path="res://scripts/camera_boing.gd" id="3_qlg0r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(40, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(50, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(60, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(70, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ra2i3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hs0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw050")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b26j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ghd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvl01")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otjlk"]
+radius = 5.0
+height = 12.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1634747837]
+scale = Vector2(1.6, 1.6)
+script = ExtResource("1_qhqgy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=915040929]
+sprite_frames = SubResource("SpriteFrames_ra2i3")
+autoplay = "default"
+frame_progress = 0.95515186
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754095376]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_otjlk")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1588487993]
+offset = Vector2(0, -43)
+zoom = Vector2(4, 4)
+script = ExtResource("3_qlg0r")
