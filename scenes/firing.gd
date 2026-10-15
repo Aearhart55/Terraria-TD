@@ -6,6 +6,8 @@ extends State
 @export var cooldown_timer: Timer
 @export var cooldown: float
 
+const BULLET = preload("uid://3amil1v1c55f")
+
 var off_cooldown : bool = true
 var target: Node2D
 
@@ -20,12 +22,17 @@ func physics_update(_delta: float) -> void:
 	
 	if off_cooldown:
 		pick_target()
-		print(target)
+		if target:
+			var new_bullet : Area2D = BULLET.instantiate()
+			new_bullet.position = bullet_orgin.global_position
+			new_bullet.look_at(target.position)
+			add_child(new_bullet)
 		off_cooldown = false
 		cooldown_timer.start()
 
 func pick_target() -> void:
 	var target_distance : float
+	target = null
 	for enemy in attack_area.get_overlapping_bodies():
 		if not target_distance:
 			target = enemy

@@ -28,7 +28,7 @@ attack_area = NodePath("../../Attack Range")
 idle_state = NodePath("../Idle")
 bullet_orgin = NodePath("../../bullet_orgin")
 cooldown_timer = NodePath("Timer")
-cooldown = 2.0
+cooldown = 0.1
 metadata/_custom_type_script = "uid://bdn87p4ijh16i"
 
 [node name="Timer" type="Timer" parent="StateMachine/Firing" unique_id=1269816728]
