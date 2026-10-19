@@ -5,4 +5,6 @@ extends State
 
 func physics_update(_delta: float) -> void:
 	if not attack_area.get_overlapping_bodies().is_empty():
-		change_state.emit(attack_state)
+		for body in attack_area.get_overlapping_bodies():
+			if body.is_in_group("enemy"):
+				change_state.emit(attack_state)

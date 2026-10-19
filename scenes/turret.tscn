@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://b47kiy5m3rwui" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_lightning_tower.png" id="1_pp6j5"]
 [ext_resource type="Script" uid="uid://beinx0jy8qvsq" path="res://scripts/turret.gd" id="2_6fjxm"]
 [ext_resource type="Script" uid="uid://c0o7n6fv48v3l" path="res://scripts/state_machine.gd" id="3_dirdf"]
-[ext_resource type="Script" uid="uid://bl8ek7e62ge17" path="res://scenes/firing.gd" id="4_6fjxm"]
-[ext_resource type="Script" uid="uid://b532acgqa2cj2" path="res://scenes/turret_idle.gd" id="5_6fjxm"]
+[ext_resource type="Script" uid="uid://bl8ek7e62ge17" path="res://scripts/turret_firing.gd" id="4_6fjxm"]
+[ext_resource type="Script" uid="uid://b532acgqa2cj2" path="res://scripts/turret_idle.gd" id="5_6fjxm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
 radius = 71.17584

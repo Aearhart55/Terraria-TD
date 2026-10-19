@@ -10,6 +10,7 @@ const BULLET = preload("uid://3amil1v1c55f")
 
 var off_cooldown : bool = true
 var target: Node2D
+var change_state_bool : bool = false
 
 func enter() -> void:
 	cooldown_timer.wait_time = cooldown
@@ -18,6 +19,14 @@ func enter() -> void:
 
 func physics_update(_delta: float) -> void:
 	if attack_area.get_overlapping_bodies().is_empty():
+		change_state.emit(idle_state)
+		
+	change_state_bool = true
+	for body in attack_area.get_overlapping_bodies():
+		if body.is_in_group("enemy"):
+			change_state_bool = false
+	
+	if change_state_bool:
 		change_state.emit(idle_state)
 	
 	if off_cooldown:
@@ -34,11 +43,12 @@ func pick_target() -> void:
 	var target_distance : float
 	target = null
 	for enemy in attack_area.get_overlapping_bodies():
-		if not target_distance:
-			target = enemy
-			target_distance = bullet_orgin.position.distance_to(target.position)
-		
-		elif bullet_orgin.position.distance_to(enemy.position) < target_distance:
-			target = enemy
-			target_distance = bullet_orgin.position.distance_to(target.position)
+		if enemy.is_in_group("enemy"):
+			if not target_distance:
+				target = enemy
+				target_distance = bullet_orgin.position.distance_to(target.position)
+			
+			elif bullet_orgin.position.distance_to(enemy.position) < target_distance:
+				target = enemy
+				target_distance = bullet_orgin.position.distance_to(target.position)
 		
