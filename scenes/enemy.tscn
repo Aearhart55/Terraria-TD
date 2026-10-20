@@ -44,7 +44,7 @@ size = Vector2(14, 8)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1869979890 groups=["enemy"]]
 script = ExtResource("1_md0e3")
-speed = 5.0
+health = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1823850923]
 sprite_frames = SubResource("SpriteFrames_jed6l")
