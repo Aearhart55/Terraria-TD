@@ -9,7 +9,7 @@ class_name Enemy extends CharacterBody2D
 		
 		if health <= 0:
 			death()
-		
+		 
 var flip : bool = false
 
 func _ready() -> void:
@@ -20,6 +20,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	else:
+		velocity.y = 0
 	
 	velocity.x = speed
 	#velocity.x = move_toward(velocity.x, 0, SPEED)

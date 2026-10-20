@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://ddbej40xmes5o" path="res://assets/Autum.tres" id="2_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cfxueluo5j5ap" path="res://scenes/player.tscn" id="3_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://b2bw1lddbawqe" path="res://assets/icon.svg" id="4_rarhs"]
-[ext_resource type="PackedScene" uid="uid://d4em0ochsyyy1" path="res://scenes/enemy.tscn" id="5_vcsgt"]
+[ext_resource type="PackedScene" uid="uid://mxgux0uwkor0" path="res://scenes/spawner.tscn" id="5_vcsgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jed6l"]
 size = Vector2(124, 125)
@@ -33,5 +33,5 @@ shape = SubResource("RectangleShape2D_jed6l")
 [node name="Sprite2D" type="Sprite2D" parent="godot" unique_id=290867333]
 texture = ExtResource("4_rarhs")
 
-[node name="Enemy" parent="." unique_id=1869979890 instance=ExtResource("5_vcsgt")]
-position = Vector2(107, 500)
+[node name="spawner" parent="." unique_id=566907230 instance=ExtResource("5_vcsgt")]
+position = Vector2(29, 574)
