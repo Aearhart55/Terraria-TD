@@ -1,8 +1,12 @@
 class_name Enemy extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_area: Area2D = $AttackArea
+@onready var attack_cooldown: Timer = $AttackCooldown
+@onready var attack_anims: AnimatedSprite2D = $AttackArea/AttackAnims
 
 @export var speed : float = 50.0
+@export var damage : int = 1
 @export var health : int = 20 :
 	set(value):
 		health = value
@@ -15,6 +19,7 @@ var flip : bool = false
 func _ready() -> void:
 	if flip:
 		speed *= -1
+		attack_area.position.x *= -1
 		animated_sprite_2d.flip_h = true
 		
 func _physics_process(delta: float) -> void:
@@ -23,13 +28,34 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 0
 	
-	velocity.x = speed
-	#velocity.x = move_toward(velocity.x, 0, SPEED)
+	# check for targets
+	if not attack_area.get_overlapping_bodies().is_empty():
+		attack()
+		velocity.x = 0
+	else:
+		velocity.x = speed
 	
 	move_and_slide()
 
+func attack() -> void:
+	# check if can attack 
+	if not attack_cooldown.is_stopped():
+		return
+		
+	for target in attack_area.get_overlapping_bodies():
+		# check if target is valid
+		if target.is_in_group("ally"):
+			target.hit(damage)
+			attack_anims.play("attack")
+			attack_cooldown.start()
+			break
+
 func hit(dmg : int) -> void:
 	health -= dmg
+	
+	modulate = Color.CRIMSON
+	await get_tree().create_timer(.1).timeout
+	modulate = Color.WHITE
 	
 func death() -> void:
 	queue_free()

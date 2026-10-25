@@ -2,6 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://dhbfceqd14mh0" path="res://assets/Itch Towers/Enemies/spr_big_slime.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://14mus7wgo41f" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Texture2D" uid="uid://d3tn7fsx2xgx8" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame1.png" id="3_w8i8w"]
+[ext_resource type="Texture2D" uid="uid://bct2o1c2twev0" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame2.png" id="4_otmr2"]
+[ext_resource type="Texture2D" uid="uid://c3s8s3srp7uay" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame3.png" id="5_wtq4b"]
+[ext_resource type="Texture2D" uid="uid://nr4kbd7mlkod" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame4.png" id="6_j0cyh"]
+[ext_resource type="Texture2D" uid="uid://2i6uvkg7ne76" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame5.png" id="7_g0wcc"]
+[ext_resource type="Texture2D" uid="uid://cwkpm870puv17" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame6.png" id="8_s1ycm"]
+[ext_resource type="Texture2D" uid="uid://dhaq4tlx0h7i8" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame7.png" id="9_shcg2"]
+[ext_resource type="Texture2D" uid="uid://c4o8oabhvtk3e" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame8.png" id="10_ile5s"]
+[ext_resource type="Texture2D" uid="uid://cpk7qo1ouc6p3" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame9.png" id="11_1x4g4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -42,7 +51,49 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8rye"]
 size = Vector2(14, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jed6l"]
+size = Vector2(20, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8rye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_w8i8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_otmr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wtq4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j0cyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g0wcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s1ycm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_shcg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ile5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1x4g4")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 24.0
+}]
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1869979890 groups=["enemy"]]
+collision_layer = 2
 script = ExtResource("1_md0e3")
 health = 10
 
@@ -54,3 +105,22 @@ frame_progress = 0.22944947
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1567075999]
 shape = SubResource("RectangleShape2D_w8rye")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1171029943]
+collision_layer = 0
+collision_mask = 4
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=996574296]
+position = Vector2(10, -5)
+shape = SubResource("RectangleShape2D_jed6l")
+
+[node name="AttackAnims" type="AnimatedSprite2D" parent="AttackArea" unique_id=2025784656]
+sprite_frames = SubResource("SpriteFrames_w8rye")
+animation = &"attack"
+frame = 9
+frame_progress = 1.0
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1878749363]
+wait_time = 2.0
+one_shot = true

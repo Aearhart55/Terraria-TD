@@ -28,7 +28,7 @@ attack_area = NodePath("../../Attack Range")
 idle_state = NodePath("../Idle")
 bullet_orgin = NodePath("../../bullet_orgin")
 cooldown_timer = NodePath("Timer")
-cooldown = 0.1
+cooldown = 0.25
 metadata/_custom_type_script = "uid://bdn87p4ijh16i"
 
 [node name="Timer" type="Timer" parent="StateMachine/Firing" unique_id=1269816728]
@@ -41,6 +41,8 @@ attack_state = NodePath("../Firing")
 metadata/_custom_type_script = "uid://bdn87p4ijh16i"
 
 [node name="Attack Range" type="Area2D" parent="." unique_id=1930831955]
+collision_layer = 2
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Range" unique_id=19597647]
