@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://3uj2syksvxty" path="res://scripts/castle.gd" id="1_0ysgy"]
 [ext_resource type="Texture2D" uid="uid://dfqy4k1c7d6cq" path="res://assets/Itch Towers/Towers/Castle/spr_castle_red.png" id="1_bly62"]
+[ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/health_bar.gd" id="3_rjj26"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jed6l"]
 radius = 27.0
@@ -43,10 +44,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="castle" type="StaticBody2D" unique_id=1916610260 groups=["ally"]]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jed6l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8rye"]
+bg_color = Color(0.1882353, 0.72156864, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="castle" type="StaticBody2D" unique_id=1916610260 node_paths=PackedStringArray("health_bar", "sprite") groups=["ally"]]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_0ysgy")
+health_bar = NodePath("HealthBar")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=109020498]
 position = Vector2(0, 9)
@@ -56,3 +68,24 @@ shape = SubResource("CapsuleShape2D_jed6l")
 sprite_frames = SubResource("SpriteFrames_jed6l")
 autoplay = "default"
 frame_progress = 0.5776979
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=776287231]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -31.0
+offset_right = 39.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_jed6l")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w8rye")
+value = 50.0
+show_percentage = false
+script = ExtResource("3_rjj26")
+visibility_time = 1.0
+metadata/_custom_type_script = "uid://ik158wrlh402"

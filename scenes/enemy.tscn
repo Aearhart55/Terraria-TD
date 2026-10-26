@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dhaq4tlx0h7i8" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame7.png" id="9_shcg2"]
 [ext_resource type="Texture2D" uid="uid://c4o8oabhvtk3e" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame8.png" id="10_ile5s"]
 [ext_resource type="Texture2D" uid="uid://cpk7qo1ouc6p3" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame9.png" id="11_1x4g4"]
+[ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/health_bar.gd" id="12_otmr2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -92,10 +93,23 @@ animations = [{
 "speed": 24.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1869979890 groups=["enemy"]]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8rye"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otmr2"]
+resource_local_to_scene = true
+bg_color = Color(0.1882353, 0.72156864, 0, 1)
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1869979890 node_paths=PackedStringArray("health_bar") groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_md0e3")
-health = 10
+health_bar = NodePath("HealthBar")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1823850923]
 sprite_frames = SubResource("SpriteFrames_jed6l")
@@ -124,3 +138,23 @@ frame_progress = 1.0
 [node name="AttackCooldown" type="Timer" parent="." unique_id=1878749363]
 wait_time = 2.0
 one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=585557656]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = 4.0
+offset_right = 7.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_w8rye")
+theme_override_styles/fill = SubResource("StyleBoxFlat_otmr2")
+value = 50.0
+show_percentage = false
+script = ExtResource("12_otmr2")
+visibility_time = 0.5
+metadata/_custom_type_script = "uid://ik158wrlh402"

@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cif3mv1utsy3o"]
+
+[ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/scene_switch_button.gd" id="1_uglf1"]
+[ext_resource type="PackedScene" uid="uid://dqsftele2ua3p" path="res://scenes/start_screen.tscn" id="2_73mov"]
+[ext_resource type="PackedScene" uid="uid://b6o0l3lv1brkf" path="res://scenes/Main.tscn" id="3_lytqm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpswu"]
+bg_color = Color(0.69297564, 0.5240266, 0.77495766, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v86ut"]
+bg_color = Color(0.6811858, 0.46256036, 0.99664897, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LoseScreen" type="Control" unique_id=924178237]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=851493192]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "You Lose"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="." unique_id=550293042]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -31.0
+offset_right = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_gpswu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v86ut")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gpswu")
+text = "Main Menu"
+script = ExtResource("1_uglf1")
+target_scene = ExtResource("2_73mov")
+metadata/_custom_type_script = "uid://bb7fugtbpyd3l"
+
+[node name="TryAgainButton" type="Button" parent="." unique_id=975384929]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -15.5
+offset_right = 40.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_gpswu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v86ut")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gpswu")
+text = "Try Again"
+script = ExtResource("1_uglf1")
+target_scene = ExtResource("3_lytqm")
+metadata/_custom_type_script = "uid://bb7fugtbpyd3l"

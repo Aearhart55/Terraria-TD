@@ -7,16 +7,24 @@ class_name Enemy extends CharacterBody2D
 
 @export var speed : float = 50.0
 @export var damage : int = 1
-@export var health : int = 20 :
+@export var max_health : int = 20
+	
+var health : int:
 	set(value):
 		health = value
+		health_bar.update(health)
 		
 		if health <= 0:
 			death()
-		 
+
+@export var health_bar : HealthBar
+
 var flip : bool = false
 
 func _ready() -> void:
+	health = max_health
+	health_bar.set_max_health(max_health)
+	
 	if flip:
 		speed *= -1
 		attack_area.position.x *= -1
@@ -53,9 +61,9 @@ func attack() -> void:
 func hit(dmg : int) -> void:
 	health -= dmg
 	
-	modulate = Color.CRIMSON
+	animated_sprite_2d.modulate = Color.CRIMSON
 	await get_tree().create_timer(.1).timeout
-	modulate = Color.WHITE
+	animated_sprite_2d.modulate = Color.WHITE
 	
 func death() -> void:
 	queue_free()
