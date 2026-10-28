@@ -1,5 +1,6 @@
 extends Node2D
 
+const ICE_TURRET = preload("uid://cv13uq7diugin")
 const ARCHER_TURRET = preload("uid://tmht4gutufgl")
 const LIGHT_TURRET = preload("uid://c7ec65aq7g0h")
 const GROUND_TOLERANCE : int = 100
@@ -21,6 +22,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 		active_turret = ENEMY
 	elif Input.is_action_just_released("slot_3"):
 		active_turret = ARCHER_TURRET
+	elif Input.is_action_just_released("slot_4"):
+		active_turret = ICE_TURRET
 	
 func spawn():
 	# creates "ground finder" raycast at mouse

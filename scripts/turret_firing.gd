@@ -34,7 +34,7 @@ func physics_update(_delta: float) -> void:
 	if off_cooldown:
 		pick_target()
 		if target:
-			var new_bullet : Area2D = projectile_scene.instantiate()
+			var new_bullet : Bullet = projectile_scene.instantiate()
 			new_bullet.position = bullet_orgin.global_position
 			new_bullet.look_at(target.position)
 			add_child(new_bullet)

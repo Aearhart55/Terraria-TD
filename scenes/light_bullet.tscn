@@ -13,7 +13,7 @@ input_pickable = false
 monitorable = false
 script = ExtResource("1_y25gk")
 speed = 500.0
-dmg = 5.0
+damage = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=769876693]
 shape = SubResource("CircleShape2D_jed6l")

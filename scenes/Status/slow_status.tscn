@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b6ih080131d2a"]
+
+[sub_resource type="GDScript" id="GDScript_eognm"]
+resource_name = "slow_status"
+script/source = "extends Status
+
+@export var max_speed_percent : float
+var original_speed : float
+
+@export var slow_color: Color
+var original_color : Color
+
+
+var sprite
+
+func start() -> void:
+	super.start()
+	
+	if get_parent().get(\"speed\"): 
+		original_speed = get_parent().speed
+		get_parent().speed = get_parent().speed * max_speed_percent
+	
+	for child in get_parent().get_children():
+		if child is Sprite2D or child is AnimatedSprite2D and child.name == \"BaseSprite\":
+			sprite = child
+	
+	if sprite:
+		original_color = sprite.modulate
+		sprite.modulate = slow_color
+		
+func _on_status_timer_timeout() -> void:
+	sprite.modulate = original_color
+	
+	if get_parent().get(\"speed\"):
+		get_parent().speed = original_speed
+		
+	super._on_status_timer_timeout()
+"
+
+[node name="slow_status" type="Node" unique_id=593649980]
+script = SubResource("GDScript_eognm")
+max_speed_percent = 0.6
+slow_color = Color(0.13046733, 0.39282912, 0.68348765, 1)
+duration = 3.0
+tag = "slow_status"
+metadata/_custom_type_script = "uid://d1xsyt47qlwjd"

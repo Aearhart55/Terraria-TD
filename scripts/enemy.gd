@@ -1,14 +1,14 @@
 class_name Enemy extends CharacterBody2D
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var attack_area: Area2D = $AttackArea
-@onready var attack_cooldown: Timer = $AttackCooldown
-@onready var attack_anims: AnimatedSprite2D = $AttackArea/AttackAnims
-
 @export var speed : float = 50.0
 @export var damage : float = 1.0
 @export var max_health : float = 20.0
 
+@export_group("Setup Nodes")
+@export var base_sprite: AnimatedSprite2D
+@export var attack_area: Area2D
+@export var attack_cooldown: Timer
+@export var attack_sprite: AnimatedSprite2D
 var active_status : Array[Status]
 	
 var health : float:
@@ -30,7 +30,7 @@ func _ready() -> void:
 	if flip:
 		speed *= -1
 		attack_area.position.x *= -1
-		animated_sprite_2d.flip_h = true
+		base_sprite.flip_h = true
 		
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -56,16 +56,17 @@ func attack() -> void:
 		# check if target is valid
 		if target.is_in_group("ally"):
 			DH.attack(target, self)
-			attack_anims.play("attack")
+			attack_sprite.play("attack")
 			attack_cooldown.start()
 			break
 
 func take_damage(dmg : float) -> void:
 	health -= dmg
 	
-	animated_sprite_2d.modulate = Color.CRIMSON
+	var current_modulate = base_sprite.modulate
+	base_sprite.modulate = Color.CRIMSON
 	await get_tree().create_timer(.1).timeout
-	animated_sprite_2d.modulate = Color.WHITE
+	base_sprite.modulate = current_modulate
 	
 func death() -> void:
 	queue_free()

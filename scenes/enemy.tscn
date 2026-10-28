@@ -106,12 +106,16 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1869979890 node_paths=PackedStringArray("health_bar") groups=["enemy"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1869979890 node_paths=PackedStringArray("base_sprite", "attack_area", "attack_cooldown", "attack_sprite", "health_bar") groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_md0e3")
+base_sprite = NodePath("BaseSprite")
+attack_area = NodePath("AttackArea")
+attack_cooldown = NodePath("AttackCooldown")
+attack_sprite = NodePath("AttackArea/AttackAnims")
 health_bar = NodePath("HealthBar")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1823850923]
+[node name="BaseSprite" type="AnimatedSprite2D" parent="." unique_id=1823850923]
 sprite_frames = SubResource("SpriteFrames_jed6l")
 autoplay = "default"
 frame = 3

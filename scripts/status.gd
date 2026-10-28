@@ -5,10 +5,10 @@ class_name Status extends Node
 
 var status_timer : Timer = Timer.new()
 
-func _ready() -> void:
+func start() -> void:
 	name = tag
 	
-	get_parent().active_status.append(tag)
+	get_parent().active_status.append(self)
 	
 	add_child(status_timer)
 	status_timer.wait_time = duration
@@ -19,5 +19,5 @@ func reset_status():
 	status_timer.start()
 
 func _on_status_timer_timeout() -> void:
-	get_parent().active_status.erase(tag)
+	get_parent().active_status.erase(self)
 	queue_free()
