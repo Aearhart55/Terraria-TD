@@ -6,7 +6,9 @@ extends State
 @export var cooldown_timer: Timer
 @export var cooldown: float
 
-const BULLET = preload("uid://3amil1v1c55f")
+@export var projectile : PackedScene
+
+@onready var projectile_scene : Resource = load(projectile.resource_path)
 
 var off_cooldown : bool = true
 var target: Node2D
@@ -32,7 +34,7 @@ func physics_update(_delta: float) -> void:
 	if off_cooldown:
 		pick_target()
 		if target:
-			var new_bullet : Area2D = BULLET.instantiate()
+			var new_bullet : Area2D = projectile_scene.instantiate()
 			new_bullet.position = bullet_orgin.global_position
 			new_bullet.look_at(target.position)
 			add_child(new_bullet)

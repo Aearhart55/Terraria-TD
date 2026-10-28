@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://tmht4gutufgl"]
+
+[ext_resource type="Texture2D" uid="uid://bcotwe2k8grdn" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_archer.png" id="1_5sbbs"]
+[ext_resource type="Script" uid="uid://c0o7n6fv48v3l" path="res://scripts/state_machine.gd" id="2_rem5r"]
+[ext_resource type="Script" uid="uid://bl8ek7e62ge17" path="res://scripts/turret_firing.gd" id="3_rg7k7"]
+[ext_resource type="PackedScene" uid="uid://51u0itlpb3y4" path="res://scenes/archer_bullet.tscn" id="4_5sbbs"]
+[ext_resource type="Script" uid="uid://b532acgqa2cj2" path="res://scripts/turret_idle.gd" id="5_ho6nr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
+radius = 101.0
+
+[node name="LightTurret" type="Sprite2D" unique_id=269105193]
+texture = ExtResource("1_5sbbs")
+offset = Vector2(0, -12)
+
+[node name="bullet_orgin" type="Marker2D" parent="." unique_id=1955310327]
+position = Vector2(0, -20)
+
+[node name="StateMachine" type="Node" parent="." unique_id=2095937417 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_rem5r")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://c0o7n6fv48v3l"
+
+[node name="Firing" type="Node" parent="StateMachine" unique_id=259666605 node_paths=PackedStringArray("attack_area", "idle_state", "bullet_orgin", "cooldown_timer")]
+script = ExtResource("3_rg7k7")
+attack_area = NodePath("../../Attack Range")
+idle_state = NodePath("../Idle")
+bullet_orgin = NodePath("../../bullet_orgin")
+cooldown_timer = NodePath("CooldownTimer")
+cooldown = 0.35
+projectile = ExtResource("4_5sbbs")
+metadata/_custom_type_script = "uid://bdn87p4ijh16i"
+
+[node name="CooldownTimer" type="Timer" parent="StateMachine/Firing" unique_id=1269816728]
+one_shot = true
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1729520665 node_paths=PackedStringArray("attack_area", "attack_state")]
+script = ExtResource("5_ho6nr")
+attack_area = NodePath("../../Attack Range")
+attack_state = NodePath("../Firing")
+metadata/_custom_type_script = "uid://bdn87p4ijh16i"
+
+[node name="Attack Range" type="Area2D" parent="." unique_id=1930831955]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Range" unique_id=19597647]
+shape = SubResource("CircleShape2D_jed6l")

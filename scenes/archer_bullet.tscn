@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://51u0itlpb3y4"]
+
+[ext_resource type="Script" uid="uid://s6507xtmgw6k" path="res://scripts/bullet.gd" id="1_e7ucm"]
+[ext_resource type="Texture2D" uid="uid://cb233k7x6q25r" path="res://assets/Itch Towers/Towers/Combat Towers Projectiles/spr_tower_archer_projectile.png" id="2_e7ucm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
+radius = 8.062258
+
+[node name="ArcherBullet" type="Area2D" unique_id=1756372708]
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+script = ExtResource("1_e7ucm")
+dmg = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=769876693]
+shape = SubResource("CircleShape2D_jed6l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=713079607]
+texture = ExtResource("2_e7ucm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

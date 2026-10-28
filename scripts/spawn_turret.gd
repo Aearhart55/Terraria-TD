@@ -1,15 +1,28 @@
 extends Node2D
 
-const TURRET = preload("uid://c7ec65aq7g0h")
+const ARCHER_TURRET = preload("uid://tmht4gutufgl")
+const LIGHT_TURRET = preload("uid://c7ec65aq7g0h")
 const GROUND_TOLERANCE : int = 100
+const ENEMY = preload("uid://d4em0ochsyyy1")
+
+var active_turret : Resource
+
+func _ready() -> void:
+	active_turret = LIGHT_TURRET
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Detects mouse release
 	if Input.is_action_just_released("lmb"):
 		spawn()
-
-func spawn():
 	
+	if Input.is_action_just_released("slot_1"):
+		active_turret = LIGHT_TURRET
+	elif Input.is_action_just_released("slot_2"):
+		active_turret = ENEMY
+	elif Input.is_action_just_released("slot_3"):
+		active_turret = ARCHER_TURRET
+	
+func spawn():
 	# creates "ground finder" raycast at mouse
 	# to locate nearest safe ground
 	var ground_finder := RayCast2D.new()
@@ -35,7 +48,7 @@ func spawn():
 		
 	# spawn turret if valid surface
 	if ground_finder.is_colliding():
-		var turret = TURRET.instantiate()
+		var turret = active_turret.instantiate()
 		turret.position = ground_finder.position + ground_finder.target_position
 		add_child(turret)
 	

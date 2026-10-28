@@ -1,8 +1,8 @@
 extends Area2D
 
-var speed:= 300.0
-var life_span := 5.0
-var dmg : int = 1
+@export var speed:= 300.0
+@export var life_span := 5.0
+@export var damage : float = 1.0
 
 func _ready() -> void:
 	get_tree().create_timer(life_span).timeout.connect(life_span_end)
@@ -15,5 +15,5 @@ func life_span_end():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.hit(dmg)
+		DH.attack(body, self)
 		queue_free()

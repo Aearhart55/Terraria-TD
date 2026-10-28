@@ -6,10 +6,12 @@ class_name Enemy extends CharacterBody2D
 @onready var attack_anims: AnimatedSprite2D = $AttackArea/AttackAnims
 
 @export var speed : float = 50.0
-@export var damage : int = 1
-@export var max_health : int = 20
+@export var damage : float = 1.0
+@export var max_health : float = 20.0
+
+var active_status : Array[Status]
 	
-var health : int:
+var health : float:
 	set(value):
 		health = value
 		health_bar.update(health)
@@ -53,12 +55,12 @@ func attack() -> void:
 	for target in attack_area.get_overlapping_bodies():
 		# check if target is valid
 		if target.is_in_group("ally"):
-			target.hit(damage)
+			DH.attack(target, self)
 			attack_anims.play("attack")
 			attack_cooldown.start()
 			break
 
-func hit(dmg : int) -> void:
+func take_damage(dmg : float) -> void:
 	health -= dmg
 	
 	animated_sprite_2d.modulate = Color.CRIMSON

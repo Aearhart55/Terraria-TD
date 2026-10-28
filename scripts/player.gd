@@ -6,13 +6,15 @@ const JUMP_VELOCITY : float = -300.0
 var direction : float
 var acceleration_percent: float = 0.3
 
-@export var max_health : int = 20
-var health : int:
+@export var max_health : float = 20.0
+var health : float:
 	set(value):
 		health = value
 		
 		if health <= 0:
 			death()
+
+var active_status : Array[Status]
 
 func _ready() -> void:
 	health = max_health
@@ -33,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func hit(dmg : int) -> void:
+func take_damage(dmg : float) -> void:
 	health -= dmg
 	
 	modulate = Color.CRIMSON
