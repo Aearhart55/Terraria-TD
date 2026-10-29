@@ -9,6 +9,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
 radius = 71.17584
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jed6l"]
+size = Vector2(16, 18)
+
 [node name="LightTurret" type="Sprite2D" unique_id=269105193]
 texture = ExtResource("1_ockw3")
 offset = Vector2(0, -18)
@@ -47,3 +50,14 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Range" unique_id=19597647]
 shape = SubResource("CircleShape2D_jed6l")
+
+[node name="InteractionRange" type="Area2D" parent="." unique_id=126855651]
+collision_layer = 32
+collision_mask = 0
+input_pickable = false
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange" unique_id=412061879]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_jed6l")
+debug_color = Color(0.47876668, 0.45538813, 0.9577587, 0.41960785)

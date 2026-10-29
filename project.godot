@@ -91,6 +91,8 @@ slot_4={
 2d_physics/layer_1="Floor"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="ally"
+2d_physics/layer_5="TurretFloor"
+2d_physics/layer_6="Turrets"
 
 [physics]
 
