@@ -1,32 +1,55 @@
 [gd_scene format=3 uid="uid://d4em0ochsyyy1"]
 
-[ext_resource type="Texture2D" uid="uid://dhbfceqd14mh0" path="res://assets/Itch Towers/Enemies/spr_big_slime.png" id="1_7p1mj"]
-[ext_resource type="Script" uid="uid://14mus7wgo41f" path="res://scripts/enemy.gd" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://d3tn7fsx2xgx8" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame1.png" id="3_w8i8w"]
-[ext_resource type="Texture2D" uid="uid://bct2o1c2twev0" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame2.png" id="4_otmr2"]
-[ext_resource type="Texture2D" uid="uid://c3s8s3srp7uay" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame3.png" id="5_wtq4b"]
-[ext_resource type="Texture2D" uid="uid://nr4kbd7mlkod" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame4.png" id="6_j0cyh"]
-[ext_resource type="Texture2D" uid="uid://2i6uvkg7ne76" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame5.png" id="7_g0wcc"]
-[ext_resource type="Texture2D" uid="uid://cwkpm870puv17" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame6.png" id="8_s1ycm"]
-[ext_resource type="Texture2D" uid="uid://dhaq4tlx0h7i8" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame7.png" id="9_shcg2"]
-[ext_resource type="Texture2D" uid="uid://c4o8oabhvtk3e" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame8.png" id="10_ile5s"]
-[ext_resource type="Texture2D" uid="uid://cpk7qo1ouc6p3" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame9.png" id="11_1x4g4"]
-[ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/health_bar.gd" id="12_otmr2"]
+[ext_resource type="Texture2D" uid="uid://dhbfceqd14mh0" path="res://assets/Itch Towers/Enemies/spr_big_slime.png" id="1_j0w84"]
+[ext_resource type="Texture2D" uid="uid://d3tn7fsx2xgx8" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame1.png" id="2_4k86d"]
+[ext_resource type="Texture2D" uid="uid://bct2o1c2twev0" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame2.png" id="3_1p86q"]
+[ext_resource type="Texture2D" uid="uid://c3s8s3srp7uay" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame3.png" id="4_ksd1l"]
+[ext_resource type="Texture2D" uid="uid://nr4kbd7mlkod" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame4.png" id="5_gthkp"]
+[ext_resource type="Texture2D" uid="uid://2i6uvkg7ne76" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame5.png" id="6_3pk4d"]
+[ext_resource type="Texture2D" uid="uid://cwkpm870puv17" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame6.png" id="7_reiu7"]
+[ext_resource type="Texture2D" uid="uid://dhaq4tlx0h7i8" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame7.png" id="8_aa0ji"]
+[ext_resource type="Texture2D" uid="uid://c4o8oabhvtk3e" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame8.png" id="9_3cus2"]
+[ext_resource type="Texture2D" uid="uid://cpk7qo1ouc6p3" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame9.png" id="10_3f668"]
+[ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/health_bar.gd" id="11_0sctm"]
+
+[sub_resource type="GDScript" id="GDScript_otmr2"]
+resource_name = "slime_enemy"
+script/source = "extends Enemy
+
+
+@export var attack_sprite: AnimatedSprite2D
+
+func flip_sprites() -> void:
+	super.flip_sprites()
+	attack_sprite.flip_h = true
+func attack() -> void:
+	# check if can attack 
+	if not attack_cooldown.is_stopped():
+		return
+		
+	for target in attack_area.get_overlapping_bodies():
+		# check if target is valid
+		if target.is_in_group(\"ally\"):
+			DH.attack(target, self)
+			attack_sprite.play(\"attack\")
+			attack_cooldown.start()
+			break
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
-atlas = ExtResource("1_7p1mj")
+atlas = ExtResource("1_j0w84")
 region = Rect2(0, 0, 14, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
-atlas = ExtResource("1_7p1mj")
+atlas = ExtResource("1_j0w84")
 region = Rect2(14, 0, 14, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
-atlas = ExtResource("1_7p1mj")
+atlas = ExtResource("1_j0w84")
 region = Rect2(28, 0, 14, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
-atlas = ExtResource("1_7p1mj")
+atlas = ExtResource("1_j0w84")
 region = Rect2(42, 0, 14, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jed6l"]
@@ -59,31 +82,31 @@ size = Vector2(20, 18)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_w8i8w")
+"texture": ExtResource("2_4k86d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_otmr2")
+"texture": ExtResource("3_1p86q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_wtq4b")
+"texture": ExtResource("4_ksd1l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_j0cyh")
+"texture": ExtResource("5_gthkp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_g0wcc")
+"texture": ExtResource("6_3pk4d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_s1ycm")
+"texture": ExtResource("7_reiu7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_shcg2")
+"texture": ExtResource("8_aa0ji")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_ile5s")
+"texture": ExtResource("9_3cus2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_1x4g4")
+"texture": ExtResource("10_3f668")
 }, {
 "duration": 1.0,
 "texture": null
@@ -106,13 +129,13 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1869979890 node_paths=PackedStringArray("base_sprite", "attack_area", "attack_cooldown", "attack_sprite", "health_bar") groups=["enemy"]]
+[node name="Slime" type="CharacterBody2D" unique_id=1869979890 node_paths=PackedStringArray("attack_sprite", "base_sprite", "attack_area", "attack_cooldown", "health_bar") groups=["enemy"]]
 collision_layer = 2
-script = ExtResource("1_md0e3")
+script = SubResource("GDScript_otmr2")
+attack_sprite = NodePath("AttackArea/AttackAnims")
 base_sprite = NodePath("BaseSprite")
 attack_area = NodePath("AttackArea")
 attack_cooldown = NodePath("AttackCooldown")
-attack_sprite = NodePath("AttackArea/AttackAnims")
 health_bar = NodePath("HealthBar")
 
 [node name="BaseSprite" type="AnimatedSprite2D" parent="." unique_id=1823850923]
@@ -159,6 +182,6 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_w8rye")
 theme_override_styles/fill = SubResource("StyleBoxFlat_otmr2")
 value = 50.0
 show_percentage = false
-script = ExtResource("12_otmr2")
+script = ExtResource("11_0sctm")
 visibility_time = 0.5
 metadata/_custom_type_script = "uid://ik158wrlh402"

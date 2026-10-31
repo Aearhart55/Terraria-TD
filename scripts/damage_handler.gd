@@ -37,9 +37,7 @@ func attack(reciever : Node, attacker : Node, status_scenes: Array[PackedScene] 
 			match current_status.tag:
 				"slow_status":
 					pass
-	
+
 	reciever.take_damage(final_damage)
-	
-	#print(reciever, attacker)
 	
 	return final_damage

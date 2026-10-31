@@ -8,7 +8,6 @@ class_name Enemy extends CharacterBody2D
 @export var base_sprite: AnimatedSprite2D
 @export var attack_area: Area2D
 @export var attack_cooldown: Timer
-@export var attack_sprite: AnimatedSprite2D
 var active_status : Array[Status]
 	
 var health : float:
@@ -28,9 +27,12 @@ func _ready() -> void:
 	health_bar.set_max_health(max_health)
 	
 	if flip:
-		speed *= -1
-		attack_area.position.x *= -1
-		base_sprite.flip_h = true
+		flip_sprites()
+		
+func flip_sprites() -> void:
+	speed *= -1
+	attack_area.position.x *= -1
+	base_sprite.flip_h = true
 		
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -40,12 +42,18 @@ func _physics_process(delta: float) -> void:
 	
 	# check for targets
 	if not attack_area.get_overlapping_bodies().is_empty():
-		attack()
-		velocity.x = 0
+		idle()
 	else:
-		velocity.x = speed
+		walk()
 	
 	move_and_slide()
+
+func idle() -> void:
+	attack()
+	velocity.x = 0
+
+func walk() -> void:
+	velocity.x = speed
 
 func attack() -> void:
 	# check if can attack 
@@ -56,14 +64,13 @@ func attack() -> void:
 		# check if target is valid
 		if target.is_in_group("ally"):
 			DH.attack(target, self)
-			attack_sprite.play("attack")
 			attack_cooldown.start()
 			break
 
 func take_damage(dmg : float) -> void:
 	health -= dmg
 	
-	var current_modulate = base_sprite.modulate
+	var current_modulate : Color = base_sprite.modulate
 	base_sprite.modulate = Color.CRIMSON
 	await get_tree().create_timer(.1).timeout
 	base_sprite.modulate = current_modulate

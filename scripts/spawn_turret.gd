@@ -4,17 +4,27 @@ const ICE_TURRET = preload("uid://cv13uq7diugin")
 const ARCHER_TURRET = preload("uid://tmht4gutufgl")
 const LIGHT_TURRET = preload("uid://c7ec65aq7g0h")
 const GROUND_TOLERANCE : int = 100
-const ENEMY = preload("uid://d4em0ochsyyy1")
+const SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
 
-var width_tolerance : int = 5
-var active_turret : Resource
 @export_group("preview")
 @export var preview_placement : bool
 @export var touch_sprite : ColorRect
 @export var place_sprite : ColorRect
 
+@export_group("debug")
+@export var allow_turret_overlap : bool = false
+
+var active_turret : String = "archer"
+enum tower_data {TURRET, COST, WIDTH}
+
+var tower : Dictionary = {
+	"archer" : [ARCHER_TURRET, 10, 6],
+	"ice" : [ICE_TURRET, 20, 6],
+	"light" : [LIGHT_TURRET, 25, 8],
+	"slime" : [SLIME_ENEMY, 0, 0]
+}
+
 func _ready() -> void:
-	active_turret = LIGHT_TURRET
 	touch_sprite.color = Color.CHARTREUSE
 	place_sprite.color = Color.CHARTREUSE
 
@@ -31,13 +41,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 		spawn()
 	
 	if Input.is_action_just_released("slot_1"):
-		active_turret = LIGHT_TURRET
+		active_turret = "light"
 	elif Input.is_action_just_released("slot_2"):
-		active_turret = ENEMY
+		active_turret = "slime"
 	elif Input.is_action_just_released("slot_3"):
-		active_turret = ARCHER_TURRET
+		active_turret = "archer"
 	elif Input.is_action_just_released("slot_4"):
-		active_turret = ICE_TURRET
+		active_turret = "ice"
 	
 func spawn():
 	# creates "ground finder" raycast at mouse
@@ -60,10 +70,14 @@ func spawn():
 	
 	# spawn turret if valid surface
 	if ground_finder.is_colliding():
-		if check_sides(ground_finder.get_collision_point()):
+		if allow_turret_overlap:
+			var turret = tower[active_turret][tower_data.TURRET].instantiate()
+			turret.position = ground_finder.get_collision_point()
+			add_child(turret)
+		elif check_sides(ground_finder.get_collision_point()):
 			pass
 		else:
-			var turret = active_turret.instantiate()
+			var turret = tower[active_turret][tower_data.TURRET].instantiate()
 			turret.position = ground_finder.get_collision_point()
 			add_child(turret)
 	
@@ -80,7 +94,7 @@ func check_sides(collision_point : Vector2) -> bool:
 	side_check.set_collision_mask_value(1, false)
 	
 	# establishes fail condition for spawning inside obj
-	side_check.target_position = Vector2(-width_tolerance, 0)
+	side_check.target_position = Vector2(-tower[active_turret][tower_data.WIDTH], 0)
 	side_check.hit_from_inside = true
 	side_check.collide_with_areas = true
 	
@@ -89,7 +103,7 @@ func check_sides(collision_point : Vector2) -> bool:
 	if side_check.is_colliding():
 		hit_side = true
 		
-	side_check.target_position = Vector2(width_tolerance, 0)
+	side_check.target_position = Vector2(tower[active_turret][tower_data.WIDTH], 0)
 	side_check.force_raycast_update()
 	
 	if side_check.is_colliding():
