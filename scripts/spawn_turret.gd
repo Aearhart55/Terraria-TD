@@ -5,6 +5,7 @@ const ARCHER_TURRET = preload("uid://tmht4gutufgl")
 const LIGHT_TURRET = preload("uid://c7ec65aq7g0h")
 const GROUND_TOLERANCE : int = 100
 const SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
+const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
 
 @export_group("preview")
 @export var preview_placement : bool
@@ -14,14 +15,15 @@ const SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
 @export_group("debug")
 @export var allow_turret_overlap : bool = false
 
-var active_turret : String = "archer"
+var active_turret : Global.turrets = Global.turrets.ARCHER
 enum tower_data {TURRET, COST, WIDTH}
 
 var tower : Dictionary = {
-	"archer" : [ARCHER_TURRET, 10, 6],
-	"ice" : [ICE_TURRET, 20, 6],
-	"light" : [LIGHT_TURRET, 25, 8],
-	"slime" : [SLIME_ENEMY, 0, 0]
+	Global.turrets.ARCHER : [ARCHER_TURRET, 10, 6],
+	Global.turrets.ICE : [ICE_TURRET, 20, 6],
+	Global.turrets.LIGHT : [LIGHT_TURRET, 25, 8],
+	Global.turrets.SLIME : [SLIME_ENEMY, 0, 0],
+	Global.turrets.ZOMBIE : [ZOMBIE_ENEMY, 0, 0]
 }
 
 func _ready() -> void:
@@ -41,13 +43,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 		spawn()
 	
 	if Input.is_action_just_released("slot_1"):
-		active_turret = "light"
+		active_turret = Global.turrets.LIGHT
 	elif Input.is_action_just_released("slot_2"):
-		active_turret = "slime"
+		active_turret = Global.turrets.SLIME
 	elif Input.is_action_just_released("slot_3"):
-		active_turret = "archer"
+		active_turret = Global.turrets.ARCHER
 	elif Input.is_action_just_released("slot_4"):
-		active_turret = "ice"
+		active_turret = Global.turrets.ICE
 	
 func spawn():
 	# creates "ground finder" raycast at mouse

@@ -21,7 +21,7 @@ script/source = "extends Enemy
 
 func flip_sprites() -> void:
 	super.flip_sprites()
-	attack_sprite.flip_h = true
+	attack_sprite.flip_h = flip
 func attack() -> void:
 	# check if can attack 
 	if not attack_cooldown.is_stopped():

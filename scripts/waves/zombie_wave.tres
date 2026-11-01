@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Wave" format=3 uid="uid://c62wml5y5n5ra"]
+
+[ext_resource type="Script" uid="uid://ceyisnjb5psej" path="res://scripts/wave.gd" id="1_u1ixy"]
+
+[resource]
+script = ExtResource("1_u1ixy")
+enemy_gap_time = 1.0
+wave_gap_time = 5.0
+enemy_list = Array[int]([1, 1, 1, 1, 1])
+metadata/_custom_type_script = "uid://ceyisnjb5psej"

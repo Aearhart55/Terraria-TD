@@ -1,14 +1,8 @@
 [gd_scene format=3 uid="uid://mxgux0uwkor0"]
 
-[ext_resource type="Texture2D" uid="uid://bkw78wprbsovm" path="res://assets/Itch Towers/Environment/Decoration/spr_tree_01_cherry_blossom.png" id="1_ik2nu"]
+[ext_resource type="Script" uid="uid://ceyisnjb5psej" path="res://scripts/wave.gd" id="2_ik2nu"]
 [ext_resource type="Script" uid="uid://fgdj10mau2do" path="res://scripts/spawner.gd" id="2_tx2ig"]
 
-[node name="spawner" type="Sprite2D" unique_id=566907230]
-texture = ExtResource("1_ik2nu")
+[node name="spawner" type="Node" unique_id=200122438]
 script = ExtResource("2_tx2ig")
-
-[node name="cooldown" type="Timer" parent="." unique_id=1611598988]
-wait_time = 3.5
-autostart = true
-
-[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+waves = Array[ExtResource("2_ik2nu")]([null])

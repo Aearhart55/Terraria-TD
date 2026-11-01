@@ -16,6 +16,9 @@ var health : float:
 
 var active_status : Array[Status]
 
+@export_group("Debug")
+@export var immune : bool = false
+
 func _ready() -> void:
 	health = max_health
 
@@ -36,6 +39,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage(dmg : float) -> void:
+	if immune:
+		return
 	health -= dmg
 	
 	modulate = Color.CRIMSON

@@ -21,6 +21,7 @@ var health : float:
 @export var health_bar : HealthBar
 
 var flip : bool = false
+var main_target : StaticBody2D
 
 func _ready() -> void:
 	health = max_health
@@ -32,7 +33,7 @@ func _ready() -> void:
 func flip_sprites() -> void:
 	speed *= -1
 	attack_area.position.x *= -1
-	base_sprite.flip_h = true
+	base_sprite.flip_h = flip
 		
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -77,3 +78,11 @@ func take_damage(dmg : float) -> void:
 	
 func death() -> void:
 	queue_free()
+
+func check_direction() -> void:
+	if flip and main_target.position.x - position.x > 0.0:
+		flip = false
+		flip_sprites()
+	elif not flip and main_target.position.x - position.x < 0.0:
+		flip = true
+		flip_sprites()
