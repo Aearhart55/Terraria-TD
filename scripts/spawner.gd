@@ -17,7 +17,8 @@ var current_wave : Wave
 var remaining_enemies : Array[Global.enemies]
 var wave_type : Global.wave_types
 var spawn_point_index : int
-var new_wave : bool
+var is_new_wave : bool
+var is_final_wave : bool = false
 
 var enemy : Dictionary = {
 	Global.enemies.SLIME : SLIME_ENEMY,
@@ -36,7 +37,7 @@ func _ready() -> void:
 	current_wave = waves[0]
 	wave_type = current_wave.wave_type
 	spawn_point_index = 0
-	new_wave = true
+	is_new_wave = true
 	enemy_gap_timer.wait_time = current_wave.enemy_gap_time
 	wave_gap_timer.wait_time = current_wave.wave_gap_time
 	remaining_enemies = current_wave.enemy_list
@@ -45,12 +46,12 @@ func _ready() -> void:
 func change_wave() -> void:
 	waves.pop_front()
 	if waves.is_empty():
-		print("you won")
+		is_final_wave = true
 		return
 	current_wave = waves[0]
 	wave_type = current_wave.wave_type
 	spawn_point_index = 0
-	new_wave = true
+	is_new_wave = true
 	enemy_gap_timer.wait_time = current_wave.enemy_gap_time
 	wave_gap_timer.wait_time = current_wave.wave_gap_time
 	remaining_enemies = current_wave.enemy_list
@@ -83,8 +84,8 @@ func pick_spawnpoint() -> Marker2D:
 		Global.wave_types.RANDOM:
 			spawn_point = spawn_points.pick_random()
 		Global.wave_types.BURST:
-			if new_wave:
-				new_wave = false
+			if is_new_wave:
+				is_new_wave = false
 				spawn_point_index = randi_range(0, spawn_points.size() - 1)
 			spawn_point = spawn_points[spawn_point_index]
 		Global.wave_types.EVEN:
@@ -94,3 +95,8 @@ func pick_spawnpoint() -> Marker2D:
 			spawn_point_index += 1
 			
 	return spawn_point
+
+func _process(_delta: float) -> void:
+	if get_tree().get_nodes_in_group("enemy").is_empty() and is_final_wave:
+		print("you won")
+		is_final_wave = false
