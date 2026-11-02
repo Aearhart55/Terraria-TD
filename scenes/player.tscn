@@ -87,6 +87,6 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_otjlk")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1588487993]
-position = Vector2(0, -21)
+position = Vector2(0, 15)
 offset = Vector2(0, -43)
 script = ExtResource("3_qlg0r")

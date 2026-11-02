@@ -7,6 +7,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if zoom_in:
-		zoom = zoom.move_toward(Vector2(1 , 1), delta * 4)
-		if zoom == Vector2(1 , 1):
+		zoom = zoom.move_toward(Vector2(.75 , .75), delta * 4)
+		if zoom == Vector2(.75 , .75):
 			zoom_in = false

@@ -1,0 +1,272 @@
+[gd_scene format=3 uid="uid://b1jar8vyybc7a"]
+
+[ext_resource type="Texture2D" uid="uid://c7ty51brpqlxy" path="res://assets/GUI_Pack/Buttons/Square_premade_buttons_16x16px.png" id="1_0wsoe"]
+[ext_resource type="FontFile" uid="uid://cwi14pqrh43uo" path="res://assets/monogram.ttf" id="2_84lt7"]
+[ext_resource type="Texture2D" uid="uid://b47kiy5m3rwui" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_lightning_tower.png" id="2_lj5up"]
+[ext_resource type="Texture2D" uid="uid://bcotwe2k8grdn" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_archer.png" id="3_wgnrc"]
+[ext_resource type="Texture2D" uid="uid://kr5x5qxgcp6l" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_ice_wizard.png" id="4_84lt7"]
+[ext_resource type="Texture2D" uid="uid://mff3pak1iokh" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_poison_wizard.png" id="8_2ttv2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wsoe"]
+atlas = ExtResource("1_0wsoe")
+region = Rect2(128, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6wm8"]
+atlas = ExtResource("1_0wsoe")
+region = Rect2(144, 145, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6wm8"]
+size = Vector2(30, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jed6l"]
+atlas = ExtResource("1_0wsoe")
+region = Rect2(64, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8rye"]
+atlas = ExtResource("1_0wsoe")
+region = Rect2(80, 144, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wsoe"]
+size = Vector2(30, 40)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ttv2"]
+load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6q2i"]
+atlas = SubResource("CompressedTexture2D_2ttv2")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e6oqk"]
+texture = SubResource("AtlasTexture_u6q2i")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 7.0
+region_rect = Rect2(-1, -2, 18, 21)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ob0dx"]
+load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81vvl"]
+atlas = SubResource("CompressedTexture2D_ob0dx")
+region = Rect2(16, 144, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1j05"]
+texture = SubResource("AtlasTexture_81vvl")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 7.0
+region_rect = Rect2(-1, -2, 18, 21)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_jed6l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v86ut"]
+atlas = ExtResource("1_0wsoe")
+region = Rect2(96, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1rqu"]
+atlas = ExtResource("1_0wsoe")
+region = Rect2(160, 144, 16, 16)
+
+[node name="Control" type="Control" unique_id=1254920276]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="left" type="TouchScreenButton" parent="." unique_id=2038273719]
+position = Vector2(16, 144)
+texture_normal = SubResource("AtlasTexture_0wsoe")
+texture_pressed = SubResource("AtlasTexture_n6wm8")
+shape = SubResource("RectangleShape2D_n6wm8")
+shape_visible = false
+passby_press = true
+action = "left"
+
+[node name="right" type="TouchScreenButton" parent="." unique_id=597360505]
+position = Vector2(47, 144)
+texture_normal = SubResource("AtlasTexture_jed6l")
+texture_pressed = SubResource("AtlasTexture_w8rye")
+shape = SubResource("RectangleShape2D_0wsoe")
+shape_visible = false
+passby_press = true
+action = "right"
+
+[node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 140.0
+offset_right = 192.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Slot1" type="VBoxContainer" parent="TowerBar" unique_id=1159023679]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+
+[node name="Button" type="Button" parent="TowerBar/Slot1" unique_id=1796085183]
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_e6oqk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t1j05")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t1j05")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_t1j05")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jed6l")
+
+[node name="Sprite" type="TextureRect" parent="TowerBar/Slot1/Button" unique_id=2116415562]
+custom_maximum_size = Vector2(15, 23)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2ttv2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="TowerBar/Slot1" unique_id=373382438]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_84lt7")
+theme_override_font_sizes/font_size = 16
+text = "10"
+horizontal_alignment = 1
+
+[node name="Slot2" type="VBoxContainer" parent="TowerBar" unique_id=2022964335]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+
+[node name="Button" type="Button" parent="TowerBar/Slot2" unique_id=1401665837]
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_e6oqk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t1j05")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t1j05")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_t1j05")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jed6l")
+
+[node name="Sprite" type="TextureRect" parent="TowerBar/Slot2/Button" unique_id=1425227008]
+custom_maximum_size = Vector2(15, 23)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wgnrc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="TowerBar/Slot2" unique_id=73128289]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_84lt7")
+theme_override_font_sizes/font_size = 16
+text = "10"
+horizontal_alignment = 1
+
+[node name="Slot3" type="VBoxContainer" parent="TowerBar" unique_id=327412124]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+
+[node name="Button" type="Button" parent="TowerBar/Slot3" unique_id=661975434]
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_e6oqk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t1j05")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t1j05")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_t1j05")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jed6l")
+
+[node name="Sprite" type="TextureRect" parent="TowerBar/Slot3/Button" unique_id=1816406033]
+custom_maximum_size = Vector2(15, 23)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lj5up")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="TowerBar/Slot3" unique_id=1067771624]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_84lt7")
+theme_override_font_sizes/font_size = 16
+text = "10"
+horizontal_alignment = 1
+
+[node name="Slot4" type="VBoxContainer" parent="TowerBar" unique_id=1606252784]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+
+[node name="Button" type="Button" parent="TowerBar/Slot4" unique_id=110873036]
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_e6oqk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t1j05")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t1j05")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_t1j05")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jed6l")
+
+[node name="Sprite" type="TextureRect" parent="TowerBar/Slot4/Button" unique_id=339325144]
+custom_maximum_size = Vector2(15, 23)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_84lt7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="TowerBar/Slot4" unique_id=812540319]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_84lt7")
+theme_override_font_sizes/font_size = 16
+text = "10"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=497755459]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -27.0
+offset_right = -103.0
+offset_bottom = 13.0
+grow_horizontal = 0
+grow_vertical = 0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_v86ut")
+texture_pressed = SubResource("AtlasTexture_u1rqu")
