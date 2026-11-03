@@ -9,6 +9,7 @@ class_name Enemy extends CharacterBody2D
 @export var attack_area: Area2D
 @export var attack_cooldown: Timer
 var active_status : Array[Status]
+var base_modulate : Color = Color.WHITE
 	
 var health : float:
 	set(value):
@@ -71,10 +72,9 @@ func attack() -> void:
 func take_damage(dmg : float) -> void:
 	health -= dmg
 	
-	var current_modulate : Color = base_sprite.modulate
 	base_sprite.modulate = Color.CRIMSON
 	await get_tree().create_timer(.1).timeout
-	base_sprite.modulate = current_modulate
+	base_sprite.modulate = base_modulate
 	
 func death() -> void:
 	queue_free()

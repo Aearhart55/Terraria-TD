@@ -23,13 +23,18 @@ func start() -> void:
 	for child in get_parent().get_children():
 		if child is Sprite2D or child is AnimatedSprite2D and child.name == \"BaseSprite\":
 			sprite = child
+		
+	original_color = get_parent().base_modulate
+	get_parent().base_modulate = slow_color
 	
 	if sprite:
-		original_color = sprite.modulate
-		sprite.modulate = slow_color
-		
+		sprite.modulate = get_parent().base_modulate
+	
 func _on_status_timer_timeout() -> void:
-	sprite.modulate = original_color
+	get_parent().base_modulate = original_color
+	
+	if sprite:
+		sprite.modulate = get_parent().base_modulate
 	
 	if get_parent().get(\"speed\"):
 		get_parent().speed = original_speed

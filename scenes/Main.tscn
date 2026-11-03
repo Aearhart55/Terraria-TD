@@ -43,8 +43,9 @@ script = ExtResource("5_jlsqs")
 waves = Array[ExtResource("5_nxtc6")]([SubResource("Resource_nxtc6"), SubResource("Resource_jlsqs"), SubResource("Resource_q8u5g")])
 metadata/_custom_type_script = "uid://b8n166s2fxi2h"
 
-[node name="Main" type="Node2D" unique_id=2056424681 node_paths=PackedStringArray("touch_sprite", "place_sprite")]
+[node name="Main" type="Node2D" unique_id=2056424681 node_paths=PackedStringArray("UI_node", "touch_sprite", "place_sprite")]
 script = ExtResource("1_0bbpv")
+UI_node = NodePath("UILayer/UI")
 preview_placement = true
 touch_sprite = NodePath("touch")
 place_sprite = NodePath("place")
@@ -187,3 +188,4 @@ grow_vertical = 2
 layer = 2
 
 [node name="UI" parent="UILayer" unique_id=1254920276 instance=ExtResource("15_3p2gp")]
+current_turrets = Array[int]([0, 1, 0, 2])

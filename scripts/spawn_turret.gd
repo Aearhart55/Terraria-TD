@@ -7,6 +7,8 @@ const GROUND_TOLERANCE : int = 100
 const SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
 const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
 
+@export var UI_node : UI
+
 @export_group("preview")
 @export var preview_placement : bool
 @export var touch_sprite : ColorRect
@@ -14,6 +16,8 @@ const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
 
 @export_group("debug")
 @export var allow_turret_overlap : bool = false
+
+var build_mode_active :bool = true
 
 var active_turret : Global.turrets = Global.turrets.ARCHER
 enum tower_data {TURRET, COST, WIDTH}
@@ -27,17 +31,22 @@ var tower : Dictionary = {
 }
 
 func _ready() -> void:
+	UI_node.select_tower.connect(switch_turrets)
+	UI_node.toggle_build_mode.connect(func(state: bool) : build_mode_active = state)
 	touch_sprite.color = Color.CHARTREUSE
 	place_sprite.color = Color.CHARTREUSE
 
+func switch_turrets(new_turret : Global.turrets) -> void:
+	active_turret = new_turret
+
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("lmb") and preview_placement:
+	if Input.is_action_pressed("lmb") and preview_placement and build_mode_active:
 		touch_sprite.visible = true
 		place_sprite.visible = true
 		preview_spawn()
 	
 	# Detects mouse release
-	if Input.is_action_just_released("lmb"):
+	if Input.is_action_just_released("lmb") and build_mode_active:
 		touch_sprite.visible = false
 		place_sprite.visible = false
 		spawn()
