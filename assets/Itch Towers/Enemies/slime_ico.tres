@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://dyigttfk5ho1m"]
+
+[ext_resource type="Texture2D" uid="uid://dhbfceqd14mh0" path="res://assets/Itch Towers/Enemies/spr_big_slime.png" id="1_cuokp"]
+
+[resource]
+atlas = ExtResource("1_cuokp")
+region = Rect2(1, 2, 12, 6)

@@ -6,6 +6,7 @@ const SPR_TOWER_CROSSBOW = preload("uid://bwlaw6gqaina")
 const SPR_TOWER_ICE_WIZARD = preload("uid://kr5x5qxgcp6l")
 const SPR_TOWER_LIGHTNING_TOWER = preload("uid://b47kiy5m3rwui")
 const SPR_TOWER_POISON_WIZARD = preload("uid://mff3pak1iokh")
+const SLIME_ICO = preload("uid://dyigttfk5ho1m")
 
 signal select_tower()
 signal toggle_build_mode(bool)
@@ -16,16 +17,19 @@ signal toggle_build_mode(bool)
 @export var build_mode_button : TextureButton
 @export var tower_bar : HBoxContainer
 @export var slots : Array[VBoxContainer]
+@export var tower_placer : Node2D
 
 
 var tower : Dictionary = {
 	Global.turrets.ARCHER : [SPR_TOWER_ARCHER, 10],
 	Global.turrets.ICE : [ SPR_TOWER_ICE_WIZARD, 20],
-	Global.turrets.LIGHT : [SPR_TOWER_LIGHTNING_TOWER, 30]
+	Global.turrets.LIGHT : [SPR_TOWER_LIGHTNING_TOWER, 30],
+	Global.turrets.SLIME : [SLIME_ICO, 0]
 }
 
 func _ready() -> void:
 	build_mode_button.toggled.connect(build_mode_toggle)
+	tower_placer.slot_changed.connect(_pressed_slot)
 	
 	for i in range(4):
 		update_slot(i)
@@ -47,6 +51,10 @@ func build_mode_toggle(toggle_state : bool) -> void:
 	toggle_build_mode.emit(!toggle_state)
 	tower_bar.visible = !toggle_state
 
+func _pressed_slot(i : int) -> void:
+	select_tower.emit(current_turrets[i])
+	slots[i].get_child(0).button_pressed = true
+	
 func _pressed_slot1() -> void:
 	select_tower.emit(current_turrets[0])
 

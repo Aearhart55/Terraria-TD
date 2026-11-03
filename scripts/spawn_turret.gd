@@ -7,6 +7,8 @@ const GROUND_TOLERANCE : int = 100
 const SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
 const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
 
+signal slot_changed(int)
+
 @export var UI_node : UI
 
 @export_group("preview")
@@ -19,6 +21,7 @@ const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
 
 var build_mode_active :bool = true
 
+var placement_position : Vector2
 var active_turret : Global.turrets = Global.turrets.ARCHER
 enum tower_data {TURRET, COST, WIDTH}
 
@@ -43,29 +46,31 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("lmb") and preview_placement and build_mode_active:
 		touch_sprite.visible = true
 		place_sprite.visible = true
+		placement_position = get_local_mouse_position()
 		preview_spawn()
 	
 	# Detects mouse release
 	if Input.is_action_just_released("lmb") and build_mode_active:
 		touch_sprite.visible = false
 		place_sprite.visible = false
+		placement_position = get_local_mouse_position()
 		spawn()
 	
 	if Input.is_action_just_released("slot_1"):
-		active_turret = Global.turrets.LIGHT
+		slot_changed.emit(0)
 	elif Input.is_action_just_released("slot_2"):
-		active_turret = Global.turrets.SLIME
+		slot_changed.emit(1)
 	elif Input.is_action_just_released("slot_3"):
-		active_turret = Global.turrets.ARCHER
+		slot_changed.emit(2)
 	elif Input.is_action_just_released("slot_4"):
-		active_turret = Global.turrets.ICE
+		slot_changed.emit(3)
 	
 func spawn():
 	# creates "ground finder" raycast at mouse
 	# to locate nearest safe ground
 	var ground_finder := RayCast2D.new()
 	add_child(ground_finder)
-	ground_finder.position = get_local_mouse_position()
+	ground_finder.position = placement_position
 	ground_finder.set_collision_mask_value(5, true)
 	ground_finder.set_collision_mask_value(1, false)
 	
@@ -90,7 +95,7 @@ func spawn():
 		else:
 			var turret = tower[active_turret][tower_data.TURRET].instantiate()
 			turret.position = ground_finder.get_collision_point()
-			add_child(turret)
+			owner.add_child(turret)
 	
 	# clean raycast
 	ground_finder.queue_free()
@@ -125,13 +130,13 @@ func check_sides(collision_point : Vector2) -> bool:
 	return hit_side
 
 func preview_spawn() -> void:
-	touch_sprite.position = get_global_mouse_position()
+	touch_sprite.position = placement_position
 	touch_sprite.position.x -= touch_sprite.size.x / 2
 	touch_sprite.position.y -= touch_sprite.size.y / 2
 	
 	var ground_finder := RayCast2D.new()
 	add_child(ground_finder)
-	ground_finder.position = get_local_mouse_position()
+	ground_finder.position = placement_position
 	ground_finder.set_collision_mask_value(5, true)
 	ground_finder.set_collision_mask_value(1, false)
 	

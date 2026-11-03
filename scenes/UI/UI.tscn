@@ -145,6 +145,7 @@ texture_normal = SubResource("AtlasTexture_e6oqk")
 texture_pressed = SubResource("AtlasTexture_t1j05")
 shape = SubResource("CircleShape2D_ob0dx")
 shape_visible = false
+action = "up"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="attack" unique_id=1460273127]
 show_behind_parent = true
