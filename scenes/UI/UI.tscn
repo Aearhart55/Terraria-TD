@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bgbkxkhw56wwj" path="res://assets/GUI_Pack/Buttons/Square_Buttons_16x16px.png" id="2_wgnrc"]
 [ext_resource type="Texture2D" uid="uid://bcotwe2k8grdn" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_archer.png" id="3_wgnrc"]
 [ext_resource type="Texture2D" uid="uid://kr5x5qxgcp6l" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_ice_wizard.png" id="4_84lt7"]
+[ext_resource type="Texture2D" uid="uid://ciutpi3jkiekq" path="res://assets/GUI_Pack/Icons/Menu_icons_16x16.png" id="4_u6q2i"]
 [ext_resource type="Texture2D" uid="uid://mff3pak1iokh" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_poison_wizard.png" id="8_2ttv2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wsoe"]
@@ -60,6 +61,20 @@ region = Rect2(16, 146, 7, 14)
 atlas = SubResource("CompressedTexture2D_81vvl")
 region = Rect2(0, 146, 7, 14)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0odk7"]
+atlas = ExtResource("4_u6q2i")
+region = Rect2(48, 20, 10, 12)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e6oqk"]
+load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f4272841d15a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alvv5"]
+atlas = SubResource("CompressedTexture2D_e6oqk")
+region = Rect2(32, 20, 10, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw5bg"]
+size = Vector2(20, 50)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ttv2"]
 load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
 
@@ -100,15 +115,7 @@ region_rect = Rect2(-1, -2, 18, 21)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_jed6l"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v86ut"]
-atlas = ExtResource("1_0wsoe")
-region = Rect2(96, 144, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1rqu"]
-atlas = ExtResource("1_0wsoe")
-region = Rect2(160, 144, 16, 16)
-
-[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("build_mode_button", "tower_bar", "slots")]
+[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("tower_bar", "slots")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,7 +124,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2ttv2")
-build_mode_button = NodePath("ToggleBuildMode")
 tower_bar = NodePath("TowerBar")
 slots = [NodePath("TowerBar/Slot1"), NodePath("TowerBar/Slot2"), NodePath("TowerBar/Slot3"), NodePath("TowerBar/Slot4")]
 
@@ -193,6 +199,13 @@ patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 4
+
+[node name="build_toggle" type="TouchScreenButton" parent="." unique_id=1488608546]
+position = Vector2(204, 157)
+texture_normal = SubResource("AtlasTexture_0odk7")
+texture_pressed = SubResource("AtlasTexture_alvv5")
+shape = SubResource("RectangleShape2D_uw5bg")
+action = "build_mode_input"
 
 [node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872]
 layout_mode = 0
@@ -343,22 +356,3 @@ theme_override_fonts/font = ExtResource("2_84lt7")
 theme_override_font_sizes/font_size = 16
 text = "10"
 horizontal_alignment = 1
-
-[node name="ToggleBuildMode" type="TextureButton" parent="." unique_id=497755459]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -119.0
-offset_top = -27.0
-offset_right = -103.0
-offset_bottom = 13.0
-grow_horizontal = 0
-grow_vertical = 0
-focus_mode = 0
-toggle_mode = true
-action_mode = 0
-texture_normal = SubResource("AtlasTexture_v86ut")
-texture_pressed = SubResource("AtlasTexture_u1rqu")

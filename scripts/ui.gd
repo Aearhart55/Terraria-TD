@@ -14,11 +14,11 @@ signal toggle_build_mode(bool)
 @export var current_turrets : Array[Global.turrets]
 
 @export_group("Setup Nodes")
-@export var build_mode_button : TextureButton
 @export var tower_bar : HBoxContainer
 @export var slots : Array[VBoxContainer]
 @export var tower_placer : Node2D
 
+var is_build_mode_active : bool = true
 
 var tower : Dictionary = {
 	Global.turrets.ARCHER : [SPR_TOWER_ARCHER, 10],
@@ -28,7 +28,6 @@ var tower : Dictionary = {
 }
 
 func _ready() -> void:
-	build_mode_button.toggled.connect(build_mode_toggle)
 	tower_placer.slot_changed.connect(_pressed_slot)
 	
 	for i in range(4):
@@ -48,9 +47,14 @@ func update_slot(i : int) -> void:
 	slots[i].get_child(0).get_child(0).texture = tower[current_turrets[i]][0]
 
 func build_mode_toggle(toggle_state : bool) -> void:
-	toggle_build_mode.emit(!toggle_state)
-	tower_bar.visible = !toggle_state
+	toggle_build_mode.emit(toggle_state)
+	tower_bar.visible = toggle_state
 
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_released("build_mode_input"):
+		is_build_mode_active = !is_build_mode_active
+		build_mode_toggle(is_build_mode_active)
+		
 func _pressed_slot(i : int) -> void:
 	select_tower.emit(current_turrets[i])
 	slots[i].get_child(0).button_pressed = true
