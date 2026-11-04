@@ -31,4 +31,4 @@ func take_damage(dmg : float) -> void:
 	sprite.modulate = Color.WHITE
 
 func death() -> void:
-	SceneSwitcher.switch_scene("res://scenes/lose_screen.tscn")
+	SceneSwitcher.switch_scene("res://scenes/UI/lose_screen.tscn")

@@ -73,7 +73,7 @@ atlas = SubResource("CompressedTexture2D_e6oqk")
 region = Rect2(32, 20, 10, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw5bg"]
-size = Vector2(20, 50)
+size = Vector2(25, 50)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ttv2"]
 load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
@@ -205,6 +205,7 @@ position = Vector2(204, 157)
 texture_normal = SubResource("AtlasTexture_0odk7")
 texture_pressed = SubResource("AtlasTexture_alvv5")
 shape = SubResource("RectangleShape2D_uw5bg")
+passby_press = true
 action = "build_mode_input"
 
 [node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872]
