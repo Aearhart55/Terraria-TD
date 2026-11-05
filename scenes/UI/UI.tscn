@@ -115,7 +115,31 @@ region_rect = Rect2(-1, -2, 18, 21)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_jed6l"]
 
-[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("tower_bar", "slots")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8rye"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpswu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v86ut"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55180"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1rqu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t1j05"]
+load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f4272841d15a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw5bg"]
+atlas = SubResource("CompressedTexture2D_t1j05")
+region = Rect2(32, 20, 10, 12)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0odk7"]
+load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f4272841d15a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfcp0"]
+atlas = SubResource("CompressedTexture2D_0odk7")
+region = Rect2(48, 20, 10, 12)
+
+[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("tower_bar", "slots", "build_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -126,6 +150,7 @@ mouse_filter = 2
 script = ExtResource("1_2ttv2")
 tower_bar = NodePath("TowerBar")
 slots = [NodePath("TowerBar/Slot1"), NodePath("TowerBar/Slot2"), NodePath("TowerBar/Slot3"), NodePath("TowerBar/Slot4")]
+build_button = NodePath("BuildButton")
 
 [node name="left" type="TouchScreenButton" parent="." unique_id=2038273719]
 position = Vector2(16, 144)
@@ -182,6 +207,7 @@ patch_margin_right = 2
 patch_margin_bottom = 4
 
 [node name="build_toggle" type="TouchScreenButton" parent="." unique_id=1488608546]
+visible = false
 position = Vector2(203, 160)
 texture_normal = SubResource("AtlasTexture_0odk7")
 texture_pressed = SubResource("AtlasTexture_alvv5")
@@ -338,3 +364,50 @@ theme_override_fonts/font = ExtResource("2_84lt7")
 theme_override_font_sizes/font_size = 16
 text = "10"
 horizontal_alignment = 1
+
+[node name="BuildButton" type="Button" parent="." unique_id=1055249082]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 151.0
+offset_right = 217.0
+offset_bottom = 170.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w8rye")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gpswu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_v86ut")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_55180")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u1rqu")
+toggle_mode = true
+
+[node name="On" type="TextureRect" parent="BuildButton" unique_id=1164175591]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_uw5bg")
+stretch_mode = 2
+
+[node name="Off" type="TextureRect" parent="BuildButton" unique_id=343340345]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_jfcp0")
+stretch_mode = 2

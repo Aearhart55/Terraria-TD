@@ -191,6 +191,5 @@ tower_placer = NodePath("../../TowerPlacer")
 [node name="TowerPlacer" type="Node2D" parent="." unique_id=711084640 node_paths=PackedStringArray("UI_node", "touch_sprite", "place_sprite")]
 script = ExtResource("1_0bbpv")
 UI_node = NodePath("../UILayer/UI")
-preview_placement = true
 touch_sprite = NodePath("../touch")
 place_sprite = NodePath("../place")
