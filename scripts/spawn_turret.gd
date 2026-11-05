@@ -56,6 +56,21 @@ func _unhandled_input(_event: InputEvent) -> void:
 		placement_position = get_local_mouse_position()
 		spawn()
 	
+	#if _event is InputEventScreenTouch and _event.is_released():
+	#	touch_sprite.visible = false
+	#	place_sprite.visible = false
+	#	placement_position = _event.position
+	#	spawn()
+	#	print("release")
+		
+	#if _event is InputEventScreenTouch and _event.is_pressed() and preview_placement and build_mode_active:
+	#	touch_sprite.visible = true
+	#	place_sprite.visible = true
+	#	placement_position = get_local_mouse_position()
+	#	preview_spawn()
+	#	
+	#	print("touch")
+	
 	if Input.is_action_just_released("slot_1"):
 		slot_changed.emit(0)
 	elif Input.is_action_just_released("slot_2"):

@@ -32,34 +32,34 @@ region = Rect2(80, 144, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wsoe"]
 size = Vector2(30, 40)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u6q2i"]
-load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f4272841d15a.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6oqk"]
-atlas = SubResource("CompressedTexture2D_u6q2i")
-region = Rect2(48, 36, 8, 12)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_81vvl"]
-load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f4272841d15a.ctex"
+atlas = ExtResource("1_0wsoe")
+region = Rect2(160, 144, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1j05"]
-atlas = SubResource("CompressedTexture2D_81vvl")
-region = Rect2(32, 36, 8, 12)
+atlas = ExtResource("1_0wsoe")
+region = Rect2(176, 144, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ob0dx"]
 radius = 15.9
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8txej"]
-atlas = ExtResource("2_wgnrc")
-region = Rect2(0, 144, 16, 16)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u6q2i"]
+load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f4272841d15a.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ttv2"]
 atlas = SubResource("CompressedTexture2D_u6q2i")
 region = Rect2(16, 146, 7, 14)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_81vvl"]
+load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f4272841d15a.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ob0dx"]
 atlas = SubResource("CompressedTexture2D_81vvl")
 region = Rect2(0, 146, 7, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8txej"]
+atlas = ExtResource("2_wgnrc")
+region = Rect2(0, 144, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0odk7"]
 atlas = ExtResource("4_u6q2i")
@@ -72,8 +72,8 @@ load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f427
 atlas = SubResource("CompressedTexture2D_e6oqk")
 region = Rect2(32, 20, 10, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw5bg"]
-size = Vector2(25, 50)
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p2gp"]
+radius = 11.45
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ttv2"]
 load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
@@ -145,35 +145,16 @@ shape_visible = false
 passby_press = true
 action = "right"
 
-[node name="attack" type="TouchScreenButton" parent="." unique_id=1327855975]
-position = Vector2(280, 145)
+[node name="jump" type="TouchScreenButton" parent="." unique_id=1327855975]
+position = Vector2(270, 145)
 texture_normal = SubResource("AtlasTexture_e6oqk")
 texture_pressed = SubResource("AtlasTexture_t1j05")
 shape = SubResource("CircleShape2D_ob0dx")
 shape_visible = false
 action = "up"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="attack" unique_id=1460273127]
-show_behind_parent = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.75
-offset_top = -10.0
-offset_right = 10.75
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_8txej")
-region_rect = Rect2(0, 0, 16, 16)
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 4
-
 [node name="interact" type="TouchScreenButton" parent="." unique_id=233052935]
+visible = false
 position = Vector2(280, 111)
 texture_normal = SubResource("AtlasTexture_2ttv2")
 texture_pressed = SubResource("AtlasTexture_ob0dx")
@@ -201,11 +182,11 @@ patch_margin_right = 2
 patch_margin_bottom = 4
 
 [node name="build_toggle" type="TouchScreenButton" parent="." unique_id=1488608546]
-position = Vector2(204, 157)
+position = Vector2(203, 160)
 texture_normal = SubResource("AtlasTexture_0odk7")
 texture_pressed = SubResource("AtlasTexture_alvv5")
-shape = SubResource("RectangleShape2D_uw5bg")
-passby_press = true
+shape = SubResource("CircleShape2D_3p2gp")
+shape_visible = false
 action = "build_mode_input"
 
 [node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872]

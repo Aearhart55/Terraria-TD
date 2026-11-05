@@ -50,7 +50,7 @@ func build_mode_toggle(toggle_state : bool) -> void:
 	toggle_build_mode.emit(toggle_state)
 	tower_bar.visible = toggle_state
 
-func _unhandled_input(_event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("build_mode_input"):
 		is_build_mode_active = !is_build_mode_active
 		build_mode_toggle(is_build_mode_active)
