@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://dqsftele2ua3p"]
 
+[ext_resource type="Texture2D" uid="uid://c58bs3nqo3cg0" path="res://assets/Four Skies/Noon/01-clear-blue-sky.png" id="1_livli"]
 [ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/scene_switch_button.gd" id="1_o7i0r"]
 [ext_resource type="PackedScene" uid="uid://b6o0l3lv1brkf" path="res://scenes/Main.tscn" id="2_he1sj"]
+[ext_resource type="Texture2D" uid="uid://cwk4n2ey7vepl" path="res://assets/Four Skies/Noon/02-noon-sun.png" id="2_qy2iw"]
+[ext_resource type="Texture2D" uid="uid://cyulsai0ni6ow" path="res://assets/Four Skies/Noon/03-white-clouds-and-birds.png" id="3_bygni"]
+[ext_resource type="Texture2D" uid="uid://bq7h1sefcthoh" path="res://assets/Four Skies/Noon/04-hazy-distant-peaks.png" id="4_heu08"]
+[ext_resource type="Texture2D" uid="uid://ct50ab88kqh4h" path="res://assets/Four Skies/Noon/05-green-foothills.png" id="5_odu2v"]
+[ext_resource type="Texture2D" uid="uid://8apq1wg6jvg2" path="res://assets/Four Skies/Noon/06-sunlit-pine-forest.png" id="6_fob0x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpswu"]
 bg_color = Color(0.69297564, 0.5240266, 0.77495766, 1)
@@ -24,6 +30,83 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1992649365]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_livli")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=920622252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qy2iw")
+expand_mode = 3
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=348345495]
+scroll_offset = Vector2(-20, 0)
+repeat_size = Vector2(360, 0)
+autoscroll = Vector2(5, 0)
+
+[node name="TextureRect3" type="TextureRect" parent="Parallax2D" unique_id=770046762]
+custom_minimum_size = Vector2(320, 180)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 360.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bygni")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=347131268]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_heu08")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=400164]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_odu2v")
+expand_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=355216894]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_fob0x")
+expand_mode = 3
 
 [node name="Label" type="Label" parent="." unique_id=1290525825]
 layout_mode = 1
