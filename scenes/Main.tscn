@@ -149,7 +149,6 @@ frame_progress = 0.9905041
 
 [node name="castle" parent="." unique_id=392701069 instance=ExtResource("5_c01mt")]
 position = Vector2(192, 146)
-immune = true
 
 [node name="touch" type="ColorRect" parent="." unique_id=1305445443]
 visible = false
