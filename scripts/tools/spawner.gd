@@ -1,7 +1,9 @@
 extends Node
 
-const SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
+const BIG_SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
 const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
+const DEMON_ENEMY = preload("uid://q3qjcof7sawe")
+const SKELETON_ENEMY = preload("uid://b8a73je8bi48c")
 
 @export_group("Setup Nodes")
 @export var spawn_points : Array[Marker2D]
@@ -21,11 +23,15 @@ var is_new_wave : bool
 var is_final_wave : bool = false
 
 var enemy : Dictionary = {
-	Global.enemies.SLIME : SLIME_ENEMY,
-	Global.enemies.ZOMBIE : ZOMBIE_ENEMY
+	Global.enemies.BIG_SLIME : BIG_SLIME_ENEMY,
+	Global.enemies.ZOMBIE : ZOMBIE_ENEMY,
+	Global.enemies.SKELETON : SKELETON_ENEMY,
+	Global.enemies.DEMON : DEMON_ENEMY
 }
 
 func _ready() -> void:
+	Global.player_cash = level.starting_cash
+	
 	add_child(enemy_gap_timer)
 	add_child(wave_gap_timer)
 	enemy_gap_timer.one_shot = true

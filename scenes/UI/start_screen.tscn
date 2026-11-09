@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqsftele2ua3p"]
 
 [ext_resource type="Texture2D" uid="uid://c58bs3nqo3cg0" path="res://assets/Four Skies/Noon/01-clear-blue-sky.png" id="1_livli"]
-[ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/scene_switch_button.gd" id="1_o7i0r"]
+[ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/classes/scene_switch_button.gd" id="1_o7i0r"]
 [ext_resource type="PackedScene" uid="uid://b6o0l3lv1brkf" path="res://scenes/Main.tscn" id="2_he1sj"]
 [ext_resource type="Texture2D" uid="uid://cwk4n2ey7vepl" path="res://assets/Four Skies/Noon/02-noon-sun.png" id="2_qy2iw"]
 [ext_resource type="Texture2D" uid="uid://cyulsai0ni6ow" path="res://assets/Four Skies/Noon/03-white-clouds-and-birds.png" id="3_bygni"]

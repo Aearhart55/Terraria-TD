@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bxsskj0nv7rxk" path="res://assets/Itch Towers/Enemies/spr_zombie.png" id="1_xijcq"]
 [ext_resource type="Texture2D" uid="uid://bg7jxxhryps62" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 2/color2/sprite-sheet.png" id="2_la53i"]
 [ext_resource type="Texture2D" uid="uid://cb4q2h3l404ed" path="res://assets/GUI_Pack/LifeBars/Round_LBs_4x8.png" id="3_la53i"]
-[ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/health_bar.gd" id="3_wwswq"]
+[ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/components/health_bar.gd" id="3_wwswq"]
 
 [sub_resource type="GDScript" id="GDScript_xepks"]
 resource_name = "zombie_enemy"
@@ -149,8 +149,9 @@ region = Rect2(0, 285, 12, 3)
 collision_layer = 2
 script = SubResource("GDScript_xepks")
 attack_sprite = NodePath("AttackArea/AttackAnims")
-speed = 70.0
-max_health = 10.0
+max_health = 7.0
+attack_speed = 0.5
+speed = 25.0
 base_sprite = NodePath("BaseSprite")
 attack_area = NodePath("AttackArea")
 attack_cooldown = NodePath("AttackCooldown")

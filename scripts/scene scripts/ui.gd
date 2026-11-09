@@ -14,10 +14,13 @@ signal toggle_build_mode(bool)
 @export var current_turrets : Array[Global.turrets]
 
 @export_group("Setup Nodes")
-@export var tower_bar : HBoxContainer
-@export var slots : Array[VBoxContainer]
 @export var tower_placer : Node2D
+
+@export_group("Internal Setup Nodes")
+@export var slots : Array[VBoxContainer]
+@export var tower_bar : HBoxContainer
 @export var build_button : Button
+@export var money_label : Label
 
 var tower : Dictionary = {
 	Global.turrets.ARCHER : [SPR_TOWER_ARCHER, 10],
@@ -29,6 +32,8 @@ var tower : Dictionary = {
 func _ready() -> void:
 	tower_placer.slot_changed.connect(_pressed_slot)
 	build_button.toggled.connect(build_mode_toggle)
+	Global.money_update.connect(func(value : int): money_label.text = "$" + str(value))
+	money_label.text = "$" + str(Global.player_cash)
 	
 	for i in range(4):
 		update_slot(i)
@@ -49,6 +54,7 @@ func update_slot(i : int) -> void:
 func build_mode_toggle(toggle_state : bool) -> void:
 	toggle_build_mode.emit(toggle_state)
 	tower_bar.visible = toggle_state
+	money_label.visible = toggle_state
 	build_button.get_child(0).visible = toggle_state
 	build_button.get_child(1).visible = !toggle_state
 	

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cnl4whxxklh3i"]
 
 [ext_resource type="Texture2D" uid="uid://cwj8mcg4r4dw8" path="res://assets/Itch Towers/Towers/Combat Towers Projectiles/spr_tower_ice_wizard_projectile.png" id="1_5qfxx"]
-[ext_resource type="Script" uid="uid://s6507xtmgw6k" path="res://scripts/bullet.gd" id="1_86o43"]
+[ext_resource type="Script" uid="uid://s6507xtmgw6k" path="res://scripts/classes/bullet.gd" id="1_86o43"]
 [ext_resource type="PackedScene" uid="uid://b6ih080131d2a" path="res://scenes/Status/slow_status.tscn" id="2_eognm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
-radius = 8.062258
+radius = 4.0
 
 [node name="IceBullet" type="Area2D" unique_id=1756372708]
 collision_layer = 0

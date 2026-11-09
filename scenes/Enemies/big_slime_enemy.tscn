@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dhaq4tlx0h7i8" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame7.png" id="8_vu5x1"]
 [ext_resource type="Texture2D" uid="uid://c4o8oabhvtk3e" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame8.png" id="9_s0xy2"]
 [ext_resource type="Texture2D" uid="uid://cpk7qo1ouc6p3" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color1/frames/Slash3_color1_frame9.png" id="10_ehygk"]
-[ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/health_bar.gd" id="11_h2e3u"]
 [ext_resource type="Texture2D" uid="uid://cb4q2h3l404ed" path="res://assets/GUI_Pack/LifeBars/Round_LBs_4x8.png" id="12_cwbth"]
+[ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/components/health_bar.gd" id="12_ni6pp"]
 
 [sub_resource type="GDScript" id="GDScript_otmr2"]
 resource_name = "slime_enemy"
@@ -129,8 +129,10 @@ region = Rect2(0, 309, 12, 3)
 collision_layer = 2
 script = SubResource("GDScript_otmr2")
 attack_sprite = NodePath("AttackArea/AttackAnims")
-speed = 10.0
 max_health = 30.0
+damage = 6.0
+attack_speed = 2.0
+speed = 10.0
 base_sprite = NodePath("BaseSprite")
 attack_area = NodePath("AttackArea")
 attack_cooldown = NodePath("AttackCooldown")
@@ -161,7 +163,6 @@ frame = 9
 frame_progress = 1.0
 
 [node name="AttackCooldown" type="Timer" parent="." unique_id=1878749363]
-wait_time = 2.0
 one_shot = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=804605356]
@@ -177,6 +178,6 @@ stretch_margin_right = 1
 stretch_margin_bottom = 1
 texture_under = SubResource("AtlasTexture_cwbth")
 texture_progress = SubResource("AtlasTexture_v86ut")
-script = ExtResource("11_h2e3u")
+script = ExtResource("12_ni6pp")
 visibility_time = 0.5
 metadata/_custom_type_script = "uid://ik158wrlh402"

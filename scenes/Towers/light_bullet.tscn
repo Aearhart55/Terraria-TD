@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://3amil1v1c55f"]
 
 [ext_resource type="Texture2D" uid="uid://bbmo2s3oi5y1o" path="res://assets/Itch Towers/Towers/Combat Towers Projectiles/spr_tower_lightning_tower_projectile.png" id="1_mkf8s"]
-[ext_resource type="Script" uid="uid://s6507xtmgw6k" path="res://scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Script" uid="uid://s6507xtmgw6k" path="res://scripts/classes/bullet.gd" id="1_y25gk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
-radius = 8.062258
+radius = 3.0
 
 [node name="LightBullet" type="Area2D" unique_id=1756372708]
 collision_layer = 0

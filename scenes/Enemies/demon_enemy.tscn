@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://q3qjcof7sawe"]
+
+[ext_resource type="Texture2D" uid="uid://bhjd2idxhcykk" path="res://assets/Itch Towers/Enemies/spr_demon.png" id="1_y6c7v"]
+[ext_resource type="Texture2D" uid="uid://dgasfkaeddqc3" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 3/color2/sprite-sheet.png" id="2_bcg8n"]
+[ext_resource type="Texture2D" uid="uid://cb4q2h3l404ed" path="res://assets/GUI_Pack/LifeBars/Round_LBs_4x8.png" id="3_6gl4v"]
+[ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/components/health_bar.gd" id="4_bceip"]
+
+[sub_resource type="GDScript" id="GDScript_xepks"]
+resource_name = "zombie_enemy"
+script/source = "extends Enemy
+
+@export var attack_sprite: AnimatedSprite2D
+
+func flip_sprites() -> void:
+	super.flip_sprites()
+	attack_sprite.flip_h = flip
+func attack() -> void:
+	# check if can attack 
+	if not attack_cooldown.is_stopped():
+		return
+		
+	for target in attack_area.get_overlapping_bodies():
+		# check if target is valid
+		if target.is_in_group(\"ally\"):
+			DH.attack(target, self)
+			attack_sprite.play(\"attack\")
+			attack_cooldown.start()
+			break
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8rye"]
+size = Vector2(8, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78pll"]
+atlas = ExtResource("1_y6c7v")
+region = Rect2(0, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg6fu"]
+atlas = ExtResource("1_y6c7v")
+region = Rect2(10, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwm15"]
+atlas = ExtResource("1_y6c7v")
+region = Rect2(20, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxbej"]
+atlas = ExtResource("1_y6c7v")
+region = Rect2(30, 0, 10, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jed6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78pll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg6fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwm15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxbej")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xepks"]
+size = Vector2(13.5, 11.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bipkx"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csflh"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4i6s"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id8g3"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0prpl"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip8ad"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e88mx"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb2tf"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilibn"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu76j"]
+atlas = ExtResource("2_bcg8n")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8rye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bipkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csflh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4i6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id8g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0prpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip8ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e88mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb2tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilibn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu76j")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 18.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw4r4"]
+atlas = ExtResource("3_6gl4v")
+region = Rect2(16, 285, 12, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfvr4"]
+atlas = ExtResource("3_6gl4v")
+region = Rect2(0, 285, 12, 3)
+
+[node name="Demon" type="CharacterBody2D" unique_id=1102420310 node_paths=PackedStringArray("attack_sprite", "base_sprite", "attack_area", "attack_cooldown", "health_bar") groups=["enemy"]]
+collision_layer = 2
+script = SubResource("GDScript_xepks")
+attack_sprite = NodePath("AttackArea/AttackAnims")
+max_health = 15.0
+damage = 4.0
+speed = 20.0
+base_sprite = NodePath("BaseSprite")
+attack_area = NodePath("AttackArea")
+attack_cooldown = NodePath("AttackCooldown")
+health_bar = NodePath("HealthBar")
+metadata/_custom_type_script = "uid://14mus7wgo41f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2023238410]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_w8rye")
+
+[node name="BaseSprite" type="AnimatedSprite2D" parent="." unique_id=1460472087]
+sprite_frames = SubResource("SpriteFrames_jed6l")
+autoplay = "default"
+frame_progress = 0.24563128
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=969916773]
+position = Vector2(6, -1)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1373290194]
+position = Vector2(1.25, -1.25)
+shape = SubResource("RectangleShape2D_xepks")
+
+[node name="AttackAnims" type="AnimatedSprite2D" parent="AttackArea" unique_id=337779359]
+position = Vector2(1.0000001, -2)
+scale = Vector2(0.21660826, 0.21660826)
+sprite_frames = SubResource("SpriteFrames_w8rye")
+animation = &"attack"
+frame = 9
+frame_progress = 1.0
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1732469799]
+one_shot = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=600457354]
+offset_left = -5.0
+offset_top = 5.0
+offset_right = 5.0
+offset_bottom = 8.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = SubResource("AtlasTexture_uw4r4")
+texture_progress = SubResource("AtlasTexture_sfvr4")
+script = ExtResource("4_bceip")
+visibility_time = 0.5
+metadata/_custom_type_script = "uid://ik158wrlh402"

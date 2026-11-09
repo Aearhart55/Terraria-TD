@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c7ec65aq7g0h"]
 
 [ext_resource type="Texture2D" uid="uid://b47kiy5m3rwui" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_lightning_tower.png" id="1_ockw3"]
-[ext_resource type="Script" uid="uid://c0o7n6fv48v3l" path="res://scripts/state_machine.gd" id="2_ge0a6"]
-[ext_resource type="Script" uid="uid://bl8ek7e62ge17" path="res://scripts/turret_firing.gd" id="3_imbyj"]
+[ext_resource type="Script" uid="uid://c0o7n6fv48v3l" path="res://scripts/classes/state_machine.gd" id="2_ge0a6"]
+[ext_resource type="Script" uid="uid://bl8ek7e62ge17" path="res://scripts/scene scripts/turret_firing.gd" id="3_imbyj"]
 [ext_resource type="PackedScene" uid="uid://3amil1v1c55f" path="res://scenes/Towers/light_bullet.tscn" id="4_y1wgc"]
-[ext_resource type="Script" uid="uid://b532acgqa2cj2" path="res://scripts/turret_idle.gd" id="5_nv6oa"]
+[ext_resource type="Script" uid="uid://b532acgqa2cj2" path="res://scripts/scene scripts/turret_idle.gd" id="5_nv6oa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
 radius = 71.17584
@@ -24,13 +24,16 @@ script = ExtResource("2_ge0a6")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://c0o7n6fv48v3l"
 
-[node name="Firing" type="Node" parent="StateMachine" unique_id=259666605 node_paths=PackedStringArray("attack_area", "idle_state", "bullet_orgin", "cooldown_timer")]
+[node name="Firing" type="Node" parent="StateMachine" unique_id=259666605 node_paths=PackedStringArray("attack_area", "idle_state", "bullet_orgin", "cooldown_timer", "turret")]
 script = ExtResource("3_imbyj")
+cooldown = 1.25
+damage = 5.0
+speed = 500.0
 attack_area = NodePath("../../Attack Range")
 idle_state = NodePath("../Idle")
 bullet_orgin = NodePath("../../bullet_orgin")
 cooldown_timer = NodePath("Timer")
-cooldown = 0.75
+turret = NodePath("../..")
 projectile = ExtResource("4_y1wgc")
 metadata/_custom_type_script = "uid://bdn87p4ijh16i"
 

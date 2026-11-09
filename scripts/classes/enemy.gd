@@ -1,8 +1,9 @@
 class_name Enemy extends CharacterBody2D
 
-@export var speed : float = 50.0
-@export var damage : float = 1.0
 @export var max_health : float = 20.0
+@export var damage : float = 1.0
+@export var attack_speed : float = 1.0
+@export var speed : float = 50.0
 
 @export_group("Setup Nodes")
 @export var base_sprite: AnimatedSprite2D
@@ -27,6 +28,8 @@ var main_target : StaticBody2D
 func _ready() -> void:
 	health = max_health
 	health_bar.set_max_health(max_health)
+	
+	attack_cooldown.wait_time = attack_speed
 	
 	if flip:
 		flip_sprites()

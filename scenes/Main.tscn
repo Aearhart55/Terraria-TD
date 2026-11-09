@@ -1,14 +1,14 @@
 [gd_scene format=4 uid="uid://b6o0l3lv1brkf"]
 
-[ext_resource type="Script" uid="uid://bf5xy62vs14q" path="res://scripts/spawn_turret.gd" id="1_0bbpv"]
+[ext_resource type="Script" uid="uid://bf5xy62vs14q" path="res://scripts/tools/spawn_turret.gd" id="1_0bbpv"]
 [ext_resource type="TileSet" uid="uid://cfcisyb0n6lbk" path="res://assets/base_tiles.tres" id="2_jlsqs"]
 [ext_resource type="Texture2D" uid="uid://cwk4n2ey7vepl" path="res://assets/Four Skies/Noon/02-noon-sun.png" id="3_q8u5g"]
 [ext_resource type="PackedScene" uid="uid://cfxueluo5j5ap" path="res://scenes/player.tscn" id="3_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://cyulsai0ni6ow" path="res://assets/Four Skies/Noon/03-white-clouds-and-birds.png" id="4_qmy6f"]
 [ext_resource type="PackedScene" uid="uid://crq4wn73eakbi" path="res://scenes/castle.tscn" id="5_c01mt"]
-[ext_resource type="Script" uid="uid://b8n166s2fxi2h" path="res://scripts/level.gd" id="5_jlsqs"]
+[ext_resource type="Script" uid="uid://b8n166s2fxi2h" path="res://scripts/classes/level.gd" id="5_jlsqs"]
 [ext_resource type="Texture2D" uid="uid://bq7h1sefcthoh" path="res://assets/Four Skies/Noon/04-hazy-distant-peaks.png" id="5_mwfav"]
-[ext_resource type="Script" uid="uid://ceyisnjb5psej" path="res://scripts/wave.gd" id="5_nxtc6"]
+[ext_resource type="Script" uid="uid://ceyisnjb5psej" path="res://scripts/classes/wave.gd" id="5_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://mxgux0uwkor0" path="res://scenes/spawner.tscn" id="5_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://ct50ab88kqh4h" path="res://assets/Four Skies/Noon/05-green-foothills.png" id="6_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://8apq1wg6jvg2" path="res://assets/Four Skies/Noon/06-sunlit-pine-forest.png" id="7_cvmbd"]
@@ -16,31 +16,27 @@
 [ext_resource type="SpriteFrames" uid="uid://cr71kqt42chll" path="res://assets/portal_anim.tres" id="13_mwfav"]
 [ext_resource type="PackedScene" uid="uid://b1jar8vyybc7a" path="res://scenes/UI/UI.tscn" id="15_3p2gp"]
 
-[sub_resource type="Resource" id="Resource_nxtc6"]
+[sub_resource type="Resource" id="Resource_3p2gp"]
 script = ExtResource("5_nxtc6")
-wave_value = 50
-enemy_gap_time = 1.0
-enemy_list = Array[int]([0, 0, 0, 0, 0, 0])
-metadata/_custom_type_script = "uid://ceyisnjb5psej"
-
-[sub_resource type="Resource" id="Resource_jlsqs"]
-script = ExtResource("5_nxtc6")
-wave_value = 50
+wave_value = 30
 wave_type = 1
-enemy_gap_time = 1.0
-enemy_list = Array[int]([1, 1, 1, 1, 1, 1])
+wave_gap_time = 6.0
+enemy_list = Array[int]([2, 2, 2, 3, 1, 1])
 metadata/_custom_type_script = "uid://ceyisnjb5psej"
 
-[sub_resource type="Resource" id="Resource_q8u5g"]
+[sub_resource type="Resource" id="Resource_1se6t"]
 script = ExtResource("5_nxtc6")
-wave_type = 2
-enemy_gap_time = 1.0
-enemy_list = Array[int]([0, 0, 0, 0, 1, 1, 1, 1])
+wave_value = 20
+wave_type = 1
+enemy_gap_time = 3.0
+wave_gap_time = 8.0
+enemy_list = Array[int]([0, 0])
 metadata/_custom_type_script = "uid://ceyisnjb5psej"
 
 [sub_resource type="Resource" id="Resource_c01mt"]
 script = ExtResource("5_jlsqs")
-waves = Array[ExtResource("5_nxtc6")]([SubResource("Resource_nxtc6"), SubResource("Resource_jlsqs"), SubResource("Resource_q8u5g")])
+starting_cash = 50
+waves = Array[ExtResource("5_nxtc6")]([SubResource("Resource_3p2gp"), SubResource("Resource_1se6t")])
 metadata/_custom_type_script = "uid://b8n166s2fxi2h"
 
 [node name="Main" type="Node2D" unique_id=2056424681]
@@ -149,6 +145,7 @@ frame_progress = 0.9905041
 
 [node name="castle" parent="." unique_id=392701069 instance=ExtResource("5_c01mt")]
 position = Vector2(192, 146)
+max_health = 100.0
 
 [node name="touch" type="ColorRect" parent="." unique_id=1305445443]
 visible = false
@@ -192,3 +189,4 @@ script = ExtResource("1_0bbpv")
 UI_node = NodePath("../UILayer/UI")
 touch_sprite = NodePath("../touch")
 place_sprite = NodePath("../place")
+debug_no_cost = true

@@ -18,6 +18,7 @@ signal slot_changed(int)
 
 @export_group("debug")
 @export var allow_turret_overlap : bool = false
+@export var debug_no_cost : bool = false
 
 var build_mode_active :bool = true
 
@@ -28,7 +29,7 @@ enum tower_data {TURRET, COST, WIDTH}
 var tower : Dictionary = {
 	Global.turrets.ARCHER : [ARCHER_TURRET, 10, 6],
 	Global.turrets.ICE : [ICE_TURRET, 20, 6],
-	Global.turrets.LIGHT : [LIGHT_TURRET, 25, 8],
+	Global.turrets.LIGHT : [LIGHT_TURRET, 30, 8],
 	Global.turrets.SLIME : [SLIME_ENEMY, 0, 0],
 	Global.turrets.ZOMBIE : [ZOMBIE_ENEMY, 0, 0]
 }
@@ -53,23 +54,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("lmb") and build_mode_active:
 		touch_sprite.visible = false
 		place_sprite.visible = false
-		placement_position = get_local_mouse_position()
-		spawn()
-	
-	#if _event is InputEventScreenTouch and _event.is_released():
-	#	touch_sprite.visible = false
-	#	place_sprite.visible = false
-	#	placement_position = _event.position
-	#	spawn()
-	#	print("release")
-		
-	#if _event is InputEventScreenTouch and _event.is_pressed() and preview_placement and build_mode_active:
-	#	touch_sprite.visible = true
-	#	place_sprite.visible = true
-	#	placement_position = get_local_mouse_position()
-	#	preview_spawn()
-	#	
-	#	print("touch")
+		if tower[active_turret][tower_data.COST] <= Global.player_cash or debug_no_cost:
+			placement_position = get_local_mouse_position()
+			spawn()
 	
 	if Input.is_action_just_released("slot_1"):
 		slot_changed.emit(0)
@@ -105,12 +92,16 @@ func spawn():
 			var turret = tower[active_turret][tower_data.TURRET].instantiate()
 			turret.position = ground_finder.get_collision_point()
 			add_child(turret)
+			Global.player_cash -= tower[active_turret][tower_data.COST] 
+			
 		elif check_sides(ground_finder.get_collision_point()):
 			pass
+			
 		else:
 			var turret = tower[active_turret][tower_data.TURRET].instantiate()
 			turret.position = ground_finder.get_collision_point()
 			owner.add_child(turret)
+			Global.player_cash -= tower[active_turret][tower_data.COST] 
 	
 	# clean raycast
 	ground_finder.queue_free()

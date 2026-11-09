@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://b1jar8vyybc7a"]
 
-[ext_resource type="Script" uid="uid://c483x1fdeamag" path="res://scripts/ui.gd" id="1_2ttv2"]
+[ext_resource type="Script" uid="uid://c483x1fdeamag" path="res://scripts/scene scripts/ui.gd" id="1_2ttv2"]
 [ext_resource type="FontFile" uid="uid://cwi14pqrh43uo" path="res://assets/monogram.ttf" id="2_84lt7"]
 [ext_resource type="Texture2D" uid="uid://b47kiy5m3rwui" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_lightning_tower.png" id="2_lj5up"]
 [ext_resource type="Texture2D" uid="uid://bcotwe2k8grdn" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_archer.png" id="3_wgnrc"]
 [ext_resource type="Texture2D" uid="uid://kr5x5qxgcp6l" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_ice_wizard.png" id="4_84lt7"]
 [ext_resource type="Texture2D" uid="uid://mff3pak1iokh" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_poison_wizard.png" id="8_2ttv2"]
-[ext_resource type="Script" uid="uid://fjv700keo5dj" path="res://scripts/touch_button.gd" id="8_u6q2i"]
+[ext_resource type="Script" uid="uid://fjv700keo5dj" path="res://scripts/classes/touch_button.gd" id="8_u6q2i"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ttv2"]
 load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
@@ -120,7 +120,7 @@ load_path = "res://.godot/imported/Square_premade_buttons_16x16px.png-620ea28b1a
 atlas = SubResource("CompressedTexture2D_uw5bg")
 region = Rect2(160, 144, 16, 16)
 
-[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("tower_bar", "slots", "build_button")]
+[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("slots", "tower_bar", "build_button", "money_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,9 +129,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2ttv2")
-tower_bar = NodePath("TowerBar")
 slots = [NodePath("TowerBar/Slot1"), NodePath("TowerBar/Slot2"), NodePath("TowerBar/Slot3"), NodePath("TowerBar/Slot4")]
+tower_bar = NodePath("TowerBar")
 build_button = NodePath("BuildButton")
+money_label = NodePath("Money")
 
 [node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872]
 layout_mode = 0
@@ -480,3 +481,14 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_ouxww")
 stretch_mode = 2
+
+[node name="Money" type="Label" parent="." unique_id=1560973851]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 49.0
+offset_bottom = 26.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_84lt7")
+text = "$00"
