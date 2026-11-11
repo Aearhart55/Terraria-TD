@@ -84,4 +84,5 @@ texture_under = SubResource("AtlasTexture_7pkwf")
 texture_progress = SubResource("AtlasTexture_ha01g")
 script = ExtResource("3_rjj26")
 visibility_time = 0.75
+always_show = true
 metadata/_custom_type_script = "uid://ik158wrlh402"
