@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b38jsbltdmhlq"
-path="res://.godot/imported/Seeker_Void_Idle_30x30_24f.png-2901719aaecddcd6ed54b33035f3f78b.ctex"
+uid="uid://dmxtevsfanqma"
+path="res://.godot/imported/fox_hurt.png-a09f41acc8a4dd9d6ba1775bcd64e331.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Seeker_Lite/Spritesheets/Seeker_Void_Idle_30x30_24f.png"
-dest_files=["res://.godot/imported/Seeker_Void_Idle_30x30_24f.png-2901719aaecddcd6ed54b33035f3f78b.ctex"]
+source_file="res://assets/fox/fox_hurt.png"
+dest_files=["res://.godot/imported/fox_hurt.png-a09f41acc8a4dd9d6ba1775bcd64e331.ctex"]
 
 [params]
 

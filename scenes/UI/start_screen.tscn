@@ -8,20 +8,64 @@
 [ext_resource type="Texture2D" uid="uid://bq7h1sefcthoh" path="res://assets/Four Skies/Noon/04-hazy-distant-peaks.png" id="4_heu08"]
 [ext_resource type="Texture2D" uid="uid://ct50ab88kqh4h" path="res://assets/Four Skies/Noon/05-green-foothills.png" id="5_odu2v"]
 [ext_resource type="Texture2D" uid="uid://8apq1wg6jvg2" path="res://assets/Four Skies/Noon/06-sunlit-pine-forest.png" id="6_fob0x"]
+[ext_resource type="FontFile" uid="uid://cwi14pqrh43uo" path="res://assets/monogram.ttf" id="7_qy2iw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpswu"]
-bg_color = Color(0.69297564, 0.5240266, 0.77495766, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_livli"]
+load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v86ut"]
-bg_color = Color(0.6811858, 0.46256036, 0.99664897, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy2iw"]
+atlas = SubResource("CompressedTexture2D_livli")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bygni"]
+texture = SubResource("AtlasTexture_qy2iw")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 7.0
+region_rect = Rect2(-1, -2, 18, 21)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_heu08"]
+load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odu2v"]
+atlas = SubResource("CompressedTexture2D_heu08")
+region = Rect2(16, 144, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fob0x"]
+texture = SubResource("AtlasTexture_odu2v")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 7.0
+region_rect = Rect2(-1, -2, 18, 21)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kljmp"]
+load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v6vp"]
+atlas = SubResource("CompressedTexture2D_kljmp")
+region = Rect2(16, 144, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6itw4"]
+texture = SubResource("AtlasTexture_0v6vp")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 7.0
+region_rect = Rect2(-1, -2, 18, 21)
 
 [node name="StartScreen" type="Control" unique_id=117731809]
 layout_mode = 3
@@ -117,7 +161,12 @@ offset_left = -43.5
 offset_right = 43.5
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "TD 2"
+theme_override_colors/font_color = Color(0.97225386, 0.83326554, 0.66462135, 1)
+theme_override_colors/font_outline_color = Color(0.79078263, 0.35576087, 2.0407439e-05, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_qy2iw")
+theme_override_font_sizes/font_size = 28
+text = "Fox Fortress"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -134,9 +183,9 @@ offset_right = 26.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_gpswu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v86ut")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gpswu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bygni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fob0x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6itw4")
 text = "Start"
 script = ExtResource("1_o7i0r")
 target_scene = ExtResource("2_he1sj")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1ci5pqer8p1x"
-path="res://.godot/imported/Seeker_Void_Hurt_55x80_9f.png-d270941985aad0c4f5241060be94d0eb.ctex"
+uid="uid://b77qidesq3lqu"
+path="res://.godot/imported/fox_free.png-891e5b402f4dd3fdde535e40c8468e82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Seeker_Lite/Spritesheets/Seeker_Void_Hurt_55x80_9f.png"
-dest_files=["res://.godot/imported/Seeker_Void_Hurt_55x80_9f.png-d270941985aad0c4f5241060be94d0eb.ctex"]
+source_file="res://assets/fox/fox_free.png"
+dest_files=["res://.godot/imported/fox_free.png-891e5b402f4dd3fdde535e40c8468e82.ctex"]
 
 [params]
 

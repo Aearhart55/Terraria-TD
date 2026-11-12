@@ -70,6 +70,7 @@ autoplay = "default"
 frame_progress = 0.5776979
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1138265794]
+z_index = -1
 offset_left = -27.0
 offset_top = -30.0
 offset_right = 27.0

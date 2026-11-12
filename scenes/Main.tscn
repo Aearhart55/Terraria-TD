@@ -119,7 +119,6 @@ tile_set = ExtResource("2_jlsqs")
 [node name="Player" parent="." unique_id=1634747837 node_paths=PackedStringArray("respawn_point") instance=ExtResource("3_vcsgt")]
 position = Vector2(77, 157)
 respawn_point = NodePath("../castle")
-immune = true
 infinite_jump = true
 
 [node name="spawner" parent="." unique_id=566907230 node_paths=PackedStringArray("spawn_points", "target") instance=ExtResource("5_vcsgt")]
