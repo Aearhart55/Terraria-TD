@@ -3,9 +3,9 @@ extends Node2D
 const ICE_TURRET = preload("uid://cv13uq7diugin")
 const ARCHER_TURRET = preload("uid://tmht4gutufgl")
 const LIGHT_TURRET = preload("uid://c7ec65aq7g0h")
+const POISION_TURRET = preload("uid://cuouveka0gf80")
 const GROUND_TOLERANCE : int = 100
 const SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
-const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
 
 signal slot_changed(int)
 
@@ -30,8 +30,8 @@ var tower : Dictionary = {
 	Global.turrets.ARCHER : [ARCHER_TURRET, 10, 6],
 	Global.turrets.ICE : [ICE_TURRET, 20, 6],
 	Global.turrets.LIGHT : [LIGHT_TURRET, 30, 8],
-	Global.turrets.SLIME : [SLIME_ENEMY, 0, 0],
-	Global.turrets.ZOMBIE : [ZOMBIE_ENEMY, 0, 0]
+	Global.turrets.POISION : [POISION_TURRET, 25, 6],
+	Global.turrets.SLIME : [SLIME_ENEMY, 0, 0]
 }
 
 func _ready() -> void:

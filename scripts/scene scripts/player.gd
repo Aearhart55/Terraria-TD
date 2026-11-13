@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		can_jump = true
 		# check if has jumped for land anim to avoid constant play
-		if jump_count != max_jumps and not dead:
+		if base_sprite.animation == "fall" and not dead:
 			base_sprite.play("land")
 		# refresh jumps
 		jump_count = max_jumps
@@ -82,11 +82,13 @@ func _physics_process(delta: float) -> void:
 		
 		# wait for fox to fade to reset
 		if fox_sprite.self_modulate.a < 0:
+			position = respawn_point.position
+			base_sprite.play("respawn")
+			await base_sprite.animation_finished
 			fox_sprite.visible = false
 			fox_sprite.self_modulate.a = 1
 			health = max_health
 			dead = false
-			position = respawn_point.position
 		
 		# Stops movement input
 		return

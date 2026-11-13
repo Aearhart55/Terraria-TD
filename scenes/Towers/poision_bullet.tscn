@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ccx5w1g0dtwxa"]
+
+[ext_resource type="Script" uid="uid://s6507xtmgw6k" path="res://scripts/classes/bullet.gd" id="1_1wmda"]
+[ext_resource type="PackedScene" uid="uid://cy1jy62aai5d2" path="res://scenes/Status/poision_status.tscn" id="2_1wmda"]
+[ext_resource type="Texture2D" uid="uid://iu5818al4d0j" path="res://assets/Itch Towers/Towers/Combat Towers Projectiles/spr_tower_poison_wizard_projectile.png" id="3_5n7pb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
+radius = 4.0
+
+[node name="PoisionBullet" type="Area2D" unique_id=1756372708]
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+script = ExtResource("1_1wmda")
+speed = 200.0
+status = Array[PackedScene]([ExtResource("2_1wmda")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=769876693]
+shape = SubResource("CircleShape2D_jed6l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=713079607]
+texture = ExtResource("3_5n7pb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

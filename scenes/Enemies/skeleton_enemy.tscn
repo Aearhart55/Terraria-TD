@@ -1,32 +1,10 @@
 [gd_scene format=3 uid="uid://b8a73je8bi48c"]
 
 [ext_resource type="Texture2D" uid="uid://csxktj0tuj4gi" path="res://assets/Itch Towers/Enemies/spr_skeleton.png" id="1_gru1c"]
+[ext_resource type="Script" uid="uid://bohouulvdyotp" path="res://scripts/classes/melee_enemy.gd" id="1_yo3r6"]
 [ext_resource type="Texture2D" uid="uid://bgt1532wngeo0" path="res://assets/Pixel Art Animations - Slashes/64x64/Slash 1/color5/sprite-sheet.png" id="2_yo3r6"]
 [ext_resource type="Texture2D" uid="uid://cb4q2h3l404ed" path="res://assets/GUI_Pack/LifeBars/Round_LBs_4x8.png" id="3_omql1"]
 [ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/components/health_bar.gd" id="4_lne8s"]
-
-[sub_resource type="GDScript" id="GDScript_xepks"]
-resource_name = "zombie_enemy"
-script/source = "extends Enemy
-
-@export var attack_sprite: AnimatedSprite2D
-
-func flip_sprites() -> void:
-	super.flip_sprites()
-	attack_sprite.flip_h = flip
-func attack() -> void:
-	# check if can attack 
-	if not attack_cooldown.is_stopped():
-		return
-		
-	for target in attack_area.get_overlapping_bodies():
-		# check if target is valid
-		if target.is_in_group(\"ally\"):
-			DH.attack(target, self)
-			attack_sprite.play(\"attack\")
-			attack_cooldown.start()
-			break
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8rye"]
 size = Vector2(8, 6.5)
@@ -119,7 +97,7 @@ region = Rect2(0, 317, 12, 3)
 
 [node name="Skeleton" type="CharacterBody2D" unique_id=1102420310 node_paths=PackedStringArray("attack_sprite", "base_sprite", "attack_area", "attack_cooldown", "health_bar") groups=["enemy"]]
 collision_layer = 2
-script = SubResource("GDScript_xepks")
+script = ExtResource("1_yo3r6")
 attack_sprite = NodePath("AttackArea/AttackAnims")
 max_health = 4.0
 speed = 15.0

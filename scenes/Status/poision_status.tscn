@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cy1jy62aai5d2"]
+
+[sub_resource type="GDScript" id="GDScript_eognm"]
+resource_name = "slow_status"
+script/source = "extends Status
+
+@export var damage : float
+
+@export var poision_color: Color
+var original_color : Color
+
+@export var tick_rate : float
+@export var tick_timer : Timer
+
+var sprite
+
+func start() -> void:
+	super.start()
+	
+	tick_timer.wait_time = tick_rate
+	tick_timer.timeout.connect(poision)
+	tick_timer.start()
+	
+	for child in get_parent().get_children():
+		if child is Sprite2D or child is AnimatedSprite2D and child.name == \"BaseSprite\":
+			sprite = child
+		
+	original_color = get_parent().base_modulate
+	get_parent().base_modulate = poision_color
+	
+	if sprite:
+		sprite.modulate = get_parent().base_modulate
+	
+func _on_status_timer_timeout() -> void:
+	get_parent().base_modulate = original_color
+	
+	if sprite:
+		sprite.modulate = get_parent().base_modulate
+		
+	super._on_status_timer_timeout()
+
+func poision() -> void:
+	DH.attack(get_parent(), self)
+"
+
+[node name="poision_status" type="Node" unique_id=593649980 node_paths=PackedStringArray("tick_timer")]
+script = SubResource("GDScript_eognm")
+damage = 0.5
+poision_color = Color(0, 0.6862745, 0, 1)
+tick_rate = 1.0
+tick_timer = NodePath("tick_timer")
+duration = 8.0
+tag = "poision_status"
+metadata/_custom_type_script = "uid://d1xsyt47qlwjd"
+
+[node name="tick_timer" type="Timer" parent="." unique_id=982900514]

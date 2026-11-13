@@ -26,6 +26,7 @@ var tower : Dictionary = {
 	Global.turrets.ARCHER : [SPR_TOWER_ARCHER, 10],
 	Global.turrets.ICE : [ SPR_TOWER_ICE_WIZARD, 20],
 	Global.turrets.LIGHT : [SPR_TOWER_LIGHTNING_TOWER, 30],
+	Global.turrets.POISION : [SPR_TOWER_POISON_WIZARD, 25],
 	Global.turrets.SLIME : [SLIME_ICO, 0]
 }
 
