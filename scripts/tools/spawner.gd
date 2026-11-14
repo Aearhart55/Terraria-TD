@@ -6,8 +6,8 @@ const DEMON_ENEMY = preload("uid://q3qjcof7sawe")
 const SKELETON_ENEMY = preload("uid://b8a73je8bi48c")
 
 @export_group("Setup Nodes")
+@export var hub : StaticBody2D
 @export var spawn_points : Array[Marker2D]
-@export var target : StaticBody2D
 var enemy_gap_timer : Timer = Timer.new()
 var wave_gap_timer : Timer = Timer.new()
 
@@ -76,7 +76,7 @@ func spawn_enemy(pos : Marker2D) -> void:
 		return
 		
 	var new_enemy : Enemy = enemy[remaining_enemies[0]].instantiate()
-	if target.position.x - pos.position.x < 0.0:
+	if hub.position.x - pos.position.x < 0.0:
 		new_enemy.flip = true
 	new_enemy.position = pos.position
 	owner.add_child(new_enemy)

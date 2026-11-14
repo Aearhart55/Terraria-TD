@@ -107,7 +107,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = lerpf(velocity.x, direction * SPEED, acceleration_percent)
 		
-		if not base_sprite.is_playing() or base_sprite.animation == "idle":
+		if (not base_sprite.is_playing() and not base_sprite.animation == "fall") or base_sprite.animation == "idle":
 			base_sprite.play("run")
 		
 		if direction > 0:

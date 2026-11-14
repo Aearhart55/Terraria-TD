@@ -18,9 +18,16 @@ extends State
 
 @onready var projectile_scene : Resource = load(projectile.resource_path)
 
+var hub : StaticBody2D
+
 var off_cooldown : bool = true
 var target: Node2D
 var change_state_bool : bool = false
+
+func _ready() -> void:
+	if get_tree().current_scene.hub == null:
+		await get_tree().current_scene.hub_changed
+	hub = get_tree().current_scene.hub
 
 func enter() -> void:
 	cooldown_timer.wait_time = cooldown
@@ -62,7 +69,7 @@ func pick_target() -> void:
 				target = enemy
 				target_distance = bullet_orgin.position.distance_to(target.position)
 			
-			elif bullet_orgin.position.distance_to(enemy.position) < target_distance:
+			elif hub.global_position.distance_to(enemy.global_position) < target_distance:
 				target = enemy
-				target_distance = bullet_orgin.position.distance_to(target.position)
+				target_distance = hub.global_position.distance_to(target.global_position)
 		

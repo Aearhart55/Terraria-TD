@@ -23,13 +23,17 @@ var health : float:
 @export var health_bar : HealthBar
 
 var flip : bool = false
-var main_target : StaticBody2D
+var flip_timer : Timer = Timer.new()
 
 func _ready() -> void:
 	health = max_health
 	health_bar.set_max_health(max_health)
 	
 	attack_cooldown.wait_time = attack_speed
+	
+	flip_timer.one_shot = true
+	flip_timer.wait_time = 1
+	add_child(flip_timer)
 	
 	if flip:
 		flip_sprites()
@@ -50,6 +54,9 @@ func _physics_process(delta: float) -> void:
 		idle()
 	else:
 		walk()
+	
+	if is_on_wall():
+		check_direction()
 	
 	move_and_slide()
 
@@ -83,9 +90,7 @@ func death() -> void:
 	queue_free()
 
 func check_direction() -> void:
-	if flip and main_target.position.x - position.x > 0.0:
-		flip = false
+	if flip_timer.is_stopped():
+		flip = !flip
 		flip_sprites()
-	elif not flip and main_target.position.x - position.x < 0.0:
-		flip = true
-		flip_sprites()
+		flip_timer.start()

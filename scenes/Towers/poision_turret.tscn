@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c0o7n6fv48v3l" path="res://scripts/classes/state_machine.gd" id="2_0jt32"]
 [ext_resource type="Script" uid="uid://bl8ek7e62ge17" path="res://scripts/scene scripts/turret_firing.gd" id="3_3vxxb"]
 [ext_resource type="PackedScene" uid="uid://cy1jy62aai5d2" path="res://scenes/Status/poision_status.tscn" id="4_0jt32"]
-[ext_resource type="PackedScene" uid="uid://cnl4whxxklh3i" path="res://scenes/Towers/ice_bullet.tscn" id="5_x73r6"]
+[ext_resource type="PackedScene" uid="uid://ccx5w1g0dtwxa" path="res://scenes/Towers/poision_bullet.tscn" id="5_ub6dc"]
 [ext_resource type="Script" uid="uid://b532acgqa2cj2" path="res://scripts/scene scripts/turret_idle.gd" id="6_o8m31"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
@@ -37,7 +37,7 @@ idle_state = NodePath("../Idle")
 bullet_orgin = NodePath("../../bullet_orgin")
 cooldown_timer = NodePath("Timer")
 turret = NodePath("../..")
-projectile = ExtResource("5_x73r6")
+projectile = ExtResource("5_ub6dc")
 metadata/_custom_type_script = "uid://bdn87p4ijh16i"
 
 [node name="Timer" type="Timer" parent="StateMachine/Firing" unique_id=1269816728]
