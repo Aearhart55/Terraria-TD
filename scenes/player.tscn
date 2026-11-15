@@ -336,9 +336,9 @@ fox_sprite = NodePath("free fox")
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1974559983]
 offset_left = 121.0
-offset_top = -139.0
+offset_top = -115.0
 offset_right = 203.0
-offset_bottom = -128.0
+offset_bottom = -104.0
 value = 75.0
 nine_patch_stretch = true
 stretch_margin_left = 1

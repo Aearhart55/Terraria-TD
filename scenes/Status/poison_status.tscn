@@ -43,14 +43,14 @@ func poision() -> void:
 	DH.attack(get_parent(), self)
 "
 
-[node name="poision_status" type="Node" unique_id=593649980 node_paths=PackedStringArray("tick_timer")]
+[node name="poison_status" type="Node" unique_id=593649980 node_paths=PackedStringArray("tick_timer")]
 script = SubResource("GDScript_eognm")
 damage = 0.5
 poision_color = Color(0, 0.6862745, 0, 1)
 tick_rate = 1.0
 tick_timer = NodePath("tick_timer")
 duration = 8.0
-tag = "poision_status"
+tag = "poison_status"
 metadata/_custom_type_script = "uid://d1xsyt47qlwjd"
 
 [node name="tick_timer" type="Timer" parent="." unique_id=982900514]
