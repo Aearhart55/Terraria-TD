@@ -120,6 +120,34 @@ load_path = "res://.godot/imported/Square_premade_buttons_16x16px.png-620ea28b1a
 atlas = SubResource("CompressedTexture2D_uw5bg")
 region = Rect2(160, 144, 16, 16)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wnh33"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qtxro"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ocib"]
+
+[sub_resource type="GDScript" id="GDScript_ok71f"]
+resource_name = "pause_button"
+script/source = "extends ToggleButton
+
+@export var unpaused_items : Array[Control]
+
+func _input(_event) -> void:
+	if Input.is_action_just_pressed(\"pause\"):
+		button_pressed = !button_pressed
+		
+func command() -> void:
+	get_tree().paused = button_pressed
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alvv5"]
+atlas = SubResource("CompressedTexture2D_81vvl")
+region = Rect2(192, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce6m7"]
+atlas = SubResource("CompressedTexture2D_uw5bg")
+region = Rect2(256, 144, 16, 16)
+
 [node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("slots", "tower_bar", "build_button", "money_label")]
 layout_mode = 3
 anchors_preset = 15
@@ -500,3 +528,56 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_84lt7")
 text = "$00"
+
+[node name="PauseButton" type="Button" parent="." unique_id=350906998 node_paths=PackedStringArray("press_texture", "release_texture")]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wnh33")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qtxro")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6ocib")
+toggle_mode = true
+script = SubResource("GDScript_ok71f")
+press_texture = NodePath("On")
+release_texture = NodePath("Off")
+metadata/_custom_type_script = "uid://c01wohotifwvx"
+
+[node name="On" type="TextureRect" parent="PauseButton" unique_id=1843902864]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_alvv5")
+stretch_mode = 2
+
+[node name="Off" type="TextureRect" parent="PauseButton" unique_id=583154819]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ce6m7")
+stretch_mode = 2
