@@ -24,7 +24,7 @@ signal toggle_build_mode(bool)
 @export var next_button : SceneSwitchButton
 
 var tower : Dictionary = {
-	Global.turrets.ARCHER : [SPR_TOWER_ARCHER, 10],
+	Global.turrets.ARCHER : [SPR_TOWER_ARCHER, 15],
 	Global.turrets.ICE : [ SPR_TOWER_ICE_WIZARD, 20],
 	Global.turrets.LIGHT : [SPR_TOWER_LIGHTNING_TOWER, 30],
 	Global.turrets.POISON : [SPR_TOWER_POISON_WIZARD, 25],

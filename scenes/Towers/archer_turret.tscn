@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://c0o7n6fv48v3l"
 
 [node name="Firing" type="Node" parent="StateMachine" unique_id=259666605 node_paths=PackedStringArray("attack_area", "idle_state", "bullet_orgin", "cooldown_timer", "turret")]
 script = ExtResource("3_rg7k7")
-cooldown = 0.75
+cooldown = 1.0
 damage = 2.0
 attack_area = NodePath("../../Attack Range")
 idle_state = NodePath("../Idle")

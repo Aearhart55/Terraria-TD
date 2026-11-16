@@ -1,20 +1,70 @@
 [gd_scene format=3 uid="uid://cif3mv1utsy3o"]
 
+[ext_resource type="Texture2D" uid="uid://c254b0dw0j8bj" path="res://assets/Four Skies/Sunset/01-twilight-sky.png" id="1_880d8"]
 [ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/classes/scene_switch_button.gd" id="1_uglf1"]
+[ext_resource type="Texture2D" uid="uid://cw6kcyql8qj1e" path="res://assets/Four Skies/Sunset/02-golden-sun.png" id="2_mayp0"]
+[ext_resource type="Texture2D" uid="uid://b2b5untt2pmrp" path="res://assets/Four Skies/Sunset/03-rose-clouds-and-birds.png" id="3_rrn5j"]
+[ext_resource type="Texture2D" uid="uid://cv1d2k0pcvr01" path="res://assets/Four Skies/Sunset/04-distant-mauve-peaks.png" id="4_vhnj7"]
+[ext_resource type="Texture2D" uid="uid://c2d4yegs86m07" path="res://assets/Four Skies/Sunset/05-violet-foothills.png" id="5_3u45e"]
+[ext_resource type="Texture2D" uid="uid://2gy0ryt7t0ys" path="res://assets/Four Skies/Sunset/06-pine-silhouettes.png" id="6_52b0t"]
+[ext_resource type="FontFile" uid="uid://cwi14pqrh43uo" path="res://assets/monogram.ttf" id="7_mayp0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpswu"]
-bg_color = Color(0.69297564, 0.5240266, 0.77495766, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_livli"]
+load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v86ut"]
-bg_color = Color(0.6811858, 0.46256036, 0.99664897, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy2iw"]
+atlas = SubResource("CompressedTexture2D_livli")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bygni"]
+texture = SubResource("AtlasTexture_qy2iw")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 7.0
+region_rect = Rect2(-1, -2, 18, 21)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_heu08"]
+load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odu2v"]
+atlas = SubResource("CompressedTexture2D_heu08")
+region = Rect2(16, 144, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fob0x"]
+texture = SubResource("AtlasTexture_odu2v")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 7.0
+region_rect = Rect2(-1, -2, 18, 21)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kljmp"]
+load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v6vp"]
+atlas = SubResource("CompressedTexture2D_kljmp")
+region = Rect2(16, 144, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6itw4"]
+texture = SubResource("AtlasTexture_0v6vp")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 7.0
+region_rect = Rect2(-1, -2, 18, 21)
 
 [node name="LoseScreen" type="Control" unique_id=924178237]
 layout_mode = 3
@@ -24,16 +74,99 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=123028165]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_880d8")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=486840791]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mayp0")
+expand_mode = 3
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1946930019]
+scroll_offset = Vector2(-20, 0)
+repeat_size = Vector2(360, 0)
+autoscroll = Vector2(5, 0)
+
+[node name="TextureRect3" type="TextureRect" parent="Parallax2D" unique_id=1291263225]
+custom_minimum_size = Vector2(320, 180)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 360.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rrn5j")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=302519896]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vhnj7")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=762109722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_3u45e")
+expand_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=250693398]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_52b0t")
+expand_mode = 3
+
 [node name="Label" type="Label" parent="." unique_id=851493192]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -35.0
-offset_right = 35.0
-offset_bottom = 23.0
+offset_left = -54.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 47.0
 grow_horizontal = 2
-text = "You Lose"
+theme_override_colors/font_outline_color = Color(0.21176471, 0.1882353, 0.30980393, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_mayp0")
+theme_override_font_sizes/font_size = 24
+text = "The Fortress
+Has Fallen"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -45,13 +178,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.0
-offset_top = -31.0
+offset_top = -55.0
 offset_right = 48.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_gpswu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v86ut")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gpswu")
+theme_override_fonts/font = ExtResource("7_mayp0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bygni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fob0x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6itw4")
 text = "Main Menu"
 script = ExtResource("1_uglf1")
 scene_name = "start"
@@ -70,9 +205,10 @@ offset_right = 40.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_gpswu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v86ut")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gpswu")
+theme_override_fonts/font = ExtResource("7_mayp0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bygni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fob0x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6itw4")
 text = "Try Again"
 script = ExtResource("1_uglf1")
 scene_name = "forest"

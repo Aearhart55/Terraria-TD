@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://b532acgqa2cj2" path="res://scripts/scene scripts/turret_idle.gd" id="5_syb0h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
-radius = 54.037025
+radius = 76.00658
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0y2o"]
 size = Vector2(14, 15)

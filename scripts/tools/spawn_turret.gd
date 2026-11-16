@@ -27,7 +27,7 @@ var active_turret : Global.turrets = Global.turrets.ARCHER
 enum tower_data {TURRET, COST, WIDTH}
 
 var tower : Dictionary = {
-	Global.turrets.ARCHER : [ARCHER_TURRET, 10, 6],
+	Global.turrets.ARCHER : [ARCHER_TURRET, 15, 6],
 	Global.turrets.ICE : [ICE_TURRET, 20, 6],
 	Global.turrets.LIGHT : [LIGHT_TURRET, 30, 8],
 	Global.turrets.POISON : [POISON_TURRET, 25, 6],

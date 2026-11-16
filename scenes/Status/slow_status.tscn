@@ -44,7 +44,7 @@ func _on_status_timer_timeout() -> void:
 
 [node name="slow_status" type="Node" unique_id=593649980]
 script = SubResource("GDScript_eognm")
-max_speed_percent = 0.6
+max_speed_percent = 0.8
 slow_color = Color(0.13046733, 0.39282912, 0.68348765, 1)
 duration = 3.0
 tag = "slow_status"
