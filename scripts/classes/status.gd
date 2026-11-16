@@ -6,8 +6,6 @@ class_name Status extends Node
 var status_timer : Timer = Timer.new()
 
 func start() -> void:
-	name = tag
-	
 	get_parent().active_status.append(self)
 	
 	add_child(status_timer)

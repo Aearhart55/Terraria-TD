@@ -33,6 +33,7 @@ func _ready() -> void:
 	
 	flip_timer.one_shot = true
 	flip_timer.wait_time = 1
+	flip_timer.name = "flip timer"
 	add_child(flip_timer)
 	
 	if flip:

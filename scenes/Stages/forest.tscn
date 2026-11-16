@@ -17,6 +17,13 @@
 [ext_resource type="SpriteFrames" uid="uid://cr71kqt42chll" path="res://assets/portal_anim.tres" id="13_mwfav"]
 [ext_resource type="PackedScene" uid="uid://b1jar8vyybc7a" path="res://scenes/UI/UI.tscn" id="15_3p2gp"]
 
+[sub_resource type="Resource" id="Resource_0k2v8"]
+script = ExtResource("5_nxtc6")
+wave_value = 20
+wave_gap_time = 6.0
+enemy_list = Array[int]([0, 0, 0, 0])
+metadata/_custom_type_script = "uid://ceyisnjb5psej"
+
 [sub_resource type="Resource" id="Resource_3p2gp"]
 script = ExtResource("5_nxtc6")
 wave_value = 15
@@ -34,12 +41,6 @@ wave_gap_time = 6.0
 enemy_list = Array[int]([1, 1, 1, 1, 1, 1])
 metadata/_custom_type_script = "uid://ceyisnjb5psej"
 
-[sub_resource type="Resource" id="Resource_0k2v8"]
-script = ExtResource("5_nxtc6")
-wave_value = 20
-enemy_list = Array[int]([0, 0, 0, 0])
-metadata/_custom_type_script = "uid://ceyisnjb5psej"
-
 [sub_resource type="Resource" id="Resource_ojowo"]
 script = ExtResource("5_nxtc6")
 wave_value = 20
@@ -51,7 +52,7 @@ metadata/_custom_type_script = "uid://ceyisnjb5psej"
 [sub_resource type="Resource" id="Resource_c01mt"]
 script = ExtResource("5_jlsqs")
 starting_cash = 20
-waves = Array[ExtResource("5_nxtc6")]([SubResource("Resource_3p2gp"), SubResource("Resource_o2wwt"), SubResource("Resource_0k2v8"), SubResource("Resource_ojowo")])
+waves = Array[ExtResource("5_nxtc6")]([SubResource("Resource_0k2v8"), SubResource("Resource_3p2gp"), SubResource("Resource_o2wwt"), SubResource("Resource_ojowo")])
 metadata/_custom_type_script = "uid://b8n166s2fxi2h"
 
 [node name="forest" type="Node2D" unique_id=2056424681 node_paths=PackedStringArray("hub", "player", "ui", "spawner")]

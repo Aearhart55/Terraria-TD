@@ -23,12 +23,17 @@ func attack(reciever : Node, attacker : Node, status_scenes: Array[PackedScene] 
 				reciever.add_child(new_status)
 				new_status.start()
 				active_status = reciever.active_status
-				
-		for current_status : Status in active_status:
+		
+		else:	
+			var is_matching_status : bool = false	
 			for new_status : Status in status:
-				if current_status.tag == new_status.tag:
-					current_status.reset_status()
-				else:
+				is_matching_status = false
+				for current_status : Status in active_status:
+					if current_status.tag == new_status.tag:
+						is_matching_status = true
+						current_status.reset_status()
+						
+				if not is_matching_status:
 					reciever.add_child(new_status)
 					new_status.start()
 					
