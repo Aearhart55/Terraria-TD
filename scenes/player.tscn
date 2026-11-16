@@ -326,13 +326,14 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1634747837 node_paths=PackedStringArray("health_bar", "base_sprite", "fox_sprite") groups=["ally"]]
+[node name="Player" type="CharacterBody2D" unique_id=1634747837 node_paths=PackedStringArray("health_bar", "base_sprite", "fox_sprite", "passive_heal_timer") groups=["ally"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_qhqgy")
 health_bar = NodePath("HealthBar")
 base_sprite = NodePath("AnimatedSprite2D")
 fox_sprite = NodePath("free fox")
+passive_heal_timer = NodePath("PassiveHealTimer")
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1974559983]
 offset_left = 121.0
@@ -378,3 +379,5 @@ animation = &"run"
 autoplay = "run"
 frame = 1
 frame_progress = 0.7451903
+
+[node name="PassiveHealTimer" type="Timer" parent="." unique_id=1626971002]

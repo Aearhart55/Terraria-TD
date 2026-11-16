@@ -4,11 +4,14 @@ const SPEED : float = 300.0
 const JUMP_VELOCITY : float = -300.0
 
 @export var max_health : float = 20.0
+@export var passive_heal_value : float = 0.5
+@export var passive_heal_rate : float = 1
 @export_group("Setup Nodes")
 @export var respawn_point : Node2D
 @export var health_bar : HealthBar
 @export var base_sprite : AnimatedSprite2D
 @export var fox_sprite : AnimatedSprite2D
+@export var passive_heal_timer : Timer
 
 @export_group("Debug")
 @export var immune : bool = false
@@ -39,6 +42,10 @@ func _ready() -> void:
 	# Set health to max and init healthbar
 	health = max_health
 	health_bar.set_max_health(max_health)
+	
+	#passive heal setup
+	passive_heal_timer.wait_time = passive_heal_rate
+	passive_heal_timer.timeout.connect(func(): heal(passive_heal_value))
 	
 	# Hide death animation fox
 	fox_sprite.visible = false
@@ -128,6 +135,8 @@ func take_damage(dmg : float) -> void:
 		return
 	health -= dmg
 	
+	passive_heal_timer.start()
+	
 	# stops hurt overruling dead
 	if base_sprite.animation != "death":
 		base_sprite.play("hurt")
@@ -146,3 +155,13 @@ func death() -> void:
 	fox_sprite.flip_h = base_sprite.flip_h
 	
 	
+func heal(hp : float) -> void:
+	if dead:
+		passive_heal_timer.stop()
+		return
+		
+	if health + hp >= max_health:
+		health = max_health
+		passive_heal_timer.stop()
+	else:
+		health += hp
