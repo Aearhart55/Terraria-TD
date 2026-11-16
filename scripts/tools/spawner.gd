@@ -6,6 +6,9 @@ const BIG_SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
 const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
 const DEMON_ENEMY = preload("uid://q3qjcof7sawe")
 const SKELETON_ENEMY = preload("uid://b8a73je8bi48c")
+const SLIME_ENEMY = preload("uid://b4u65kl1bg1kb")
+const BAT_ENEMY = preload("uid://nmove52utu6h")
+const KING_SLIME_ENEMY = preload("uid://cvlfy1jmgg2iv")
 
 @export_group("Setup Nodes")
 @export var hub : StaticBody2D
@@ -28,7 +31,10 @@ var enemy : Dictionary = {
 	Global.enemies.BIG_SLIME : BIG_SLIME_ENEMY,
 	Global.enemies.ZOMBIE : ZOMBIE_ENEMY,
 	Global.enemies.SKELETON : SKELETON_ENEMY,
-	Global.enemies.DEMON : DEMON_ENEMY
+	Global.enemies.DEMON : DEMON_ENEMY,
+	Global.enemies.SLIME : SLIME_ENEMY,
+	Global.enemies.BAT : BAT_ENEMY,
+	Global.enemies.KING_SLIME : KING_SLIME_ENEMY
 }
 
 func _ready() -> void:
