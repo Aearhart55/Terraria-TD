@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cif3mv1utsy3o"]
 
 [ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/classes/scene_switch_button.gd" id="1_uglf1"]
-[ext_resource type="PackedScene" uid="uid://dqsftele2ua3p" path="res://scenes/UI/start_screen.tscn" id="2_73mov"]
-[ext_resource type="PackedScene" uid="uid://b6o0l3lv1brkf" path="res://scenes/Main.tscn" id="3_lytqm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpswu"]
 bg_color = Color(0.69297564, 0.5240266, 0.77495766, 1)
@@ -56,7 +54,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_v86ut")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gpswu")
 text = "Main Menu"
 script = ExtResource("1_uglf1")
-target_scene = ExtResource("2_73mov")
+scene_name = "start"
 metadata/_custom_type_script = "uid://bb7fugtbpyd3l"
 
 [node name="TryAgainButton" type="Button" parent="." unique_id=975384929]
@@ -77,5 +75,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_v86ut")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gpswu")
 text = "Try Again"
 script = ExtResource("1_uglf1")
-target_scene = ExtResource("3_lytqm")
+scene_name = "main"
 metadata/_custom_type_script = "uid://bb7fugtbpyd3l"

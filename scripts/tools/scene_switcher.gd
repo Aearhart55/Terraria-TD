@@ -1,5 +1,11 @@
 extends Node
 
+var scene_list : Dictionary = {
+	"start" : "res://scenes/UI/start_screen.tscn",
+	"lose" : "res://scenes/UI/lose_screen.tscn",
+	"main" : "res://scenes/Main.tscn"
+}
+
 var current_scene = null
 
 func _ready() -> void:
@@ -11,7 +17,9 @@ func switch_scene(res_path : String) -> void:
 	
 func _deferred_switch_scene(res_path : String):
 	current_scene.free()
-	var new_scene = load(res_path)
+	var new_scene = load(scene_list[res_path])
 	current_scene = new_scene.instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
+	if get_tree().paused:
+		get_tree().paused = false
