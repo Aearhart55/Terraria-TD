@@ -39,7 +39,7 @@ starting_cash = 50
 waves = Array[ExtResource("5_nxtc6")]([SubResource("Resource_3p2gp"), SubResource("Resource_1se6t")])
 metadata/_custom_type_script = "uid://b8n166s2fxi2h"
 
-[node name="Main" type="Node2D" unique_id=2056424681 node_paths=PackedStringArray("hub", "player", "ui", "spawner")]
+[node name="forest" type="Node2D" unique_id=2056424681 node_paths=PackedStringArray("hub", "player", "ui", "spawner")]
 script = ExtResource("1_cvmbd")
 hub = NodePath("castle")
 player = NodePath("Player")
@@ -187,7 +187,7 @@ mouse_filter = 2
 layer = 2
 
 [node name="UI" parent="UILayer" unique_id=1254920276 node_paths=PackedStringArray("tower_placer") instance=ExtResource("15_3p2gp")]
-current_turrets = Array[int]([3, 1, 4, 2])
+current_turrets = Array[int]([1, 0, 3, 2])
 tower_placer = NodePath("../../TowerPlacer")
 
 [node name="TowerPlacer" type="Node2D" parent="." unique_id=711084640 node_paths=PackedStringArray("UI_node", "touch_sprite", "place_sprite")]

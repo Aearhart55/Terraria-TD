@@ -75,5 +75,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_v86ut")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gpswu")
 text = "Try Again"
 script = ExtResource("1_uglf1")
-scene_name = "main"
+scene_name = "forest"
 metadata/_custom_type_script = "uid://bb7fugtbpyd3l"

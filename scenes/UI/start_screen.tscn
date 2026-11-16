@@ -187,5 +187,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_fob0x")
 theme_override_styles/hover = SubResource("StyleBoxTexture_6itw4")
 text = "Start"
 script = ExtResource("1_o7i0r")
-scene_name = "main"
+scene_name = "forest"
 metadata/_custom_type_script = "uid://bb7fugtbpyd3l"

@@ -209,7 +209,7 @@ expand_margin_right = 4.0
 expand_margin_bottom = 7.0
 region_rect = Rect2(-1, -2, 18, 21)
 
-[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("slots", "tower_bar", "build_button", "money_label")]
+[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("slots", "tower_bar", "build_button", "money_label", "next_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -222,6 +222,7 @@ slots = [NodePath("TowerBar/Slot1"), NodePath("TowerBar/Slot2"), NodePath("Tower
 tower_bar = NodePath("TowerBar")
 build_button = NodePath("BuildButton")
 money_label = NodePath("Money")
+next_button = NodePath("NextStageButton")
 
 [node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872]
 layout_mode = 0
@@ -676,4 +677,24 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_0odk7")
 text = "Main Menu"
 script = ExtResource("8_e6oqk")
 scene_name = "start"
+metadata/_custom_type_script = "uid://bb7fugtbpyd3l"
+
+[node name="NextStageButton" type="Button" parent="." unique_id=825119126]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 18.0
+offset_right = 32.0
+offset_bottom = 37.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_84lt7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ob0dx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_81vvl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0odk7")
+text = "Next Stage"
+script = ExtResource("8_e6oqk")
 metadata/_custom_type_script = "uid://bb7fugtbpyd3l"

@@ -21,6 +21,7 @@ signal toggle_build_mode(bool)
 @export var tower_bar : HBoxContainer
 @export var build_button : Button
 @export var money_label : Label
+@export var next_button : SceneSwitchButton
 
 var tower : Dictionary = {
 	Global.turrets.ARCHER : [SPR_TOWER_ARCHER, 10],
@@ -35,6 +36,7 @@ func _ready() -> void:
 	build_button.toggled.connect(build_mode_toggle)
 	Global.money_update.connect(func(value : int): money_label.text = "$" + str(value))
 	money_label.text = "$" + str(Global.player_cash)
+	next_button.hide()
 	
 	for i in range(4):
 		update_slot(i)
@@ -58,6 +60,10 @@ func build_mode_toggle(toggle_state : bool) -> void:
 	money_label.visible = toggle_state
 	build_button.get_child(0).visible = toggle_state
 	build_button.get_child(1).visible = !toggle_state
+
+func level_won(next_stage : String) -> void:
+	next_button.scene_name = next_stage
+	next_button.show()
 	
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("build_mode_input"):

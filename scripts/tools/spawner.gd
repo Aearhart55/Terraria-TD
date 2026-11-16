@@ -1,5 +1,7 @@
 extends Node
 
+signal win_signal
+
 const BIG_SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
 const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
 const DEMON_ENEMY = preload("uid://q3qjcof7sawe")
@@ -104,5 +106,5 @@ func pick_spawnpoint() -> Marker2D:
 
 func _process(_delta: float) -> void:
 	if get_tree().get_nodes_in_group("enemy").is_empty() and is_final_wave:
-		print("you won")
+		win_signal.emit()
 		is_final_wave = false
