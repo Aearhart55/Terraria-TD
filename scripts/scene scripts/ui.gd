@@ -63,6 +63,8 @@ func build_mode_toggle(toggle_state : bool) -> void:
 
 func level_won(next_stage : String) -> void:
 	next_button.scene_name = next_stage
+	if next_stage == "start":
+		next_button.text = "You Won!"
 	next_button.show()
 	
 func _input(_event: InputEvent) -> void:

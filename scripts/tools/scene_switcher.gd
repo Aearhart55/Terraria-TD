@@ -3,7 +3,8 @@ extends Node
 var scene_list : Dictionary = {
 	"start" : "res://scenes/UI/start_screen.tscn",
 	"lose" : "res://scenes/UI/lose_screen.tscn",
-	"forest" : "res://scenes/Stages/forest.tscn"
+	"forest" : "res://scenes/Stages/forest.tscn",
+	"forest_two_path" : "res://scenes/Stages/forest_two_path.tscn"
 }
 
 var current_scene = null
