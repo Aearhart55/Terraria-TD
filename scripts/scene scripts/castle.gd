@@ -18,7 +18,7 @@ var health : float:
 var active_status : Array[Status]
 
 # Debug
-var immune : bool = Global.hub_immunity
+var immune : bool = Settings.hub_immunity
 
 func _ready() -> void:
 	health = max_health

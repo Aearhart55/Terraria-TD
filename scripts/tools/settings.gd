@@ -1,0 +1,13 @@
+extends Node
+
+# Settings
+var towers_preview_placement : bool = false
+
+# Debug
+var player_immunity : bool = false
+var player_infinite_jumps : bool = false
+
+var hub_immunity : bool = false
+
+var towers_no_cost : bool = false
+var towers_allow_overlap : bool = false

@@ -14,8 +14,8 @@ const JUMP_VELOCITY : float = -300.0
 @export var passive_heal_timer : Timer
 
 # Debug
-var immune : bool = Global.player_immunity
-var infinite_jump : bool = Global.player_infinite_jumps
+var immune : bool = Settings.player_immunity
+var infinite_jump : bool = Settings.player_infinite_jumps
 
 # Combat vars
 var health : float:

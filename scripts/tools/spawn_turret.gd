@@ -15,11 +15,11 @@ signal slot_changed(int)
 @export var touch_sprite : ColorRect
 @export var place_sprite : ColorRect
 
-var preview_placement : bool = Global.towers_preview_placement
+var preview_placement : bool = Settings.towers_preview_placement
 
 # Debug
-var allow_turret_overlap : bool = Global.towers_allow_overlap
-var debug_no_cost : bool = Global.towers_no_cost
+var allow_turret_overlap : bool = Settings.towers_allow_overlap
+var debug_no_cost : bool = Settings.towers_no_cost
 
 var build_mode_active :bool = true
 

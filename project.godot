@@ -22,6 +22,7 @@ config/icon="uid://mff3pak1iokh"
 SceneSwitcher="*uid://b3p1o0l0wm0vx"
 DH="*uid://5dokrhb55nbn"
 Global="*uid://blsg7artni6qa"
+Settings="*uid://dyjeoduopdg1j"
 
 [display]
 
