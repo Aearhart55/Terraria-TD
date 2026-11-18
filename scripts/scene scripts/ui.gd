@@ -22,6 +22,7 @@ signal toggle_build_mode(bool)
 @export var build_button : Button
 @export var money_label : Label
 @export var next_button : SceneSwitchButton
+@export var remaining_enemies_label : Label
 
 var tower : Dictionary = {
 	Global.turrets.ARCHER : [SPR_TOWER_ARCHER, 15],
@@ -85,3 +86,6 @@ func _pressed_slot3() -> void:
 
 func _pressed_slot4() -> void:
 	select_tower.emit(current_turrets[3])
+
+func _process(_delta: float) -> void:
+	remaining_enemies_label.text = str(get_tree().get_node_count_in_group("enemy"))

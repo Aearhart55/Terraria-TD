@@ -80,7 +80,7 @@ spawner = NodePath("spawner")
 next_stage = "forest_two_path"
 
 [node name="Backgroud" type="Node2D" parent="." unique_id=1351386758]
-z_index = -1
+z_index = -3
 position = Vector2(0, 5)
 
 [node name="background" type="Parallax2D" parent="Backgroud" unique_id=803251304]

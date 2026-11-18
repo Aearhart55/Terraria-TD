@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://kr5x5qxgcp6l" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_ice_wizard.png" id="4_84lt7"]
 [ext_resource type="Texture2D" uid="uid://mff3pak1iokh" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_poison_wizard.png" id="8_2ttv2"]
 [ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/classes/scene_switch_button.gd" id="8_e6oqk"]
+[ext_resource type="Texture2D" uid="uid://c3xbpjlmqv7a4" path="res://assets/GUI_Pack/Icons/Status_icons_16x16.png" id="8_ob0dx"]
 [ext_resource type="Script" uid="uid://fjv700keo5dj" path="res://scripts/classes/touch_button.gd" id="8_u6q2i"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ttv2"]
@@ -121,6 +122,10 @@ load_path = "res://.godot/imported/Square_premade_buttons_16x16px.png-620ea28b1a
 atlas = SubResource("CompressedTexture2D_uw5bg")
 region = Rect2(160, 144, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jed6l"]
+atlas = ExtResource("8_ob0dx")
+region = Rect2(48, 183, 9, 9)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wnh33"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qtxro"]
@@ -209,7 +214,7 @@ expand_margin_right = 4.0
 expand_margin_bottom = 7.0
 region_rect = Rect2(-1, -2, 18, 21)
 
-[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("slots", "tower_bar", "build_button", "money_label", "next_button")]
+[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("slots", "tower_bar", "build_button", "money_label", "next_button", "remaining_enemies_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -223,6 +228,7 @@ tower_bar = NodePath("TowerBar")
 build_button = NodePath("BuildButton")
 money_label = NodePath("Money")
 next_button = NodePath("NextStageButton")
+remaining_enemies_label = NodePath("RemainingEnemies")
 
 [node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872]
 layout_mode = 0
@@ -590,6 +596,28 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_84lt7")
 text = "$00"
+
+[node name="RemainingEnemies" type="Label" parent="." unique_id=640183115]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 60.0
+offset_bottom = 41.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_84lt7")
+theme_override_font_sizes/font_size = 12
+text = "00"
+
+[node name="EnemyIcon" type="TextureRect" parent="." unique_id=1860855476]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 18.0
+offset_right = 18.933332
+offset_bottom = 29.0
+texture = SubResource("AtlasTexture_jed6l")
+stretch_mode = 5
 
 [node name="PauseOverlay" type="ColorRect" parent="." unique_id=852632679]
 visible = false
