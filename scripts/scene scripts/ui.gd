@@ -57,7 +57,6 @@ func update_slot(i : int) -> void:
 func build_mode_toggle(toggle_state : bool) -> void:
 	toggle_build_mode.emit(toggle_state)
 	tower_bar.visible = toggle_state
-	money_label.visible = toggle_state
 	build_button.get_child(0).visible = toggle_state
 	build_button.get_child(1).visible = !toggle_state
 

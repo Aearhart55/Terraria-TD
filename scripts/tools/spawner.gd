@@ -1,6 +1,7 @@
 extends Node
 
 signal win_signal
+signal wave_finished_signal
 
 const BIG_SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
 const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
@@ -79,6 +80,10 @@ func wave_gap_timeout() -> void:
 
 func spawn_enemy(pos : Marker2D) -> void:
 	if remaining_enemies.is_empty():
+		if current_wave.force_next_wave:
+			pass
+		else:
+			await wave_finished_signal
 		Global.player_cash += current_wave.wave_value
 		wave_gap_timer.start()
 		return
@@ -111,6 +116,9 @@ func pick_spawnpoint() -> Marker2D:
 	return spawn_point
 
 func _process(_delta: float) -> void:
-	if get_tree().get_nodes_in_group("enemy").is_empty() and is_final_wave:
-		win_signal.emit()
-		is_final_wave = false
+	if get_tree().get_nodes_in_group("enemy").is_empty():
+		if is_final_wave:
+			win_signal.emit()
+			is_final_wave = false
+		elif remaining_enemies.is_empty():
+			wave_finished_signal.emit()

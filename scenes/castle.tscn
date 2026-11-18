@@ -54,8 +54,8 @@ atlas = ExtResource("3_njhjj")
 region = Rect2(0, 75, 12, 5)
 
 [node name="castle" type="StaticBody2D" unique_id=1916610260 node_paths=PackedStringArray("health_bar", "sprite", "passive_heal_timer") groups=["ally"]]
-collision_layer = 5
-collision_mask = 5
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_0ysgy")
 health_bar = NodePath("HealthBar")
 sprite = NodePath("AnimatedSprite2D")

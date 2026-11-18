@@ -17,8 +17,8 @@ var health : float:
 
 var active_status : Array[Status]
 
-@export_group("Debug")
-@export var immune : bool = false
+# Debug
+var immune : bool = Global.hub_immunity
 
 func _ready() -> void:
 	health = max_health

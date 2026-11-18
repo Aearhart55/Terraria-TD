@@ -12,13 +12,14 @@ signal slot_changed(int)
 @export var UI_node : UI
 
 @export_group("preview")
-@export var preview_placement : bool
 @export var touch_sprite : ColorRect
 @export var place_sprite : ColorRect
 
-@export_group("debug")
-@export var allow_turret_overlap : bool = false
-@export var debug_no_cost : bool = false
+var preview_placement : bool = Global.towers_preview_placement
+
+# Debug
+var allow_turret_overlap : bool = Global.towers_allow_overlap
+var debug_no_cost : bool = Global.towers_no_cost
 
 var build_mode_active :bool = true
 

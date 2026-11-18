@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED : float = 300.0
+const SPEED : float = 200.0
 const JUMP_VELOCITY : float = -300.0
 
 @export var max_health : float = 20.0
@@ -13,9 +13,9 @@ const JUMP_VELOCITY : float = -300.0
 @export var fox_sprite : AnimatedSprite2D
 @export var passive_heal_timer : Timer
 
-@export_group("Debug")
-@export var immune : bool = false
-@export var infinite_jump : bool = false
+# Debug
+var immune : bool = Global.player_immunity
+var infinite_jump : bool = Global.player_infinite_jumps
 
 # Combat vars
 var health : float:
