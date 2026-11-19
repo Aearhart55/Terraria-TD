@@ -1,7 +1,6 @@
 extends Node
 
 signal win_signal
-signal wave_finished_signal
 
 const BIG_SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
 const ZOMBIE_ENEMY = preload("uid://cxkie05ud6m2q")
@@ -27,6 +26,8 @@ var wave_type : Global.wave_types
 var spawn_point_index : int
 var is_new_wave : bool
 var is_final_wave : bool = false
+var is_wave_advanced : bool = false
+var wave_advance_bonus : float = 1.1
 
 var enemy : Dictionary = {
 	Global.enemies.BIG_SLIME : BIG_SLIME_ENEMY,
@@ -40,6 +41,7 @@ var enemy : Dictionary = {
 
 func _ready() -> void:
 	Global.player_cash = level.starting_cash
+	Signals.advance_wave.connect(advance_wave)
 	
 	add_child(enemy_gap_timer)
 	add_child(wave_gap_timer)
@@ -63,6 +65,8 @@ func change_wave() -> void:
 	if waves.is_empty():
 		is_final_wave = true
 		return
+	elif waves.size() == 1:
+		Signals.final_wave.emit()
 	current_wave = waves[0]
 	wave_type = current_wave.wave_type
 	spawn_point_index = 0
@@ -83,7 +87,7 @@ func spawn_enemy(pos : Marker2D) -> void:
 		if current_wave.force_next_wave:
 			pass
 		else:
-			await wave_finished_signal
+			await Signals.wave_finished
 		Global.player_cash += current_wave.wave_value
 		wave_gap_timer.start()
 		return
@@ -121,4 +125,14 @@ func _process(_delta: float) -> void:
 			win_signal.emit()
 			is_final_wave = false
 		elif remaining_enemies.is_empty():
-			wave_finished_signal.emit()
+			Signals.wave_finished.emit()
+
+func advance_wave() -> void:
+	if is_final_wave or is_wave_advanced:
+		return
+	
+	@warning_ignore("narrowing_conversion")
+	current_wave.wave_value *= wave_advance_bonus
+	enemy_gap_timer.wait_time = 0.2
+	wave_gap_timer.wait_time = 1
+	current_wave.force_next_wave = true

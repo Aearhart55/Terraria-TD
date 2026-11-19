@@ -154,7 +154,6 @@ func death() -> void:
 	fox_sprite.visible = true
 	fox_sprite.flip_h = base_sprite.flip_h
 	
-	
 func heal(hp : float) -> void:
 	if dead:
 		passive_heal_timer.stop()

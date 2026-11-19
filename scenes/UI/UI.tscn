@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bcotwe2k8grdn" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_archer.png" id="3_wgnrc"]
 [ext_resource type="Texture2D" uid="uid://kr5x5qxgcp6l" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_ice_wizard.png" id="4_84lt7"]
 [ext_resource type="Texture2D" uid="uid://mff3pak1iokh" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_poison_wizard.png" id="8_2ttv2"]
+[ext_resource type="Texture2D" uid="uid://ciutpi3jkiekq" path="res://assets/GUI_Pack/Icons/Menu_icons_16x16.png" id="8_81vvl"]
 [ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/classes/scene_switch_button.gd" id="8_e6oqk"]
 [ext_resource type="Texture2D" uid="uid://c3xbpjlmqv7a4" path="res://assets/GUI_Pack/Icons/Status_icons_16x16.png" id="8_ob0dx"]
 [ext_resource type="Script" uid="uid://fjv700keo5dj" path="res://scripts/classes/touch_button.gd" id="8_u6q2i"]
@@ -121,6 +122,48 @@ load_path = "res://.godot/imported/Square_premade_buttons_16x16px.png-620ea28b1a
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouxww"]
 atlas = SubResource("CompressedTexture2D_uw5bg")
 region = Rect2(160, 144, 16, 16)
+
+[sub_resource type="GDScript" id="GDScript_e6oqk"]
+resource_name = "interact_button"
+script/source = "extends TouchButton
+
+func _process(_delta: float) -> void:
+	if Signals.player_interact.has_connections():
+		show()
+	else:
+		hide()
+
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed(\"interact\"):
+		Signals.player_interact.emit()
+
+func _on_button_down() -> void:
+	var interact := InputEventAction.new()
+	interact.action = \"interact\"
+	interact.pressed = true
+	Input.parse_input_event(interact)
+	press_texture.visible = true
+	release_texture.visible = false
+
+func _on_button_up() -> void:
+	var interact := InputEventAction.new()
+	interact.action = \"interact\"
+	interact.pressed = false
+	Input.parse_input_event(interact)
+	press_texture.visible = false
+	release_texture.visible = true
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jfcp0"]
+load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f4272841d15a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok71f"]
+atlas = SubResource("CompressedTexture2D_jfcp0")
+region = Rect2(0, 146, 7, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6oqk"]
+atlas = ExtResource("8_81vvl")
+region = Rect2(16, 146, 7, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jed6l"]
 atlas = ExtResource("8_ob0dx")
@@ -585,6 +628,56 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_ouxww")
 stretch_mode = 2
+
+[node name="Interact" type="Button" parent="." unique_id=353546836 node_paths=PackedStringArray("press_texture", "release_texture")]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 112.0
+offset_right = 304.0
+offset_bottom = 134.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jed6l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_40ve4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8txej")
+script = SubResource("GDScript_e6oqk")
+press_texture = NodePath("On")
+release_texture = NodePath("Off")
+action_name = &"interact"
+metadata/_custom_type_script = "uid://fjv700keo5dj"
+
+[node name="On" type="TextureRect" parent="Interact" unique_id=1137206507]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ok71f")
+stretch_mode = 5
+
+[node name="Off" type="TextureRect" parent="Interact" unique_id=1207403132]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_e6oqk")
+stretch_mode = 5
 
 [node name="Money" type="Label" parent="." unique_id=1560973851]
 layout_mode = 0

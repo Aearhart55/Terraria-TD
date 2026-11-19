@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dfqy4k1c7d6cq" path="res://assets/Itch Towers/Towers/Castle/spr_castle_red.png" id="1_bly62"]
 [ext_resource type="Texture2D" uid="uid://cb4q2h3l404ed" path="res://assets/GUI_Pack/LifeBars/Round_LBs_4x8.png" id="3_njhjj"]
 [ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/components/health_bar.gd" id="3_rjj26"]
+[ext_resource type="FontFile" uid="uid://cwi14pqrh43uo" path="res://assets/monogram.ttf" id="5_jxdab"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jed6l"]
 radius = 27.0
@@ -53,8 +54,23 @@ region = Rect2(16, 75, 12, 5)
 atlas = ExtResource("3_njhjj")
 region = Rect2(0, 75, 12, 5)
 
+[sub_resource type="GDScript" id="GDScript_jxdab"]
+resource_name = "castle_interact"
+script/source = "extends InteractionArea
+
+func _ready() -> void:
+	super._ready()
+	Signals.final_wave.connect(disable)
+
+func interaction() -> void:
+	Signals.advance_wave.emit()
+	Signals.wave_finished.emit()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jed6l"]
+
 [node name="castle" type="StaticBody2D" unique_id=1916610260 node_paths=PackedStringArray("health_bar", "sprite", "passive_heal_timer") groups=["ally"]]
-collision_layer = 4
+collision_layer = 36
 collision_mask = 4
 script = ExtResource("1_0ysgy")
 health_bar = NodePath("HealthBar")
@@ -90,3 +106,38 @@ always_show = true
 metadata/_custom_type_script = "uid://ik158wrlh402"
 
 [node name="PassiveHealTimer" type="Timer" parent="." unique_id=1683722632]
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=676200295 node_paths=PackedStringArray("connected_nodes")]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = SubResource("GDScript_jxdab")
+connected_nodes = [NodePath("../AdvanceWaveLabel")]
+metadata/_custom_type_script = "uid://da0ijlksdjx8w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=429417223]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_jed6l")
+debug_color = Color(0.5997561, 0.3950797, 0.9479503, 0.41960785)
+
+[node name="AdvanceWaveLabel" type="Label" parent="." unique_id=244277347]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 18.0
+offset_right = 20.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -4
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_jxdab")
+theme_override_font_sizes/font_size = 14
+text = "Advance
+Wave"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -326,7 +326,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1634747837 node_paths=PackedStringArray("health_bar", "base_sprite", "fox_sprite", "passive_heal_timer") groups=["ally"]]
+[node name="Player" type="CharacterBody2D" unique_id=1634747837 node_paths=PackedStringArray("health_bar", "base_sprite", "fox_sprite", "passive_heal_timer") groups=["ally", "player"]]
 collision_layer = 4
 script = ExtResource("1_qhqgy")
 max_health = 10.0

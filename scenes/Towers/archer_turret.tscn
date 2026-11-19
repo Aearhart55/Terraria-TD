@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bl8ek7e62ge17" path="res://scripts/scene scripts/turret_firing.gd" id="3_rg7k7"]
 [ext_resource type="PackedScene" uid="uid://51u0itlpb3y4" path="res://scenes/Towers/archer_bullet.tscn" id="4_5sbbs"]
 [ext_resource type="Script" uid="uid://b532acgqa2cj2" path="res://scripts/scene scripts/turret_idle.gd" id="5_ho6nr"]
+[ext_resource type="Script" uid="uid://da0ijlksdjx8w" path="res://scripts/components/interaction_area.gd" id="6_8gtfp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
 radius = 101.0
@@ -56,9 +57,11 @@ shape = SubResource("CircleShape2D_jed6l")
 
 [node name="InteractionRange" type="Area2D" parent="." unique_id=2026434843]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 4
 input_pickable = false
 monitoring = false
+monitorable = false
+script = ExtResource("6_8gtfp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange" unique_id=1606832444]
 position = Vector2(0, -5)

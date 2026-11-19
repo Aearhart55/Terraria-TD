@@ -156,7 +156,7 @@ tile_set = ExtResource("2_jlsqs")
 
 [node name="Player" parent="." unique_id=1634747837 node_paths=PackedStringArray("respawn_point") instance=ExtResource("3_vcsgt")]
 position = Vector2(177, 157)
-respawn_point = NodePath("../Respawn Point")
+respawn_point = NodePath("../castle")
 
 [node name="spawner" parent="." unique_id=566907230 node_paths=PackedStringArray("hub", "spawn_points") instance=ExtResource("5_vcsgt")]
 hub = NodePath("../castle")
@@ -220,6 +220,3 @@ script = ExtResource("1_0bbpv")
 UI_node = NodePath("../UILayer/UI")
 touch_sprite = NodePath("../touch")
 place_sprite = NodePath("../place")
-
-[node name="Respawn Point" type="Marker2D" parent="." unique_id=744064692]
-position = Vector2(244, 69)
