@@ -66,7 +66,7 @@ expand_margin_right = 4.0
 expand_margin_bottom = 7.0
 region_rect = Rect2(-1, -2, 18, 21)
 
-[node name="LoseScreen" type="Control" unique_id=924178237]
+[node name="lose" type="Control" unique_id=924178237]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,5 +211,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_fob0x")
 theme_override_styles/hover = SubResource("StyleBoxTexture_6itw4")
 text = "Try Again"
 script = ExtResource("1_uglf1")
-scene_name = "forest"
+scene_name = "retry"
 metadata/_custom_type_script = "uid://bb7fugtbpyd3l"

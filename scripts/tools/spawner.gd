@@ -71,6 +71,7 @@ func change_wave() -> void:
 	wave_type = current_wave.wave_type
 	spawn_point_index = 0
 	is_new_wave = true
+	is_wave_advanced = false
 	enemy_gap_timer.wait_time = current_wave.enemy_gap_time
 	wave_gap_timer.wait_time = current_wave.wave_gap_time
 	remaining_enemies = current_wave.enemy_list
@@ -136,3 +137,4 @@ func advance_wave() -> void:
 	enemy_gap_timer.wait_time = 0.2
 	wave_gap_timer.wait_time = 1
 	current_wave.force_next_wave = true
+	is_wave_advanced = true

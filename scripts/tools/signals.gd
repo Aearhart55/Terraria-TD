@@ -10,3 +10,5 @@ signal wave_finished
 signal final_wave
 signal level_won
 signal advance_wave
+
+signal level_lost

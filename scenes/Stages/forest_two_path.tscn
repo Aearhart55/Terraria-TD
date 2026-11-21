@@ -65,7 +65,7 @@ starting_cash = 30
 waves = Array[ExtResource("12_gbgnd")]([SubResource("Resource_hkd5j"), SubResource("Resource_7cki3"), SubResource("Resource_k7t3n"), SubResource("Resource_muqn1"), SubResource("Resource_ssqxa")])
 metadata/_custom_type_script = "uid://b8n166s2fxi2h"
 
-[node name="forestTwoPath" type="Node2D" unique_id=2056424681 node_paths=PackedStringArray("hub", "player", "ui", "spawner")]
+[node name="forest_two_path" type="Node2D" unique_id=2056424681 node_paths=PackedStringArray("hub", "player", "ui", "spawner")]
 script = ExtResource("1_70k4q")
 hub = NodePath("castle")
 player = NodePath("Player")

@@ -38,7 +38,7 @@ func take_damage(dmg : float) -> void:
 	sprite.modulate = Color.WHITE
 
 func death() -> void:
-	SceneSwitcher.switch_scene("lose")
+	Signals.level_lost.emit()
 
 func heal(hp : float) -> void:
 	if health + hp >= max_health:

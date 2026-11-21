@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://b2ppxeo3ns3xf"]
+
+[ext_resource type="Texture2D" uid="uid://c58bs3nqo3cg0" path="res://assets/Four Skies/Noon/01-clear-blue-sky.png" id="1_4bg0q"]
+[ext_resource type="Texture2D" uid="uid://cwk4n2ey7vepl" path="res://assets/Four Skies/Noon/02-noon-sun.png" id="2_sjxpk"]
+[ext_resource type="Texture2D" uid="uid://cyulsai0ni6ow" path="res://assets/Four Skies/Noon/03-white-clouds-and-birds.png" id="3_lxgrf"]
+[ext_resource type="Texture2D" uid="uid://bq7h1sefcthoh" path="res://assets/Four Skies/Noon/04-hazy-distant-peaks.png" id="4_hakkr"]
+[ext_resource type="Texture2D" uid="uid://ct50ab88kqh4h" path="res://assets/Four Skies/Noon/05-green-foothills.png" id="5_f12xj"]
+[ext_resource type="Texture2D" uid="uid://8apq1wg6jvg2" path="res://assets/Four Skies/Noon/06-sunlit-pine-forest.png" id="6_pmil7"]
+[ext_resource type="FontFile" uid="uid://cwi14pqrh43uo" path="res://assets/monogram.ttf" id="7_itics"]
+[ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/classes/scene_switch_button.gd" id="8_ljtkw"]
+[ext_resource type="Texture2D" uid="uid://c7ty51brpqlxy" path="res://assets/GUI_Pack/Buttons/Square_premade_buttons_16x16px.png" id="8_sjxpk"]
+
+[sub_resource type="GDScript" id="GDScript_4bg0q"]
+resource_name = "level_box"
+script/source = "extends Control
+
+const DEFAULT_BUTTON = preload(\"uid://b4nfi7bk1rnt2\")
+const DEFAULT_BUTTON_PRESSED = preload(\"uid://wy71eme0cfoy\")
+const MONOGRAM = preload(\"uid://cwi14pqrh43uo\")
+
+func _ready() -> void:
+	for level in SceneSwitcher.scene_list:
+		match level:
+			\"start\":
+				pass
+			\"lose\":
+				pass
+			\"retry\":
+				pass
+			\"level_select_screen\":
+				pass
+			_:
+				var new_level = SceneSwitchButton.new()
+				new_level.scene_name = level
+				new_level.text = level
+				new_level.add_theme_font_override(\"font\", MONOGRAM)
+				new_level.add_theme_stylebox_override(\"normal\", DEFAULT_BUTTON)
+				new_level.add_theme_stylebox_override(\"hover\", DEFAULT_BUTTON_PRESSED)
+				new_level.add_theme_stylebox_override(\"pressed\", DEFAULT_BUTTON_PRESSED)
+				add_child(new_level)
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjxpk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxgrf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hakkr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bg0q"]
+atlas = ExtResource("8_sjxpk")
+region = Rect2(352, 144, 16, 16)
+
+[node name="level_select_screen" type="Control" unique_id=117731809]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1992649365]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4bg0q")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=920622252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_sjxpk")
+expand_mode = 3
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=348345495]
+scroll_offset = Vector2(-20, 0)
+repeat_size = Vector2(360, 0)
+autoscroll = Vector2(5, 0)
+
+[node name="TextureRect3" type="TextureRect" parent="Parallax2D" unique_id=770046762]
+custom_minimum_size = Vector2(320, 180)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 360.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lxgrf")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=347131268]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hakkr")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=400164]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_f12xj")
+expand_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=355216894]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pmil7")
+expand_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1242123616]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -59.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/scroll_hint_vertical_color = Color(0.15294118, 0.34901962, 0.30588236, 1)
+theme_override_constants/scrollbar_h_separation = 8
+horizontal_scroll_mode = 0
+scroll_hint_mode = 3
+
+[node name="LevelBox" type="VBoxContainer" parent="ScrollContainer" unique_id=216609566]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+alignment = 1
+script = SubResource("GDScript_4bg0q")
+
+[node name="Label" type="Label" parent="." unique_id=1290525825]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.5
+offset_right = 63.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9490196, 0.9843137, 0.99215686, 1)
+theme_override_colors/font_outline_color = Color(0.26666668, 0.62352943, 0.8509804, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_itics")
+theme_override_font_sizes/font_size = 28
+text = "Level Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="." unique_id=1096488434]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -86.0
+offset_right = -132.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_itics")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sjxpk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lxgrf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hakkr")
+icon = SubResource("AtlasTexture_4bg0q")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("8_ljtkw")
+scene_name = "start"
+metadata/_custom_type_script = "uid://bb7fugtbpyd3l"

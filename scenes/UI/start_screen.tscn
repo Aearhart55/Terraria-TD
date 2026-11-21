@@ -12,12 +12,12 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_livli"]
 load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qy2iw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_livli"]
 atlas = SubResource("CompressedTexture2D_livli")
 region = Rect2(0, 144, 16, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bygni"]
-texture = SubResource("AtlasTexture_qy2iw")
+texture = SubResource("AtlasTexture_livli")
 texture_margin_left = 2.0
 texture_margin_top = 2.0
 texture_margin_right = 2.0
@@ -31,12 +31,12 @@ region_rect = Rect2(-1, -2, 18, 21)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_heu08"]
 load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_odu2v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy2iw"]
 atlas = SubResource("CompressedTexture2D_heu08")
 region = Rect2(16, 144, 16, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fob0x"]
-texture = SubResource("AtlasTexture_odu2v")
+texture = SubResource("AtlasTexture_qy2iw")
 texture_margin_left = 2.0
 texture_margin_top = 3.0
 texture_margin_right = 2.0
@@ -50,12 +50,12 @@ region_rect = Rect2(-1, -2, 18, 21)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kljmp"]
 load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0v6vp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bygni"]
 atlas = SubResource("CompressedTexture2D_kljmp")
 region = Rect2(16, 144, 16, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6itw4"]
-texture = SubResource("AtlasTexture_0v6vp")
+texture = SubResource("AtlasTexture_bygni")
 texture_margin_left = 2.0
 texture_margin_top = 3.0
 texture_margin_right = 2.0
@@ -66,7 +66,7 @@ expand_margin_right = 4.0
 expand_margin_bottom = 7.0
 region_rect = Rect2(-1, -2, 18, 21)
 
-[node name="StartScreen" type="Control" unique_id=117731809]
+[node name="start" type="Control" unique_id=117731809]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -177,15 +177,40 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -26.5
-offset_top = -15.5
+offset_top = -53.0
 offset_right = 26.5
-offset_bottom = 15.5
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_qy2iw")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_bygni")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_fob0x")
 theme_override_styles/hover = SubResource("StyleBoxTexture_6itw4")
 text = "Start"
 script = ExtResource("1_o7i0r")
 scene_name = "forest"
+metadata/_custom_type_script = "uid://bb7fugtbpyd3l"
+
+[node name="SceneSwitchButton2" type="Button" parent="." unique_id=634212930]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -13.0
+offset_right = 26.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_qy2iw")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_bygni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fob0x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6itw4")
+text = "Levels"
+script = ExtResource("1_o7i0r")
+scene_name = "level_select_screen"
 metadata/_custom_type_script = "uid://bb7fugtbpyd3l"

@@ -1,0 +1,20 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://b4nfi7bk1rnt2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_livli"]
+load_path = "res://.godot/imported/Square_Buttons_16x16px.png-c705aff990883073c650b23ccf94c8fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy2iw"]
+atlas = SubResource("CompressedTexture2D_livli")
+region = Rect2(0, 144, 16, 16)
+
+[resource]
+texture = SubResource("AtlasTexture_qy2iw")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 7.0
+region_rect = Rect2(-1, -2, 18, 21)
