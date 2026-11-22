@@ -2,7 +2,7 @@ extends Node
 
 signal money_update(int)
 
-enum wave_types {RANDOM, BURST, EVEN}
+enum wave_types {RANDOM, BURST, EVEN, ONE}
 enum enemies {BIG_SLIME, ZOMBIE, SKELETON, DEMON, SLIME, BAT, KING_SLIME}
 enum turrets {LIGHT, ARCHER, ICE, POISON, SLIME}
 

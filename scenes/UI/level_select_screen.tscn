@@ -33,6 +33,7 @@ func _ready() -> void:
 				var new_level = SceneSwitchButton.new()
 				new_level.scene_name = level
 				new_level.text = level
+				new_level.mouse_filter = Control.MOUSE_FILTER_PASS
 				new_level.add_theme_font_override(\"font\", MONOGRAM)
 				new_level.add_theme_stylebox_override(\"normal\", DEFAULT_BUTTON)
 				new_level.add_theme_stylebox_override(\"hover\", DEFAULT_BUTTON_PRESSED)
@@ -149,6 +150,7 @@ grow_vertical = 2
 theme_override_colors/scroll_hint_vertical_color = Color(0.15294118, 0.34901962, 0.30588236, 1)
 theme_override_constants/scrollbar_h_separation = 8
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 scroll_hint_mode = 3
 
 [node name="LevelBox" type="VBoxContainer" parent="ScrollContainer" unique_id=216609566]

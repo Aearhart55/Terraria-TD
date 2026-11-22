@@ -117,7 +117,10 @@ func pick_spawnpoint() -> Marker2D:
 				spawn_point_index = 0
 			spawn_point = spawn_points[spawn_point_index]
 			spawn_point_index += 1
-			
+		Global.wave_types.ONE:
+			if current_wave.portal_index >= spawn_points.size():
+				current_wave.portal_index = spawn_points.size() - 1
+			spawn_point = spawn_points[current_wave.portal_index]
 	return spawn_point
 
 func _process(_delta: float) -> void:

@@ -338,6 +338,9 @@ fox_sprite = NodePath("free fox")
 passive_heal_timer = NodePath("PassiveHealTimer")
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1974559983]
+modulate = Color(1, 1, 1, 0.67058825)
+z_index = 2
+z_as_relative = false
 offset_left = 121.0
 offset_top = -120.0
 offset_right = 203.0

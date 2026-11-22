@@ -720,7 +720,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.11764706)
+color = Color(0, 0, 0, 0.49411765)
 
 [node name="PauseButton" type="Button" parent="." unique_id=350906998 node_paths=PackedStringArray("unpaused_items", "press_texture", "release_texture")]
 process_mode = 3
@@ -731,6 +731,7 @@ anchor_right = 1.0
 offset_left = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wnh33")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_qtxro")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_6ocib")

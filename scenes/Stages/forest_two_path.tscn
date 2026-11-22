@@ -71,6 +71,7 @@ hub = NodePath("castle")
 player = NodePath("Player")
 ui = NodePath("UILayer/UI")
 spawner = NodePath("spawner")
+next_stage = "forest_cave"
 
 [node name="Backgroud" type="Node2D" parent="." unique_id=1351386758]
 z_index = -3

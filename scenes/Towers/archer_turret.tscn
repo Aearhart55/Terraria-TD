@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://da0ijlksdjx8w" path="res://scripts/components/interaction_area.gd" id="6_8gtfp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jed6l"]
-radius = 101.0
+radius = 91.02197
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sbbs"]
 size = Vector2(14, 14)

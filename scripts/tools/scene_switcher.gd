@@ -3,10 +3,16 @@ extends Node
 var scene_list : Dictionary = {
 	"start" : "res://scenes/UI/start_screen.tscn",
 	"lose" : "res://scenes/UI/lose_screen.tscn",
+	"retry" : "res://scenes/Stages/forest.tscn",
+	"level_select_screen" : "res://scenes/UI/level_select_screen.tscn",
 	"forest" : "res://scenes/Stages/forest.tscn",
 	"forest_two_path" : "res://scenes/Stages/forest_two_path.tscn",
-	"retry" : "res://scenes/Stages/forest.tscn",
-	"level_select_screen" : "res://scenes/UI/level_select_screen.tscn"
+	"forest_cave" : "res://scenes/Stages/forest_cave.tscn",
+	"forest1" : "res://scenes/Stages/forest.tscn",
+	"forest2" : "res://scenes/Stages/forest.tscn",
+	"forest3" : "res://scenes/Stages/forest.tscn",
+	"forest4" : "res://scenes/Stages/forest.tscn",
+	"forest5" : "res://scenes/Stages/forest.tscn"
 }
 
 var current_scene = null
