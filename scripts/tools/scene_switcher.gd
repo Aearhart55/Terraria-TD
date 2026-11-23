@@ -7,7 +7,8 @@ var scene_list : Dictionary = {
 	"level_select_screen" : "res://scenes/UI/level_select_screen.tscn",
 	"forest" : "res://scenes/Stages/forest.tscn",
 	"forest_two_path" : "res://scenes/Stages/forest_two_path.tscn",
-	"forest_cave" : "res://scenes/Stages/forest_cave.tscn"
+	"forest_cave" : "res://scenes/Stages/forest_cave.tscn",
+	"options_screen" : "res://scenes/UI/options_screen.tscn",
 }
 
 var current_scene = null

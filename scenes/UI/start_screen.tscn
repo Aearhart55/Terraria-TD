@@ -214,3 +214,26 @@ text = "Levels"
 script = ExtResource("1_o7i0r")
 scene_name = "level_select_screen"
 metadata/_custom_type_script = "uid://bb7fugtbpyd3l"
+
+[node name="SceneSwitchButton3" type="Button" parent="." unique_id=2038521985]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.5
+offset_top = -63.0
+offset_right = 28.5
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_qy2iw")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_bygni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fob0x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6itw4")
+text = "Options"
+script = ExtResource("1_o7i0r")
+scene_name = "options_screen"
+metadata/_custom_type_script = "uid://bb7fugtbpyd3l"

@@ -29,6 +29,8 @@ func _ready() -> void:
 				pass
 			\"level_select_screen\":
 				pass
+			\"options_screen\":
+				pass
 			_:
 				var new_level = SceneSwitchButton.new()
 				new_level.scene_name = level

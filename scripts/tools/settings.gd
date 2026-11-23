@@ -9,5 +9,5 @@ var player_infinite_jumps : bool = false
 
 var hub_immunity : bool = false
 
-var towers_no_cost : bool = true
+var towers_no_cost : bool = false
 var towers_allow_overlap : bool = false

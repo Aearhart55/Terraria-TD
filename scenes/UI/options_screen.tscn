@@ -1,0 +1,360 @@
+[gd_scene format=3 uid="uid://djdccxw8qs0ro"]
+
+[ext_resource type="Texture2D" uid="uid://c58bs3nqo3cg0" path="res://assets/Four Skies/Noon/01-clear-blue-sky.png" id="1_f30g4"]
+[ext_resource type="Texture2D" uid="uid://cwk4n2ey7vepl" path="res://assets/Four Skies/Noon/02-noon-sun.png" id="2_1usag"]
+[ext_resource type="Texture2D" uid="uid://cyulsai0ni6ow" path="res://assets/Four Skies/Noon/03-white-clouds-and-birds.png" id="3_5iqwq"]
+[ext_resource type="Texture2D" uid="uid://bq7h1sefcthoh" path="res://assets/Four Skies/Noon/04-hazy-distant-peaks.png" id="4_ggq68"]
+[ext_resource type="Texture2D" uid="uid://ct50ab88kqh4h" path="res://assets/Four Skies/Noon/05-green-foothills.png" id="5_vxde3"]
+[ext_resource type="Texture2D" uid="uid://8apq1wg6jvg2" path="res://assets/Four Skies/Noon/06-sunlit-pine-forest.png" id="6_7jxrr"]
+[ext_resource type="FontFile" uid="uid://cwi14pqrh43uo" path="res://assets/monogram.ttf" id="7_5aq8b"]
+[ext_resource type="Texture2D" uid="uid://c7ty51brpqlxy" path="res://assets/GUI_Pack/Buttons/Square_premade_buttons_16x16px.png" id="8_byk26"]
+[ext_resource type="Texture2D" uid="uid://bgbkxkhw56wwj" path="res://assets/GUI_Pack/Buttons/Square_Buttons_16x16px.png" id="9_1usag"]
+[ext_resource type="Script" uid="uid://bb7fugtbpyd3l" path="res://scripts/classes/scene_switch_button.gd" id="9_ayrin"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4otf"]
+bg_color = Color(0, 0, 0, 0.15686275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jed6l"]
+atlas = ExtResource("8_byk26")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_damrv"]
+atlas = ExtResource("9_1usag")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl30m"]
+atlas = ExtResource("8_byk26")
+region = Rect2(48, 144, 16, 16)
+
+[sub_resource type="GDScript" id="GDScript_dl30m"]
+resource_name = "Preview Towers"
+script/source = "extends CheckBox
+
+func _enter_tree() -> void:
+	button_pressed = Settings.towers_preview_placement
+
+func _on_toggled(_toggled_on: bool) -> void:
+	Settings.towers_preview_placement = button_pressed
+"
+
+[sub_resource type="GDScript" id="GDScript_livli"]
+resource_name = "debug options"
+script/source = "extends CheckButton
+
+func _ready() -> void:
+	if button_pressed:
+		for option in get_tree().get_nodes_in_group(\"debug_setting\"):
+			option.show()
+	else:
+		for option in get_tree().get_nodes_in_group(\"debug_setting\"):
+			option.hide()
+
+func _on_toggled(_toggled_on: bool) -> void:
+	if button_pressed:
+		for option in get_tree().get_nodes_in_group(\"debug_setting\"):
+			option.show()
+	else:
+		for option in get_tree().get_nodes_in_group(\"debug_setting\"):
+			option.hide()
+"
+
+[sub_resource type="GDScript" id="GDScript_f30g4"]
+resource_name = "player immune"
+script/source = "extends CheckBox
+
+func _enter_tree() -> void:
+	button_pressed = Settings.player_immunity
+
+func _on_toggled(_toggled_on: bool) -> void:
+	Settings.player_immunity = button_pressed
+"
+
+[sub_resource type="GDScript" id="GDScript_1usag"]
+resource_name = "player infinite jumps"
+script/source = "extends CheckBox
+
+func _enter_tree() -> void:
+	button_pressed = Settings.player_infinite_jumps
+
+func _on_toggled(_toggled_on: bool) -> void:
+	Settings.player_infinite_jumps = button_pressed
+"
+
+[sub_resource type="GDScript" id="GDScript_5iqwq"]
+resource_name = "hub immunity"
+script/source = "extends CheckBox
+
+func _enter_tree() -> void:
+	button_pressed = Settings.hub_immunity
+
+func _on_toggled(_toggled_on: bool) -> void:
+	Settings.hub_immunity = button_pressed
+"
+
+[sub_resource type="GDScript" id="GDScript_ggq68"]
+resource_name = "towers no cost"
+script/source = "extends CheckBox
+
+func _enter_tree() -> void:
+	button_pressed = Settings.towers_no_cost
+
+func _on_toggled(_toggled_on: bool) -> void:
+	Settings.towers_no_cost = button_pressed
+"
+
+[sub_resource type="GDScript" id="GDScript_vxde3"]
+resource_name = "tower overlap"
+script/source = "extends CheckBox
+
+func _enter_tree() -> void:
+	button_pressed = Settings.towers_allow_overlap
+
+func _on_toggled(_toggled_on: bool) -> void:
+	Settings.towers_allow_overlap = button_pressed
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjxpk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxgrf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hakkr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bg0q"]
+atlas = ExtResource("8_byk26")
+region = Rect2(352, 144, 16, 16)
+
+[node name="options_screen" type="Control" unique_id=117731809]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1992649365]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_f30g4")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=920622252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1usag")
+expand_mode = 3
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=348345495]
+scroll_offset = Vector2(-20, 0)
+repeat_size = Vector2(360, 0)
+autoscroll = Vector2(5, 0)
+
+[node name="TextureRect3" type="TextureRect" parent="Parallax2D" unique_id=770046762]
+custom_minimum_size = Vector2(320, 180)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 360.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_5iqwq")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=347131268]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ggq68")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=400164]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_vxde3")
+expand_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=355216894]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_7jxrr")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1968225654]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=1242123616]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/scroll_hint_vertical_color = Color(0.15294118, 0.34901962, 0.30588236, 1)
+theme_override_constants/scrollbar_h_separation = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_k4otf")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+scroll_hint_mode = 3
+
+[node name="Options" type="VBoxContainer" parent="MarginContainer/ScrollContainer" unique_id=216609566]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PreviewPlacement" type="CheckBox" parent="MarginContainer/ScrollContainer/Options" unique_id=865265207]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_5aq8b")
+theme_override_icons/checked = SubResource("AtlasTexture_jed6l")
+theme_override_icons/unchecked = SubResource("AtlasTexture_damrv")
+theme_override_icons/checked_disabled = SubResource("AtlasTexture_dl30m")
+text = "Preview Tower Placement"
+script = SubResource("GDScript_dl30m")
+
+[node name="ShowDebug" type="CheckButton" parent="MarginContainer/ScrollContainer/Options" unique_id=449395565]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_5aq8b")
+text = "Show Debug Options"
+script = SubResource("GDScript_livli")
+
+[node name="PlayerImmunity" type="CheckBox" parent="MarginContainer/ScrollContainer/Options" unique_id=391398685 groups=["debug_setting"]]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_5aq8b")
+theme_override_icons/checked = SubResource("AtlasTexture_jed6l")
+theme_override_icons/unchecked = SubResource("AtlasTexture_damrv")
+theme_override_icons/checked_disabled = SubResource("AtlasTexture_dl30m")
+text = "Player Immunity"
+script = SubResource("GDScript_f30g4")
+
+[node name="PlayerInfiniteJump" type="CheckBox" parent="MarginContainer/ScrollContainer/Options" unique_id=1136822541 groups=["debug_setting"]]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_5aq8b")
+theme_override_icons/checked = SubResource("AtlasTexture_jed6l")
+theme_override_icons/unchecked = SubResource("AtlasTexture_damrv")
+theme_override_icons/checked_disabled = SubResource("AtlasTexture_dl30m")
+text = "Infinite Jumps"
+script = SubResource("GDScript_1usag")
+
+[node name="HubImmue" type="CheckBox" parent="MarginContainer/ScrollContainer/Options" unique_id=1126044796 groups=["debug_setting"]]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_5aq8b")
+theme_override_icons/checked = SubResource("AtlasTexture_jed6l")
+theme_override_icons/unchecked = SubResource("AtlasTexture_damrv")
+theme_override_icons/checked_disabled = SubResource("AtlasTexture_dl30m")
+text = "Hub Immunity"
+script = SubResource("GDScript_5iqwq")
+
+[node name="TowersNoCost" type="CheckBox" parent="MarginContainer/ScrollContainer/Options" unique_id=738419043 groups=["debug_setting"]]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_5aq8b")
+theme_override_icons/checked = SubResource("AtlasTexture_jed6l")
+theme_override_icons/unchecked = SubResource("AtlasTexture_damrv")
+theme_override_icons/checked_disabled = SubResource("AtlasTexture_dl30m")
+text = "Free Towers"
+script = SubResource("GDScript_ggq68")
+
+[node name="TowersAllowOverlap" type="CheckBox" parent="MarginContainer/ScrollContainer/Options" unique_id=1290216797 groups=["debug_setting"]]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_5aq8b")
+theme_override_icons/checked = SubResource("AtlasTexture_jed6l")
+theme_override_icons/unchecked = SubResource("AtlasTexture_damrv")
+theme_override_icons/checked_disabled = SubResource("AtlasTexture_dl30m")
+text = "Allow Overlapping Towers"
+script = SubResource("GDScript_vxde3")
+
+[node name="Label" type="Label" parent="." unique_id=1290525825]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.5
+offset_right = 63.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9490196, 0.9843137, 0.99215686, 1)
+theme_override_colors/font_outline_color = Color(0.26666668, 0.62352943, 0.8509804, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_5aq8b")
+theme_override_font_sizes/font_size = 28
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="." unique_id=1096488434]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -86.0
+offset_right = -132.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_5aq8b")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sjxpk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lxgrf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hakkr")
+icon = SubResource("AtlasTexture_4bg0q")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("9_ayrin")
+scene_name = "start"
+metadata/_custom_type_script = "uid://bb7fugtbpyd3l"
+
+[connection signal="toggled" from="MarginContainer/ScrollContainer/Options/PreviewPlacement" to="MarginContainer/ScrollContainer/Options/PreviewPlacement" method="_on_toggled"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/Options/ShowDebug" to="MarginContainer/ScrollContainer/Options/ShowDebug" method="_on_toggled"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/Options/PlayerImmunity" to="MarginContainer/ScrollContainer/Options/PlayerImmunity" method="_on_toggled"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/Options/PlayerInfiniteJump" to="MarginContainer/ScrollContainer/Options/PlayerInfiniteJump" method="_on_toggled"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/Options/HubImmue" to="MarginContainer/ScrollContainer/Options/HubImmue" method="_on_toggled"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/Options/TowersNoCost" to="MarginContainer/ScrollContainer/Options/TowersNoCost" method="_on_toggled"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/Options/TowersAllowOverlap" to="MarginContainer/ScrollContainer/Options/TowersAllowOverlap" method="_on_toggled"]
