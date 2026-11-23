@@ -1,0 +1,70 @@
+GIMP Palette
+Name: FX64 (Pixel FX series)
+Columns: 8
+#
+ 43  30  47	K outline - series outline / darkest solid
+255 255 255	w white-hot - white-hot core
+255 243 176	f1 fire - hot cream
+247 214  90	V fire - yellow
+232 162  58	U fire - amber
+240  96  46	h fire - orange (lava)
+184  50  30	j fire - red ember
+140  42  58	R fire - crimson
+ 74  26  51	f8 fire - dark ember (purple-shifted)
+255 228 138	au1 gold - gold light
+242 184  60	au2 gold - gold
+196 127  34	au3 gold - gold shade
+184 106  40	o gold - bronze
+255 246 220	cr holy - holy cream
+242 220 160	S holy - holy parchment
+217 181 110	T holy - holy shade
+220 251 255	c1 cold - ice white
+181 236 245	Z cold - pale cyan
+ 77 224 240	cy cold - cyan
+ 90 184 232	Y cold - sky blue
+ 47 127 196	X cold - blue
+ 31  78 140	W cold - deep blue
+ 37  48 110	c6 cold - indigo
+ 27  24  66	c7 cold - deep indigo
+198 214 238	n water - foam
+ 95 151 217	l water - water blue
+ 58 111 184	b water - water mid
+ 36  70 122	d water - water deep
+251 255 138	el electric - electric yellow
+184 247 255	e1 electric - plasma white-cyan
+127 156 255	eb electric - electric periwinkle
+143 245 221	y electric - spectral mint
+ 62 201 168	t electric - teal
+ 31 138 122	u electric - deep teal
+212 240 138	E toxic - lime light
+166 232  58	g toxic - toxic green
+143 209 100	D toxic - leaf
+ 79 163  79	C toxic - green
+ 47 122  69	B toxic - deep green
+ 30  77  58	A toxic - forest shadow
+ 23  48  51	tx toxic - toxic dark (teal-shifted)
+255 198 242	mg1 magic - pink white
+232 138 194	q magic - pink
+212  63 181	mg magic - magenta
+143  79 168	p magic - purple
+211 188 255	vi1 magic - lavender
+155 116 242	vi2 magic - violet
+ 92  60 180	vi3 magic - deep violet
+ 90  47 110	m void - plum
+ 58  43  69	k void - void purple
+ 20  14  26	v void - void black
+241 238 246	sm smoke - smoke highlight
+223 226 232	O smoke - smoke light
+162 167 181	N smoke - smoke mid
+107 111 128	M smoke - smoke shade
+ 61  61  79	L smoke - smoke dark
+158 145 142	as smoke - ash light
+ 94  82  80	+ smoke - ash
+217  74  74	Q blood - red
+ 94  20  36	bl blood - dark blood
+242 138 107	P blood - salmon
+232 194 144	J earth - dust light
+201 147  90	I earth - dust
+156 106  66	H earth - earth
+107  68  48	G earth - dark earth
+ 74  48  64	dp earth - dust shadow (plum)

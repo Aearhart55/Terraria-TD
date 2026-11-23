@@ -1,4 +1,4 @@
-class_name Status extends Node
+class_name Status extends AnimatedSprite2D
 
 @export var duration : float
 @export var tag : String
@@ -13,7 +13,7 @@ func start() -> void:
 	status_timer.timeout.connect(_on_status_timer_timeout)
 	status_timer.start()
 	
-func reset_status():
+func reset_status() -> void:
 	status_timer.start()
 
 func _on_status_timer_timeout() -> void:

@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @export var health_bar : HealthBar
 @export var sprite : AnimatedSprite2D
+@export var heal_anim : AnimatedSprite2D
 @export var passive_heal_timer : Timer
 @export var passive_heal_value : float = 0.5
 @export var passive_heal_rate : float = 1
@@ -47,6 +48,4 @@ func heal(hp : float) -> void:
 	else:
 		health += hp
 	
-	sprite.modulate = Color.AQUAMARINE
-	await get_tree().create_timer(.1).timeout
-	sprite.modulate = Color.WHITE
+	heal_anim.play("default")

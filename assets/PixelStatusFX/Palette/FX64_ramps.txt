@@ -1,0 +1,29 @@
+Hue-shifted ramps used by the generator (dark -> bright):
+  fire     f8 R j h U V f1 w
+  ember    f8 R j h U
+  gold     o au3 au2 au1 f1 w
+  holy     T S cr w
+  holyg    au3 T S au1 cr w
+  ice      c7 c6 W X Y Z c1 w
+  cyan     c6 W X cy Z c1 w
+  elec     c6 eb cy e1 w
+  eyel     au3 U V el w
+  water    d b l Y Z n w
+  toxic    tx A B C g E w
+  spirit   u t y e1 w
+  magic    k m p mg q mg1 w
+  violet   v k vi3 vi2 vi1 w
+  void     v k m vi3 vi2
+  smoke    k L M N O sm
+  dsmoke   v k L + M
+  ash      k + as O
+  dust     dp G H I J S
+  steel    c6 M N O sm w
+  blood    bl R Q P
+  slime    A B C D g E
+  ink      v k c7 c6 L
+  oil      v k L c6 M
+  rock     dp G H I
+  wood     G H I J
+  glass    c6 Y Z c1 w
+  pink     m mg q mg1 w

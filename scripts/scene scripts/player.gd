@@ -12,6 +12,7 @@ const JUMP_VELOCITY : float = -300.0
 @export var base_sprite : AnimatedSprite2D
 @export var fox_sprite : AnimatedSprite2D
 @export var passive_heal_timer : Timer
+@export var heal_anim : AnimatedSprite2D
 
 # Debug
 var immune : bool = Settings.player_immunity
@@ -164,3 +165,5 @@ func heal(hp : float) -> void:
 		passive_heal_timer.stop()
 	else:
 		health += hp
+	
+	heal_anim.play("default")

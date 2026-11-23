@@ -1,0 +1,67 @@
+FX64 palette - key, hex, group, use (load FX64.gpl or FX64.hex in Aseprite: Palette > Load)
+K    #2b1e2f  outline    series outline / darkest solid
+w    #ffffff  white-hot  white-hot core
+f1   #fff3b0  fire       hot cream
+V    #f7d65a  fire       yellow
+U    #e8a23a  fire       amber
+h    #f0602e  fire       orange (lava)
+j    #b8321e  fire       red ember
+R    #8c2a3a  fire       crimson
+f8   #4a1a33  fire       dark ember (purple-shifted)
+au1  #ffe48a  gold       gold light
+au2  #f2b83c  gold       gold
+au3  #c47f22  gold       gold shade
+o    #b86a28  gold       bronze
+cr   #fff6dc  holy       holy cream
+S    #f2dca0  holy       holy parchment
+T    #d9b56e  holy       holy shade
+c1   #dcfbff  cold       ice white
+Z    #b5ecf5  cold       pale cyan
+cy   #4de0f0  cold       cyan
+Y    #5ab8e8  cold       sky blue
+X    #2f7fc4  cold       blue
+W    #1f4e8c  cold       deep blue
+c6   #25306e  cold       indigo
+c7   #1b1842  cold       deep indigo
+n    #c6d6ee  water      foam
+l    #5f97d9  water      water blue
+b    #3a6fb8  water      water mid
+d    #24467a  water      water deep
+el   #fbff8a  electric   electric yellow
+e1   #b8f7ff  electric   plasma white-cyan
+eb   #7f9cff  electric   electric periwinkle
+y    #8ff5dd  electric   spectral mint
+t    #3ec9a8  electric   teal
+u    #1f8a7a  electric   deep teal
+E    #d4f08a  toxic      lime light
+g    #a6e83a  toxic      toxic green
+D    #8fd164  toxic      leaf
+C    #4fa34f  toxic      green
+B    #2f7a45  toxic      deep green
+A    #1e4d3a  toxic      forest shadow
+tx   #173033  toxic      toxic dark (teal-shifted)
+mg1  #ffc6f2  magic      pink white
+q    #e88ac2  magic      pink
+mg   #d43fb5  magic      magenta
+p    #8f4fa8  magic      purple
+vi1  #d3bcff  magic      lavender
+vi2  #9b74f2  magic      violet
+vi3  #5c3cb4  magic      deep violet
+m    #5a2f6e  void       plum
+k    #3a2b45  void       void purple
+v    #140e1a  void       void black
+sm   #f1eef6  smoke      smoke highlight
+O    #dfe2e8  smoke      smoke light
+N    #a2a7b5  smoke      smoke mid
+M    #6b6f80  smoke      smoke shade
+L    #3d3d4f  smoke      smoke dark
+as   #9e918e  smoke      ash light
++    #5e5250  smoke      ash
+Q    #d94a4a  blood      red
+bl   #5e1424  blood      dark blood
+P    #f28a6b  blood      salmon
+J    #e8c290  earth      dust light
+I    #c9935a  earth      dust
+H    #9c6a42  earth      earth
+G    #6b4430  earth      dark earth
+dp   #4a3040  earth      dust shadow (plum)

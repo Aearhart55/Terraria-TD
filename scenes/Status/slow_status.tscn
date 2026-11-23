@@ -1,5 +1,99 @@
 [gd_scene format=3 uid="uid://b6ih080131d2a"]
 
+[ext_resource type="Texture2D" uid="uid://ce154s2o4ky6t" path="res://assets/PixelStatusFX/01_Debuff_Overlays/slowed_loop_32x48_32x48_12f.png" id="1_4i8la"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i8la"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51lpm"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(32, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_634mt"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(64, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62oux"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(96, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2865"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(128, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nye2"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(160, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igqtp"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(192, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw5i8"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(224, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0i6y"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(256, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdcxh"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(288, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgknk"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(320, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge06m"]
+atlas = ExtResource("1_4i8la")
+region = Rect2(352, 0, 32, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jed6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i8la")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51lpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_634mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62oux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2865")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nye2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igqtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw5i8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0i6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdcxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgknk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge06m")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="GDScript" id="GDScript_eognm"]
 resource_name = "slow_status"
 script/source = "extends Status
@@ -7,45 +101,34 @@ script/source = "extends Status
 @export var max_speed_percent : float
 var original_speed : float
 
-@export var slow_color: Color
-var original_color : Color
-
-
-var sprite
-
 func start() -> void:
 	super.start()
+	
+	speed_scale /= duration
+	play(\"default\")
 	
 	if get_parent().get(\"speed\"): 
 		original_speed = get_parent().speed
 		get_parent().speed = get_parent().speed * max_speed_percent
-	
-	for child in get_parent().get_children():
-		if child is Sprite2D or child is AnimatedSprite2D and child.name == \"BaseSprite\":
-			sprite = child
 		
-	original_color = get_parent().base_modulate
-	get_parent().base_modulate = slow_color
-	
-	if sprite:
-		sprite.modulate = get_parent().base_modulate
-	
 func _on_status_timer_timeout() -> void:
-	get_parent().base_modulate = original_color
-	
-	if sprite:
-		sprite.modulate = get_parent().base_modulate
-	
+
 	if get_parent().get(\"speed\"):
 		get_parent().speed = original_speed
 		
 	super._on_status_timer_timeout()
+
+func reset_status() -> void:
+	super.reset_status()
+	set_frame_and_progress(0, 0)
 "
 
-[node name="slow_status" type="Node" unique_id=593649980]
+[node name="slow_status" type="AnimatedSprite2D" unique_id=1446349289]
+show_behind_parent = true
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_jed6l")
+frame_progress = 1.0
 script = SubResource("GDScript_eognm")
 max_speed_percent = 0.8
-slow_color = Color(0.13046733, 0.39282912, 0.68348765, 1)
 duration = 3.0
 tag = "slow_status"
-metadata/_custom_type_script = "uid://d1xsyt47qlwjd"

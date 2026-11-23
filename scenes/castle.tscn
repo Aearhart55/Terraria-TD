@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cb4q2h3l404ed" path="res://assets/GUI_Pack/LifeBars/Round_LBs_4x8.png" id="3_njhjj"]
 [ext_resource type="Script" uid="uid://ik158wrlh402" path="res://scripts/components/health_bar.gd" id="3_rjj26"]
 [ext_resource type="FontFile" uid="uid://cwi14pqrh43uo" path="res://assets/monogram.ttf" id="5_jxdab"]
+[ext_resource type="Texture2D" uid="uid://cpikmeb2hasna" path="res://assets/PixelStatusFX/02_Buff_Overlays/regen_loop_32x48_32x48_12f.png" id="6_7pkwf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jed6l"]
 radius = 27.0
@@ -52,7 +53,7 @@ region = Rect2(16, 75, 12, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ha01g"]
 atlas = ExtResource("3_njhjj")
-region = Rect2(0, 75, 12, 5)
+region = Rect2(0, 194, 12, 6)
 
 [sub_resource type="GDScript" id="GDScript_jxdab"]
 resource_name = "castle_interact"
@@ -69,12 +70,108 @@ func interaction() -> void:
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jed6l"]
 
-[node name="castle" type="StaticBody2D" unique_id=1916610260 node_paths=PackedStringArray("health_bar", "sprite", "passive_heal_timer") groups=["ally"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbl1g"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uplxu"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feow2"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd3ve"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(96, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rrw6"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(128, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7vj"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(160, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eluul"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(192, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk0tx"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(224, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeici"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(256, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xsjg"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(288, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlum5"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(320, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpqee"]
+atlas = ExtResource("6_7pkwf")
+region = Rect2(352, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8rye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbl1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uplxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feow2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd3ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rrw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7vj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eluul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk0tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeici")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xsjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlum5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpqee")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="castle" type="StaticBody2D" unique_id=1916610260 node_paths=PackedStringArray("health_bar", "sprite", "heal_anim", "passive_heal_timer") groups=["ally"]]
 collision_layer = 36
 collision_mask = 4
 script = ExtResource("1_0ysgy")
 health_bar = NodePath("HealthBar")
 sprite = NodePath("AnimatedSprite2D")
+heal_anim = NodePath("heal")
 passive_heal_timer = NodePath("PassiveHealTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=109020498]
@@ -94,10 +191,10 @@ offset_right = 27.0
 offset_bottom = -23.0
 value = 50.0
 nine_patch_stretch = true
-stretch_margin_left = 2
-stretch_margin_top = 2
-stretch_margin_right = 2
-stretch_margin_bottom = 2
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
 texture_under = SubResource("AtlasTexture_7pkwf")
 texture_progress = SubResource("AtlasTexture_ha01g")
 script = ExtResource("3_rjj26")
@@ -141,3 +238,8 @@ text = "Advance
 Wave"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="heal" type="AnimatedSprite2D" parent="." unique_id=1309116746]
+sprite_frames = SubResource("SpriteFrames_w8rye")
+frame = 12
+frame_progress = 1.0

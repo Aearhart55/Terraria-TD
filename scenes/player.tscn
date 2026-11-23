@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cgdvr8s6o1e1i" path="res://assets/fox/fox_spawn.png" id="8_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://6t4ntqe1w1w" path="res://assets/fox/fox_run.png" id="8_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://b77qidesq3lqu" path="res://assets/fox/fox_free.png" id="10_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://cpikmeb2hasna" path="res://assets/PixelStatusFX/02_Buff_Overlays/regen_loop_32x48_32x48_12f.png" id="12_3v2ag"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
 atlas = ExtResource("4_qlg0r")
@@ -18,7 +19,7 @@ region = Rect2(16, 59, 12, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(0, 59, 12, 5)
+region = Rect2(0, 178, 12, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("4_y4r1p")
@@ -326,7 +327,102 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1634747837 node_paths=PackedStringArray("health_bar", "base_sprite", "fox_sprite", "passive_heal_timer") groups=["ally", "player"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbl1g"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uplxu"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feow2"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd3ve"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(96, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rrw6"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(128, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7vj"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(160, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eluul"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(192, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk0tx"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(224, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeici"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(256, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xsjg"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(288, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlum5"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(320, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpqee"]
+atlas = ExtResource("12_3v2ag")
+region = Rect2(352, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3v2ag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbl1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uplxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feow2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd3ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rrw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7vj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eluul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk0tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeici")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xsjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlum5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpqee")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 14.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=1634747837 node_paths=PackedStringArray("health_bar", "base_sprite", "fox_sprite", "passive_heal_timer", "heal_anim") groups=["ally", "player"]]
 collision_layer = 4
 script = ExtResource("1_qhqgy")
 max_health = 10.0
@@ -336,9 +432,9 @@ health_bar = NodePath("HealthBar")
 base_sprite = NodePath("AnimatedSprite2D")
 fox_sprite = NodePath("free fox")
 passive_heal_timer = NodePath("PassiveHealTimer")
+heal_anim = NodePath("heal")
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1974559983]
-modulate = Color(1, 1, 1, 0.67058825)
 z_index = 2
 z_as_relative = false
 offset_left = 121.0
@@ -361,10 +457,8 @@ metadata/_custom_type_script = "uid://ik158wrlh402"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=915040929]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_ra2i3")
-animation = &"respawn"
+animation = &"idle"
 autoplay = "idle"
-frame = 13
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754095376]
 position = Vector2(0, 2)
@@ -386,3 +480,9 @@ frame = 1
 frame_progress = 0.7451903
 
 [node name="PassiveHealTimer" type="Timer" parent="." unique_id=1626971002]
+
+[node name="heal" type="AnimatedSprite2D" parent="." unique_id=2093673375]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_3v2ag")
+frame = 12
+frame_progress = 1.0

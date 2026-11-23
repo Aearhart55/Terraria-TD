@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://3d4aco423xrw"
+
+[deps]
+
+files=["res://assets/PixelStatusFX/Data/fx_database.category.translation", "res://assets/PixelStatusFX/Data/fx_database.file.translation", "res://assets/PixelStatusFX/Data/fx_database.sheet.translation", "res://assets/PixelStatusFX/Data/fx_database.sheet.translation", "res://assets/PixelStatusFX/Data/fx_database.cell.translation", "res://assets/PixelStatusFX/Data/fx_database.cell.translation", "res://assets/PixelStatusFX/Data/fx_database.frames.translation", "res://assets/PixelStatusFX/Data/fx_database.fps.translation", "res://assets/PixelStatusFX/Data/fx_database.duration.translation", "res://assets/PixelStatusFX/Data/fx_database.loop.translation", "res://assets/PixelStatusFX/Data/fx_database.anchor.translation", "res://assets/PixelStatusFX/Data/fx_database.anchor.translation", "res://assets/PixelStatusFX/Data/fx_database.hit.translation", "res://assets/PixelStatusFX/Data/fx_database.directions.translation", "res://assets/PixelStatusFX/Data/fx_database.blend.translation", "res://assets/PixelStatusFX/Data/fx_database.tag.translation", "res://assets/PixelStatusFX/Data/fx_database.note.translation", "res://assets/PixelStatusFX/Data/fx_database.tileable.translation"]
+
+source_file="res://assets/PixelStatusFX/Data/fx_database.csv"
+dest_files=["res://assets/PixelStatusFX/Data/fx_database.category.translation", "res://assets/PixelStatusFX/Data/fx_database.file.translation", "res://assets/PixelStatusFX/Data/fx_database.sheet.translation", "res://assets/PixelStatusFX/Data/fx_database.sheet.translation", "res://assets/PixelStatusFX/Data/fx_database.cell.translation", "res://assets/PixelStatusFX/Data/fx_database.cell.translation", "res://assets/PixelStatusFX/Data/fx_database.frames.translation", "res://assets/PixelStatusFX/Data/fx_database.fps.translation", "res://assets/PixelStatusFX/Data/fx_database.duration.translation", "res://assets/PixelStatusFX/Data/fx_database.loop.translation", "res://assets/PixelStatusFX/Data/fx_database.anchor.translation", "res://assets/PixelStatusFX/Data/fx_database.anchor.translation", "res://assets/PixelStatusFX/Data/fx_database.hit.translation", "res://assets/PixelStatusFX/Data/fx_database.directions.translation", "res://assets/PixelStatusFX/Data/fx_database.blend.translation", "res://assets/PixelStatusFX/Data/fx_database.tag.translation", "res://assets/PixelStatusFX/Data/fx_database.note.translation", "res://assets/PixelStatusFX/Data/fx_database.tileable.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

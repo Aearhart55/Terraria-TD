@@ -1,18 +1,80 @@
 [gd_scene format=3 uid="uid://cy1jy62aai5d2"]
 
+[ext_resource type="Texture2D" uid="uid://bi4pnsthv164g" path="res://assets/PixelStatusFX/01_Debuff_Overlays/poisoned_loop_32x48_32x48_8f.png" id="1_v2jfp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo3g5"]
+atlas = ExtResource("1_v2jfp")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ovpm"]
+atlas = ExtResource("1_v2jfp")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfqob"]
+atlas = ExtResource("1_v2jfp")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pkud"]
+atlas = ExtResource("1_v2jfp")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks5p1"]
+atlas = ExtResource("1_v2jfp")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6tne"]
+atlas = ExtResource("1_v2jfp")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n662"]
+atlas = ExtResource("1_v2jfp")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x41qk"]
+atlas = ExtResource("1_v2jfp")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsvpu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo3g5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ovpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfqob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pkud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks5p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6tne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n662")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x41qk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
 [sub_resource type="GDScript" id="GDScript_eognm"]
 resource_name = "slow_status"
 script/source = "extends Status
 
 @export var damage : float
 
-@export var poision_color: Color
-var original_color : Color
-
 @export var tick_rate : float
 @export var tick_timer : Timer
 
-var sprite
 
 func start() -> void:
 	super.start()
@@ -21,36 +83,23 @@ func start() -> void:
 	tick_timer.timeout.connect(poision)
 	tick_timer.start()
 	
-	for child in get_parent().get_children():
-		if child is Sprite2D or child is AnimatedSprite2D and child.name == \"BaseSprite\":
-			sprite = child
-		
-	original_color = get_parent().base_modulate
-	get_parent().base_modulate = poision_color
-	
-	if sprite:
-		sprite.modulate = get_parent().base_modulate
-	
-func _on_status_timer_timeout() -> void:
-	get_parent().base_modulate = original_color
-	
-	if sprite:
-		sprite.modulate = get_parent().base_modulate
-		
-	super._on_status_timer_timeout()
-
 func poision() -> void:
 	DH.attack(get_parent(), self)
 "
 
-[node name="poison_status" type="Node" unique_id=593649980 node_paths=PackedStringArray("tick_timer")]
+[node name="poison_status" type="AnimatedSprite2D" unique_id=1236277999 node_paths=PackedStringArray("tick_timer")]
+show_behind_parent = true
+position = Vector2(0, -3.0000005)
+scale = Vector2(0.47999936, 0.47999936)
+sprite_frames = SubResource("SpriteFrames_nsvpu")
+autoplay = "default"
+frame = 2
+frame_progress = 0.14111847
 script = SubResource("GDScript_eognm")
 damage = 0.5
-poision_color = Color(0, 0.6862745, 0, 1)
 tick_rate = 1.0
 tick_timer = NodePath("tick_timer")
 duration = 8.0
 tag = "poison_status"
-metadata/_custom_type_script = "uid://d1xsyt47qlwjd"
 
 [node name="tick_timer" type="Timer" parent="." unique_id=982900514]

@@ -138,6 +138,6 @@ func advance_wave() -> void:
 	@warning_ignore("narrowing_conversion")
 	current_wave.wave_value *= wave_advance_bonus
 	enemy_gap_timer.wait_time = 0.2
-	wave_gap_timer.wait_time = 1
+	wave_gap_timer.wait_time = .5
 	current_wave.force_next_wave = true
 	is_wave_advanced = true

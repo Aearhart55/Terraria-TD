@@ -1,0 +1,11 @@
+Unity import (2021+ / Unity 6)
+- Texture Type: Sprite (2D and UI). Sprite Mode: Multiple. Pixels Per Unit: 16 (same as the 16x16 Pixel series - a 64x64
+  FX is then 4 tiles wide; use PPU 32 if you want FX at half size). Filter Mode: Point (no filter). Compression: None.
+  Generate Mip Maps: off. Wrap: Clamp.
+- Slicing: Sprite Editor > Slice > Grid By Cell Size = the cell size in the file name (e.g. _64x64_7f = 64 x 64, 7 frames).
+  Strips are one row; the grid sheets in Spritesheets/ use the column count in their file name.
+- Pivot: Custom = anchor_px / cell size with y flipped: pivot = (ax / w, 1 - ay / h). Bottom-center FX = (0.5, 0).
+- Animation: select the sliced frames, drag into the scene -> Unity makes an Animation clip; set Samples = fps from
+  Data/fx_database.json; untick Loop Time for 'once' rows. Pixel Perfect Camera recommended (Assets PPU 16).
+- Additive look: use a material with the 'Sprites/Default' shader + Blend One One (or URP 2D 'Additive' material) for rows
+  marked 'additive look'. Normal blending also works - every FX is fully opaque pixel art.
