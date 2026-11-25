@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TowerSlots" format=3 uid="uid://bhpl3vl5t2cp3"]
+
+[ext_resource type="Script" uid="uid://dvsukgqmo7ql5" path="res://scripts/resources/tower_slots.gd" id="1_iiwkq"]
+
+[resource]
+script = ExtResource("1_iiwkq")
+slots = Array[int]([0, 3, 1, 2])
+metadata/_custom_type_script = "uid://dvsukgqmo7ql5"

@@ -281,7 +281,6 @@ mouse_filter = 2
 layer = 2
 
 [node name="UI" parent="UILayer" unique_id=1254920276 node_paths=PackedStringArray("tower_placer") instance=ExtResource("15_esr5i")]
-current_turrets = Array[int]([1, 0, 3, 2])
 tower_placer = NodePath("../../TowerPlacer")
 
 [node name="TowerPlacer" type="Node2D" parent="." unique_id=711084640 node_paths=PackedStringArray("UI_node", "touch_sprite", "place_sprite")]

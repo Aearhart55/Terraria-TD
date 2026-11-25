@@ -1,13 +1,6 @@
 extends Node2D
 
-const ICE_TURRET = preload("uid://cv13uq7diugin")
-const ARCHER_TURRET = preload("uid://tmht4gutufgl")
-const LIGHT_TURRET = preload("uid://c7ec65aq7g0h")
-const POISON_TURRET = preload("uid://cuouveka0gf80")
 const GROUND_TOLERANCE : int = 100
-const SLIME_ENEMY = preload("uid://d4em0ochsyyy1")
-
-signal slot_changed(int)
 
 @export var UI_node : UI
 
@@ -24,24 +17,17 @@ var debug_no_cost : bool = Settings.towers_no_cost
 var build_mode_active :bool = true
 
 var placement_position : Vector2
-var active_turret : Global.turrets = Global.turrets.ARCHER
-enum tower_data {TURRET, COST, WIDTH}
+var active_turret : Towers.Type = Towers.Type.ARCHER
 
-var tower : Dictionary = {
-	Global.turrets.ARCHER : [ARCHER_TURRET, 15, 6],
-	Global.turrets.ICE : [ICE_TURRET, 20, 6],
-	Global.turrets.LIGHT : [LIGHT_TURRET, 30, 8],
-	Global.turrets.POISON : [POISON_TURRET, 25, 6],
-	Global.turrets.SLIME : [SLIME_ENEMY, 0, 0]
-}
+var towers := Towers.new()
 
 func _ready() -> void:
-	UI_node.select_tower.connect(switch_turrets)
+	Signals.tower_slot_pressed.connect(switch_turrets)
 	UI_node.toggle_build_mode.connect(func(state: bool) : build_mode_active = state)
 	touch_sprite.color = Color.CHARTREUSE
 	place_sprite.color = Color.CHARTREUSE
 
-func switch_turrets(new_turret : Global.turrets) -> void:
+func switch_turrets(new_turret : Towers.Type) -> void:
 	active_turret = new_turret
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -55,18 +41,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("lmb") and build_mode_active:
 		touch_sprite.visible = false
 		place_sprite.visible = false
-		if tower[active_turret][tower_data.COST] <= Global.player_cash or debug_no_cost:
+		if towers.data[active_turret][Towers.DataType.COST] <= Global.player_cash or debug_no_cost:
 			placement_position = get_local_mouse_position()
 			spawn()
-	
-	if Input.is_action_just_released("slot_1"):
-		slot_changed.emit(0)
-	elif Input.is_action_just_released("slot_2"):
-		slot_changed.emit(1)
-	elif Input.is_action_just_released("slot_3"):
-		slot_changed.emit(2)
-	elif Input.is_action_just_released("slot_4"):
-		slot_changed.emit(3)
 	
 func spawn():
 	# creates "ground finder" raycast at mouse
@@ -90,19 +67,19 @@ func spawn():
 	# spawn turret if valid surface
 	if ground_finder.is_colliding():
 		if allow_turret_overlap:
-			var turret = tower[active_turret][tower_data.TURRET].instantiate()
+			var turret = towers.data[active_turret][Towers.DataType.SCENE].instantiate()
 			turret.position = ground_finder.get_collision_point()
 			add_child(turret)
-			Global.player_cash -= tower[active_turret][tower_data.COST] 
+			Global.player_cash -= towers.data[active_turret][Towers.DataType.COST] 
 			
 		elif check_sides(ground_finder.get_collision_point()):
 			pass
 			
 		else:
-			var turret = tower[active_turret][tower_data.TURRET].instantiate()
+			var turret = towers.data[active_turret][Towers.DataType.SCENE].instantiate()
 			turret.position = ground_finder.get_collision_point()
 			owner.add_child(turret)
-			Global.player_cash -= tower[active_turret][tower_data.COST] 
+			Global.player_cash -= towers.data[active_turret][Towers.DataType.COST]
 	
 	# clean raycast
 	ground_finder.queue_free()
@@ -117,7 +94,7 @@ func check_sides(collision_point : Vector2) -> bool:
 	side_check.set_collision_mask_value(1, false)
 	
 	# establishes fail condition for spawning inside obj
-	side_check.target_position = Vector2(-tower[active_turret][tower_data.WIDTH], 0)
+	side_check.target_position = Vector2(-towers.data[active_turret][Towers.DataType.WIDTH], 0)
 	side_check.hit_from_inside = true
 	side_check.collide_with_areas = true
 	
@@ -126,7 +103,7 @@ func check_sides(collision_point : Vector2) -> bool:
 	if side_check.is_colliding():
 		hit_side = true
 		
-	side_check.target_position = Vector2(tower[active_turret][tower_data.WIDTH], 0)
+	side_check.target_position = Vector2(towers.data[active_turret][Towers.DataType.WIDTH], 0)
 	side_check.force_raycast_update()
 	
 	if side_check.is_colliding():

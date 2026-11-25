@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://c483x1fdeamag" path="res://scripts/scene scripts/ui.gd" id="1_2ttv2"]
 [ext_resource type="FontFile" uid="uid://cwi14pqrh43uo" path="res://assets/monogram.ttf" id="2_84lt7"]
 [ext_resource type="Texture2D" uid="uid://b47kiy5m3rwui" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_lightning_tower.png" id="2_lj5up"]
+[ext_resource type="Resource" uid="uid://bhpl3vl5t2cp3" path="res://data/main_towers.tres" id="3_0odk7"]
+[ext_resource type="Script" uid="uid://gwc0u4qi2suu" path="res://scripts/scene scripts/tower_slot.gd" id="3_81vvl"]
+[ext_resource type="Script" uid="uid://b3tqu16dpjfg0" path="res://scripts/scene scripts/tower_bar.gd" id="3_t1j05"]
 [ext_resource type="Texture2D" uid="uid://bcotwe2k8grdn" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_archer.png" id="3_wgnrc"]
 [ext_resource type="Texture2D" uid="uid://kr5x5qxgcp6l" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_ice_wizard.png" id="4_84lt7"]
 [ext_resource type="Texture2D" uid="uid://mff3pak1iokh" path="res://assets/Itch Towers/Towers/Combat Towers/spr_tower_poison_wizard.png" id="8_2ttv2"]
@@ -257,7 +260,7 @@ expand_margin_right = 4.0
 expand_margin_bottom = 7.0
 region_rect = Rect2(-1, -2, 18, 21)
 
-[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("slots", "tower_bar", "build_button", "money_label", "next_button", "remaining_enemies_label")]
+[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("build_button", "money_label", "next_button", "remaining_enemies_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -266,14 +269,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2ttv2")
-slots = [NodePath("TowerBar/Slot1"), NodePath("TowerBar/Slot2"), NodePath("TowerBar/Slot3"), NodePath("TowerBar/Slot4")]
-tower_bar = NodePath("TowerBar")
 build_button = NodePath("BuildButton")
 money_label = NodePath("Money")
 next_button = NodePath("NextStageButton")
 remaining_enemies_label = NodePath("RemainingEnemies")
 
-[node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872]
+[node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872 node_paths=PackedStringArray("slots")]
 layout_mode = 0
 offset_left = 108.0
 offset_top = 140.0
@@ -282,11 +283,18 @@ offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 8
+script = ExtResource("3_t1j05")
+towers = ExtResource("3_0odk7")
+slots = [NodePath("Slot1"), NodePath("Slot2"), NodePath("Slot3"), NodePath("Slot4")]
 
-[node name="Slot1" type="VBoxContainer" parent="TowerBar" unique_id=1159023679]
+[node name="Slot1" type="VBoxContainer" parent="TowerBar" unique_id=1159023679 node_paths=PackedStringArray("button", "texture", "price")]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
+script = ExtResource("3_81vvl")
+button = NodePath("Button")
+texture = NodePath("Button/Sprite")
+price = NodePath("PriceLabel")
 
 [node name="Button" type="Button" parent="TowerBar/Slot1" unique_id=1796085183]
 custom_minimum_size = Vector2(15, 25)
@@ -320,10 +328,14 @@ theme_override_font_sizes/font_size = 16
 text = "10"
 horizontal_alignment = 1
 
-[node name="Slot2" type="VBoxContainer" parent="TowerBar" unique_id=2022964335]
+[node name="Slot2" type="VBoxContainer" parent="TowerBar" unique_id=2022964335 node_paths=PackedStringArray("button", "texture", "price")]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
+script = ExtResource("3_81vvl")
+button = NodePath("Button")
+texture = NodePath("Button/Sprite")
+price = NodePath("PriceLabel")
 
 [node name="Button" type="Button" parent="TowerBar/Slot2" unique_id=1401665837]
 custom_minimum_size = Vector2(15, 25)
@@ -357,10 +369,14 @@ theme_override_font_sizes/font_size = 16
 text = "10"
 horizontal_alignment = 1
 
-[node name="Slot3" type="VBoxContainer" parent="TowerBar" unique_id=327412124]
+[node name="Slot3" type="VBoxContainer" parent="TowerBar" unique_id=327412124 node_paths=PackedStringArray("button", "texture", "price")]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
+script = ExtResource("3_81vvl")
+button = NodePath("Button")
+texture = NodePath("Button/Sprite")
+price = NodePath("PriceLabel")
 
 [node name="Button" type="Button" parent="TowerBar/Slot3" unique_id=661975434]
 custom_minimum_size = Vector2(15, 25)
@@ -394,10 +410,14 @@ theme_override_font_sizes/font_size = 16
 text = "10"
 horizontal_alignment = 1
 
-[node name="Slot4" type="VBoxContainer" parent="TowerBar" unique_id=1606252784]
+[node name="Slot4" type="VBoxContainer" parent="TowerBar" unique_id=1606252784 node_paths=PackedStringArray("button", "texture", "price")]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
+script = ExtResource("3_81vvl")
+button = NodePath("Button")
+texture = NodePath("Button/Sprite")
+price = NodePath("PriceLabel")
 
 [node name="Button" type="Button" parent="TowerBar/Slot4" unique_id=110873036]
 custom_minimum_size = Vector2(15, 25)

@@ -12,3 +12,7 @@ signal level_won
 signal advance_wave
 
 signal level_lost
+
+# towers
+signal tower_slot_pressed()
+signal tower_slot_changed(int)
