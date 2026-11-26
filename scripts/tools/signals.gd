@@ -14,5 +14,5 @@ signal advance_wave
 signal level_lost
 
 # towers
-signal tower_slot_pressed()
-signal tower_slot_changed(int)
+signal tower_slot_pressed() # passes Towers.Type
+signal toggled_build_mode(bool)

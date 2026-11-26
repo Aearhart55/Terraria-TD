@@ -2,8 +2,6 @@ extends Node2D
 
 const GROUND_TOLERANCE : int = 100
 
-@export var UI_node : UI
-
 @export_group("preview")
 @export var touch_sprite : ColorRect
 @export var place_sprite : ColorRect
@@ -14,7 +12,7 @@ var preview_placement : bool = Settings.towers_preview_placement
 var allow_turret_overlap : bool = Settings.towers_allow_overlap
 var debug_no_cost : bool = Settings.towers_no_cost
 
-var build_mode_active :bool = true
+var build_mode_active : bool = true
 
 var placement_position : Vector2
 var active_turret : Towers.Type = Towers.Type.ARCHER
@@ -23,7 +21,7 @@ var towers := Towers.new()
 
 func _ready() -> void:
 	Signals.tower_slot_pressed.connect(switch_turrets)
-	UI_node.toggle_build_mode.connect(func(state: bool) : build_mode_active = state)
+	Signals.toggled_build_mode.connect(func(state: bool) : build_mode_active = state)
 	touch_sprite.color = Color.CHARTREUSE
 	place_sprite.color = Color.CHARTREUSE
 
@@ -54,15 +52,8 @@ func spawn():
 	ground_finder.set_collision_mask_value(5, true)
 	ground_finder.set_collision_mask_value(1, false)
 	
-	# establishes fail condition for spawning inside obj
 	ground_finder.target_position = Vector2(0, GROUND_TOLERANCE)
-	ground_finder.hit_from_inside = true
-	
-	# check for spawn inside
 	ground_finder.force_raycast_update()
-	if ground_finder.is_colliding() and ground_finder.get_collision_normal() == Vector2(0,0):
-		ground_finder.queue_free()
-		return
 	
 	# spawn turret if valid surface
 	if ground_finder.is_colliding():
@@ -76,6 +67,7 @@ func spawn():
 			pass
 			
 		else:
+			print("place")
 			var turret = towers.data[active_turret][Towers.DataType.SCENE].instantiate()
 			turret.position = ground_finder.get_collision_point()
 			owner.add_child(turret)

@@ -5,6 +5,9 @@ class_name TowerBar extends HBoxContainer
 var tower_data := Towers.new()
 
 func _ready() -> void:
+	
+	Signals.toggled_build_mode.connect(func(is_pressed: bool): visible = is_pressed)
+	
 	for i in range(0, slots.size()):
 		slots[i].update_slot(
 				# Tower resource . data dictionary [ array of tower types [i] -> Towers.Type ] [ tower data type ]

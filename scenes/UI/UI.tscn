@@ -64,6 +64,26 @@ region_rect = Rect2(-1, -2, 18, 21)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1rqu"]
 
+[sub_resource type="GDScript" id="GDScript_alvv5"]
+resource_name = "build_mode_button"
+script/source = "extends Button
+
+@export var pressed_texture : TextureRect
+@export var released_texture : TextureRect
+
+func _ready() -> void:
+	toggled.connect(_on_toggle)
+	
+func _on_toggle(toggled_on : bool) -> void:
+	Signals.toggled_build_mode.emit(toggled_on)
+	pressed_texture.visible = toggled_on
+	released_texture.visible = !toggled_on
+	
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed(\"build_mode_input\"):
+		button_pressed = !button_pressed
+"
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t1j05"]
 load_path = "res://.godot/imported/Menu_icons_16x16.png-823a6d4d015f6cc59535f4272841d15a.ctex"
 
@@ -168,6 +188,28 @@ region = Rect2(0, 146, 7, 14)
 atlas = ExtResource("8_81vvl")
 region = Rect2(16, 146, 7, 14)
 
+[sub_resource type="GDScript" id="GDScript_0odk7"]
+resource_name = "money_label"
+script/source = "extends Label
+
+func _ready() -> void:
+	Global.money_update.connect(func(value : int): text = \"$\" + str(value))
+	text = \"$\" + str(Global.player_cash)
+"
+
+[sub_resource type="GDScript" id="GDScript_t1j05"]
+resource_name = "enemy_count"
+script/source = "extends Label
+
+func _process(_delta: float) -> void:
+	if not Settings.show_remaining_enemies:
+		hide()
+		return
+	
+	show()
+	text = str(get_tree().get_node_count_in_group(\"enemy\"))
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jed6l"]
 atlas = ExtResource("8_ob0dx")
 region = Rect2(48, 183, 9, 9)
@@ -260,7 +302,7 @@ expand_margin_right = 4.0
 expand_margin_bottom = 7.0
 region_rect = Rect2(-1, -2, 18, 21)
 
-[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("build_button", "money_label", "next_button", "remaining_enemies_label")]
+[node name="UI" type="Control" unique_id=1254920276 node_paths=PackedStringArray("next_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -269,10 +311,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2ttv2")
-build_button = NodePath("BuildButton")
-money_label = NodePath("Money")
 next_button = NodePath("NextStageButton")
-remaining_enemies_label = NodePath("RemainingEnemies")
 
 [node name="TowerBar" type="HBoxContainer" parent="." unique_id=2131575872 node_paths=PackedStringArray("slots")]
 layout_mode = 0
@@ -299,6 +338,7 @@ price = NodePath("PriceLabel")
 [node name="Button" type="Button" parent="TowerBar/Slot1" unique_id=1796085183]
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_e6oqk")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_t1j05")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t1j05")
@@ -340,6 +380,7 @@ price = NodePath("PriceLabel")
 [node name="Button" type="Button" parent="TowerBar/Slot2" unique_id=1401665837]
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_e6oqk")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_t1j05")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t1j05")
@@ -381,6 +422,7 @@ price = NodePath("PriceLabel")
 [node name="Button" type="Button" parent="TowerBar/Slot3" unique_id=661975434]
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_e6oqk")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_t1j05")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t1j05")
@@ -422,6 +464,7 @@ price = NodePath("PriceLabel")
 [node name="Button" type="Button" parent="TowerBar/Slot4" unique_id=110873036]
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_e6oqk")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_t1j05")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t1j05")
@@ -451,7 +494,7 @@ theme_override_font_sizes/font_size = 16
 text = "10"
 horizontal_alignment = 1
 
-[node name="BuildButton" type="Button" parent="." unique_id=1055249082]
+[node name="BuildButton" type="Button" parent="." unique_id=1055249082 node_paths=PackedStringArray("pressed_texture", "released_texture")]
 layout_mode = 0
 offset_left = 198.0
 offset_top = 151.0
@@ -465,6 +508,9 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_55180")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u1rqu")
 toggle_mode = true
 button_pressed = true
+script = SubResource("GDScript_alvv5")
+pressed_texture = NodePath("On")
+released_texture = NodePath("Off")
 
 [node name="On" type="TextureRect" parent="BuildButton" unique_id=1164175591]
 layout_mode = 1
@@ -655,6 +701,7 @@ offset_left = 284.0
 offset_top = 112.0
 offset_right = 304.0
 offset_bottom = 134.0
+focus_mode = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jed6l")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_40ve4")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_8txej")
@@ -709,6 +756,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_84lt7")
 text = "$00"
+script = SubResource("GDScript_0odk7")
 
 [node name="RemainingEnemies" type="Label" parent="." unique_id=640183115]
 layout_mode = 0
@@ -722,13 +770,13 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_84lt7")
 theme_override_font_sizes/font_size = 12
 text = "00"
+script = SubResource("GDScript_t1j05")
 
-[node name="EnemyIcon" type="TextureRect" parent="." unique_id=1860855476]
+[node name="EnemyIcon" type="TextureRect" parent="RemainingEnemies" unique_id=1860855476]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 18.0
-offset_right = 18.933332
-offset_bottom = 29.0
+offset_left = -15.0
+offset_right = -1.0666676
+offset_bottom = 11.0
 texture = SubResource("AtlasTexture_jed6l")
 stretch_mode = 5
 
